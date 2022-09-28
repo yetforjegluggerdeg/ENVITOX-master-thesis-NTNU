@@ -18,7 +18,7 @@
 %% CLASS OPTIONS
 
 % Package for some reason needed before the options
-\RequirePackage{pdfpages}                   % including pdf files
+\RequirePackage{pdfpages}               % including pdf files
 
 % One or twosided paging
 \newcommand{\paging}{twoside}
@@ -141,6 +141,22 @@
 
 %% PACKAGE LOADING
 
+%%% Custom pakker %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{siunitx}
+\usepackage[version=3]{mhchem}
+\usepackage{multirow}
+
+\usepackage[format=hang,font=footnotesize,labelfont=bf]{caption} % fine tabell/figur captions
+
+
+%%% Egendefinerte kommandoer %%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ml}{\si{\milli\liter} }
+\newcommand{\gram}{\si{\gram} }
+\newcommand{\mol}{\si{\mole}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage[utf8]{inputenc}             % for special characters in input
 \RequirePackage[T1]{fontenc}                % modern font encoding
 \RequirePackage[charter, cal=cmcal]{mathdesign} % main font with math support
