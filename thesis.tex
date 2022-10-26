@@ -1,39 +1,49 @@
 \documentclass[british,titlepage]{ntnuthesis}
 
+\begin{figure}
+\hspace{-2cm}
+    \includegraphics[scale=.6]{figures/logo_ntnu_eng.png}
+\end{figure}
 
-\title{Investigating potential immunotoxic and genotoxic effects of chronic exposure to wastewater-aged engineered nanoparticles in \emph{M. edulis} haemocytes}
+
+\title{\LARGE \textbf{Investigating potential immunotoxic and genotoxic effects of chronic exposure to wastewater-aged engineered nanoparticles in \emph{M. edulis} haemocytes}}
 \shorttitle{ENVITOX Master Thesis}
 \author{Tørris Sandsæter}
 \shortauthor{T. Sandsæter}
-\date{CC-BY \today}
+\date{\today}
 
-\addbibresource{thesis.bib}
+\addbibresource{nonauto.bib}
+
 
 \input{glossary.tex} % add glossary and acronym lists before document
 
 \begin{document}
 
-\input{chapters/0a-abstract.tex}
-\input{chapters/0b-sammendrag.tex}
+\input{chapters/0a-acknowledgments}
+\input{chapters/0b-abstract}
+\input{chapters/0c-sammendrag}
 
 \tableofcontents
 \listoffigures
 \listoftables
-\lstlistoflistings
 
 \printglossary[type=\acronymtype] % Print acronyms
 \printglossary                    % Print glossary
 
 \input{chapters/1-introduction}
 \input{chapters/2-material and method}
-\input{chapters/2-usage.tex}
-\input{chapters/3-structure.tex}
-\input{chapters/4-conclusion.tex}
+\input{chapters/3-results}
+\input{chapters/4-discussion}
+\input{chapters/5-conclusion}
+
+%\newpage
+%\chapter{Bibliography}
+%\bibliographystyle{unsrtnat}  %Definerer bibliografistil
+%{\footnotesize\bibliography{mendeley-entrans.bib, manual-bibtex.bib}}
 
 \chapter*{\bibname}
 \printbibliography[heading=none]
 
-\input{chapters/papers.tex}
 
 \appendix
 \input{appendices/a-appendix.tex}

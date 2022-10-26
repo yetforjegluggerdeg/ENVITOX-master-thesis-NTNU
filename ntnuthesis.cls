@@ -146,9 +146,11 @@
 \usepackage{siunitx}
 \usepackage[version=3]{mhchem}
 \usepackage{multirow}
+\usepackage{float}
+%\usepackage{lscape}
+\usepackage{textcomp,gensymb}
 
-\usepackage[format=hang,font=footnotesize,labelfont=bf]{caption} % fine tabell/figur captions
-
+%\usepackage[export]{adjustbox}
 
 %%% Egendefinerte kommandoer %%%%%%%%%%%%%%%%%%%
 
@@ -184,13 +186,13 @@
 \RequirePackage{csquotes}                   % recommended for biblatex
 \RequirePackage[
     backend=biber,
-    style=ieee,
-    maxbibnames=99,
+    style=authoryear,            % style=ieee orginalt
+    maxbibnames=4,
     minbibnames=3,
-    maxcitenames=2,
+    maxcitenames=3,
     mincitenames=1,
-    citestyle=numeric-comp,
-    sorting=none,
+    citestyle=authoryear,      % try authoryear, but define comma and/or parentheses/brackets
+    sorting=nty,
     dashed=false
 ]{biblatex}                                 % for bibliography
 \RequirePackage{csvsimple}                  % tables from csv files
@@ -237,20 +239,6 @@
 % Dotted line and tighter vertical spacing for chapters in the table of contents
 \def\l@chapter#1#2{\@dottedtocline{1}{0em}{1.5em}{\bf #1}{\bf #2}}
 
-% Support for included papers (for compiled PhD theses)
-\newcounter{paper}
-\setcounter{paper}{0}
-\def\thepaper{\Roman{paper}}
-\newenvironment{paper}[2]
-{
-    \refstepcounter{paper}
-    \def\include@papername{#1}
-    \chapter*{\papername~\thepaper}
-    \label[paper]{#2}
-}{
-    \cleardoublepage
-    \includepdf[pages=-]{\include@papername}
-}
 
 % Allow for two versions of title and authors – full and short
 \def\title#1{\def\@title{#1}\def\@shorttitle{#1}}
