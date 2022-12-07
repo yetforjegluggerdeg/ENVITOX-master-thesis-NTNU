@@ -152,9 +152,16 @@ The digestive gland is located dorsally (towards the hinge), slightly off-center
 \subsection{Selection of hemocyte medium}
 The hemocytes of \emph{M. edulis} have a tendency to form aggregates upon mechanical stress, e.g. when the hemolymph is withdrawn through a thin syringe needle. Since accurate flow cytometric quantification rely on single-cell measurements, there was a need to minimize hemocyte aggregation occurring from hemolymph withdrawal during staining procedures, until the samples could by analyzed on the flow cytometer. For this purpose, the crude hemolymph were withdrawn into syringes pre-filled with a number of different "anticoagulant" or "antiaggregative" buffers (1:1) reported in the literature. After preliminary testing, the most promising buffers encountered where the Modified Alsever's Solution (MAS) with ethylenediaminetetraacetic acid (EDTA) reported by \cite{LeFoll2010}, and the similar Anticoagulant Buffer (ACB) w/EDTA reported by \cite{Pipe1997}. Since hemocyte aggregation is a Ca$^{2+}$-dependent process (\cite{Rolton2020}), withdrawal of hemolymph into an EDTA-containing buffer effectively slows the rate of hemocyte aggregation. [Include tests to investigate if EDTA alters hemocyte viability within 15 minutes or if it effects cytograms]. The osmolarity of MAS and ACB were adjusted to approximately 990 mOsm by the addition of \ce{NaCl}, to reflect that of \emph{M. edulis} hemolymph (Hartl, 2010). Another frequently reported method is to withdraw the hemolymph into cold filtered seawater (FSW), while keeping the samples on ice until analysis.
 
-An experiment was devised in order to test which of these two buffers were most effective in preventing hemocyte aggregation under the conditions intended for our FCM analysis. This experiment was based on the observation that FCM singlet hemocyte counts tended to decrease over time from hemolymph withdrawal due to aggregation, such that the proportion of aggregated hemocytes could be retraced from the initial hemocyte count when performing several counts of the same sample over time. In this experiment, withdrawal into a Ca$^{2+}$ -containing medium (Hemolymph solution, HLS) on ice where included as a third comparison.
+An experiment was devised in order to test which of these two buffers were most effective in preventing hemocyte aggregation under the conditions intended for our FCM analysis. This experiment was formed from the observation that FCM singlet hemocyte counts tended to decrease over time from hemolymph withdrawal, and were based on the assumption that the decrease were caused by aggregation alone. Thus, the proportion of aggregated hemocytes could be retraced from the initial hemocyte count when performing several counts of the same sample over time. To test wether the decrease in singlet hemocyte counts (or concentration) were caused by sedimentation in addition to aggregation, some tubes were shaken moderately before analysis. This treatment further accelerated the decrease in hemocyte counts, such that the assumption could not be tested further. In this experiment, withdrawal into a Ca$^{2+}$-containing medium without EDTA (Hemolymph solution, HLS) on ice where included as a third comparison.
 
-250 \micro L hemolymph was withdrawn from 23 individual mussels into 250 \micro L MAS (n=7), ACB (n=8) and HLS (n=8), and the number of singlet hemocyte events were recorded on the FCM immediately thereafter. To account for any extra aggregation occurring from gentle mixing with any flow cytometry reagents, the samples were added 6 \micro L 1 \micro M TO-PRO-3 iodide and incubated for 15 minutes before the second measurement. Three more singlet hemocyte counts where recorded of each sample 30, 45 and 60 minutes post-withdrawal, to discern the buffers ability to prevent aggregation in the whole range of the possibly required time-frame. The proportion of aggregated hemocytes were modelled with time (min) and buffer as explanatory variables, and the proportion of aggregated hemocytes where calculated as:
+250 \micro L hemolymph was withdrawn from 23 individual mussels into 250 \micro L MAS (n=7), ACB (n=8) and HLS (n=8), and the number of singlet hemocyte events were determined by acquiring 20 \micro L sample on the FCM immediately thereafter. Each sample was run with identical acquisition and FCM fluidics settings (see table \ref{tb:FCM_settings}), with the doublet exclusion gate and FSC-A vs. SSC-A hemocyte gate held constant. To account for any extra aggregation occurring from gentle mixing with any flow cytometry reagents, the samples were added 6 \micro L 1 \micro M TO-PRO-3 iodide and incubated for 15 minutes before the second measurement. Three more singlet hemocyte counts where recorded of each sample 30, 45 and 60 minutes post-withdrawal, to discern the buffers' ability to prevent aggregation during longer incubation periods. The log proportion of aggregated hemocytes were modelled as a function of time (min), with buffer as a categorical explanatory variable, using the base R glm() function with a "quasibinomial" error distribution (\cite{R-project}).
+
+\begin{equation}
+    \label{eq:quasibinomial_model}
+    \hat{p} = \alpha_{1} + log\beta_{1}x + \alpha_{2} \beta_{2}x
+\end{equation}
+
+[Describe model specifications (range, accepted values, etc.) and parameter meaning.] The proportion of aggregated hemocytes where calculated as:
 
 \begin{equation}
     \label{eq:Hégaret_eq}
@@ -163,11 +170,31 @@ An experiment was devised in order to test which of these two buffers were most 
 
 Where $\hat{p}$ is the proportion of aggregated hemocytes, N$_{to}$ is the initial number of singlet hemocytes in the sample and N$_{tx}$ is the number of singlet hemocytes at time x after hemolymph withdrawal.
 
-FCM specifications: Used fixed volume limit (20 uL) and flow rate (30 uL/min) on FCM, 250 uL hemolymph in 250 uL AA or ALS (1:1).
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/greys368.pdf}
+    \caption{The proportion of aggregated \emph{M. edulis} hemocytes in hemolymph samples aspirated into 250 \micro L MAS (n=7), ACB (n=8) and HLS (n=8) buffers (1:1), plotted against time (min) after withdrawal from the posterior adductor muscle. The lines depict the proportion of aggregated hemocytes vs. time using the three different buffers, as predicted by the fitted logistic regression model.}
+    \label{fig:aggregation}
+\end{figure}
 
 Model used, assumption tests, significancy results (slopes, CI and p-values), overall model fit.
-
 Since complete inhibition of hemocyte aggregation is unachievable, samples were run on the flow cytometer directly after staining procedures. The cells that had aggregated in spite of these efforts were gated out of analysis using a FSC-A vs. FSC-H doublet exclusion gate (see Gating Strategy).
+
+\begin{table}[H]
+	\centering
+	\caption{The FCM acquisition and fluidics settings specified with the BD Accuri C6 Plus acquisition software during the flow cytometric experiments reported in this work.}
+	\label{tb:FCM_settings}
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{lllll}
+	\textbf{Experiment nr.} & \textbf{Event-triggering threshold} & \textbf{Acquisition stop-condition} & \textbf{Flow rate (\micro L/min)} & \textbf{Core size (\micro m)} \\
+		\midrule
+    Aggregation & 80.000 FCM & acquired volume, 20 \micro L & 30 & 10 \\
+    Dimethyl sulfoxide              & 67-68-5    & $\geq$ 99.5 \% & Sigma Aldrich & l \\
+    D-(+)-Glucose                   & 50-99-7    & $\geq$ 99.5    & Sigma Aldrich & s \\
+		\bottomrule
+	\end{tabular}
+	}
+\end{table}
 
 \subsection{Hemolymph Withdrawal/Extraction/Collection of hemolymph}
 Using the method described above...

@@ -149,6 +149,7 @@
 \usepackage{float}
 %\usepackage{lscape}
 \usepackage{textcomp,gensymb}
+\usepackage{listings}
 
 %\usepackage[export]{adjustbox}
 
@@ -267,7 +268,7 @@
 \setlist[itemize,3]{label=$-$}
 
 % Make \fullcite show all authors irrespectively of maxcitenames
-\preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
+%\preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 
 % Colour palette
 \definecolor{thesisblue}{rgb}{.15, .15, .6}
