@@ -154,21 +154,37 @@ The hemocytes of \emph{M. edulis} have a tendency to form aggregates upon mechan
 
 An experiment was devised in order to test which of these two buffers were most effective in preventing hemocyte aggregation under the conditions intended for our FCM analysis. This experiment was formed from the observation that FCM singlet hemocyte counts tended to decrease over time from hemolymph withdrawal, and were based on the assumption that the decrease were caused by aggregation alone. Thus, the proportion of aggregated hemocytes could be retraced from the initial hemocyte count when performing several counts of the same sample over time. To test wether the decrease in singlet hemocyte counts (or concentration) were caused by sedimentation in addition to aggregation, some tubes were shaken moderately before analysis. This treatment further accelerated the decrease in hemocyte counts, such that the assumption could not be tested further. In this experiment, withdrawal into a Ca$^{2+}$-containing medium without EDTA (Hemolymph solution, HLS) on ice where included as a third comparison.
 
-250 \micro L hemolymph was withdrawn from 23 individual mussels into 250 \micro L MAS (n=7), ACB (n=8) and HLS (n=8), and the number of singlet hemocyte events were determined by acquiring 20 \micro L sample on the FCM immediately thereafter. Each sample was run with identical acquisition and FCM fluidics settings (see table \ref{tb:FCM_settings}), with the doublet exclusion gate and FSC-A vs. SSC-A hemocyte gate held constant. To account for any extra aggregation occurring from gentle mixing with any flow cytometry reagents, the samples were added 6 \micro L 1 \micro M TO-PRO-3 iodide and incubated for 15 minutes before the second measurement. Three more singlet hemocyte counts where recorded of each sample 30, 45 and 60 minutes post-withdrawal, to discern the buffers' ability to prevent aggregation during longer incubation periods. The log proportion of aggregated hemocytes were modelled as a function of time (min), with buffer as a categorical explanatory variable, using the base R glm() function with a "quasibinomial" error distribution (\cite{R-project}).
+250 \micro L hemolymph was withdrawn from 23 individual mussels into 250 \micro L MAS (n=7), ACB (n=8) and HLS (n=8), and the number of singlet hemocyte events were determined by acquiring 20 \micro L sample on the FCM immediately thereafter. Each sample was run with identical acquisition and FCM fluidics settings (see table \ref{tb:FCM_settings}), with the doublet exclusion gate and FSC-A vs. SSC-A hemocyte gate held constant. To account for any extra aggregation occurring from gentle mixing with any flow cytometry reagents, the samples were added 6 \micro L 1 \micro M TO-PRO-3 iodide and incubated for 15 minutes before the second measurement. Three more singlet hemocyte counts where recorded of each sample 30, 45 and 60 minutes post-withdrawal, to discern the buffers' ability to prevent aggregation during longer incubation periods. The proportion of aggregated hemocytes where calculated as:
 
 \begin{equation}
-    \label{eq:quasibinomial_model}
-    \hat{p} = \alpha_{1} + log\beta_{1}x + \alpha_{2} \beta_{2}x
-\end{equation}
-
-[Describe model specifications (range, accepted values, etc.) and parameter meaning.] The proportion of aggregated hemocytes where calculated as:
-
-\begin{equation}
-    \label{eq:Hégaret_eq}
+    \label{eq: proportion_agg}
     \hat{p} = \dfrac{N_{t0} - N_{tx}}{(N_{t0} - N_{tx}) + N_{tx}} = \dfrac{N_{t0} - N_{tx}}{N_{t0}}
 \end{equation}
 
-Where $\hat{p}$ is the proportion of aggregated hemocytes, N$_{to}$ is the initial number of singlet hemocytes in the sample and N$_{tx}$ is the number of singlet hemocytes at time x after hemolymph withdrawal.
+Where $\hat{p}$ is the proportion of aggregated hemocytes, N$_{to}$ is the initial number of singlet hemocytes in the sample and N$_{tx}$ is the number of singlet hemocytes at time x after hemolymph withdrawal. The proportion of aggregated hemocytes were modelled as a function of log time, with buffer as a categorical explanatory variable, using the base R glm() function with a "quasibinomial" error distribution and "logit" link function, as shown in Code listing 3.1 (\cite{R-project}). The logistic GLM model codes the categorical explanatory variable's factor levels into dummy variables (see equation \ref{eq:dummy_variables}), and uses the MAS buffer as reference level. The resultant logistic model can be written out on the original scale as in equation \ref{eq:logit}, where $\alpha + \beta_{1}x_{i}$ is the linear predictor of the reference level, $\alpha_{2}$ and $\alpha_{3}$ are the difference in y-intercept for the HLS and ACB buffers, while $\beta_{2}$ and $\beta_{3}$ are the differences in slopes for the same buffers, respectively. The data is presented in figure \ref{fig:aggregation}, together with the three buffers' "sub-models".
+
+\begin{lstlisting}[language=R, float, caption = {A floating example of R code}]
+model = glm(y ~ log(t) + Buffer + log(t):Buffer,
+family = quasibinomial(link = "logit")
+\end{lstlisting}
+
+\begin{equation}
+    \label{eq:dummy_variables}
+D_{2} =\begin{cases}
+      1, & \text{HLS}\\
+      0, & \text{not HLS},
+    \end{cases}
+    \quad
+D_{3} =\begin{cases}
+      1, & \text{ACB}\\
+      0, & \text{not ACB}
+    \end{cases}
+\end{equation}
+
+\begin{equation}
+\label{eq:logit}
+\hat{p}_{i} = \dfrac{1}{1 + e^{-(\alpha + \beta_{1} x_{i} + \alpha_{2} D_{2} + \alpha_{3} D_{3} + \beta_{2} D_{2]} + \beta_{3} D_{3} + \epsilon_{i})}}
+\end{equation}
 
 \begin{figure}[!ht]
     \centering
@@ -179,22 +195,6 @@ Where $\hat{p}$ is the proportion of aggregated hemocytes, N$_{to}$ is the initi
 
 Model used, assumption tests, significancy results (slopes, CI and p-values), overall model fit.
 Since complete inhibition of hemocyte aggregation is unachievable, samples were run on the flow cytometer directly after staining procedures. The cells that had aggregated in spite of these efforts were gated out of analysis using a FSC-A vs. FSC-H doublet exclusion gate (see Gating Strategy).
-
-\begin{table}[H]
-	\centering
-	\caption{The FCM acquisition and fluidics settings specified with the BD Accuri C6 Plus acquisition software during the flow cytometric experiments reported in this work.}
-	\label{tb:FCM_settings}
-	\resizebox{\linewidth}{!}{
-	\begin{tabular}{lllll}
-	\textbf{Experiment nr.} & \textbf{Event-triggering threshold} & \textbf{Acquisition stop-condition} & \textbf{Flow rate (\micro L/min)} & \textbf{Core size (\micro m)} \\
-		\midrule
-    Aggregation & 80.000 FCM & acquired volume, 20 \micro L & 30 & 10 \\
-    Dimethyl sulfoxide              & 67-68-5    & $\geq$ 99.5 \% & Sigma Aldrich & l \\
-    D-(+)-Glucose                   & 50-99-7    & $\geq$ 99.5    & Sigma Aldrich & s \\
-		\bottomrule
-	\end{tabular}
-	}
-\end{table}
 
 \subsection{Hemolymph Withdrawal/Extraction/Collection of hemolymph}
 Using the method described above...
@@ -255,6 +255,21 @@ Mention if data were collected in linear or logaritmic scale,
 FSC treshold (80.000 FSC-H)
 Fluorescent compensation (matrix)
 Describe gating strategy herein? Debris exclusion; doublet exclusion --> hemocytes. (Gating of basophils and eosinophils, FMO controls with TO-PRO-3 and the apoptosis stain).
+
+\begin{table}[H]
+	\centering
+	\caption{The FCM acquisition and fluidics settings specified with the BD Accuri C6 Plus acquisition software during the flow cytometric experiments reported in this work.}
+	\label{tb:FCM_settings}
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{lllll}
+	\textbf{Experiment nr.} & \textbf{Event-triggering threshold} & \textbf{Acquisition stop-condition} & \textbf{Flow rate (\micro L/min)} & \textbf{Core size (\micro m)} \\
+		\midrule
+    Aggregation & 80.000 FCM & acquired volume, 20 \micro L & 30 & 10 \\
+    Fill & in & when & the experiment is set & completely \\
+		\bottomrule
+	\end{tabular}
+	}
+\end{table}
 
 \subsection{Assay Validation}
 Both dead cell stain and apoptosis stain has to be validated. For TO-PRO-3 perform the same experiment with 70\% methanol-killed cells as you did for Calcein-AM + EthD-1, and use Calcein-AM to stain live cells.
