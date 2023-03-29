@@ -51,9 +51,11 @@ Adobe\textsuperscript{\textregistered} Lightroom Classic 12.0
     Calcium chloride dihydrate      & 10035-04-8 & $\geq$ 99.0 \% & Sigma Aldrich & s \\
     Dimethyl sulfoxide              & 67-68-5    & $\geq$ 99.5 \% & Sigma Aldrich & l \\
     D-(+)-Glucose                   & 50-99-7    & $\geq$ 99.5    & Sigma Aldrich & s \\
-    EDTA anhydrous                  & 60-00-4    & $\geq$ 99 \%   & Sigma Aldrich & s \\
     \ce{Na2EDTA}$\cdot$\ce{2H2O}    & 6381-92-6  & 98.5-101.5 \%  & Sigma Aldrich & s \\
     Ethanol                         & 64-17-5    & 96 \% vol      & VWR           & l \\
+    \ce{Na2HPO4}$\cdot$\ce{2H2O}    & 10028-24-7 & $\geq$ 98.0    & Sigma Aldrich & s \\
+    Potassium phosphate monobasic   & 7778-77-0  & $\geq$ 98.0    & Sigma Aldrich & s \\
+    Copper(II)sulfate pentahydrate  & 7758-99-8  & $\geq$ 98.0    & Sigma Aldrich & s \\
     Formaldehyde                    & 50-00-0    & 37\% wt        & Sigma Aldrich & l \\
     HEPES                           & 7365-45-9  & $\geq$ 99.5 \% & Sigma Aldrich & s \\
     Magnesium sulfate heptahydrate  & 10034-99-8 & $\geq$ 99.5 \% & Sigma Aldrich & s \\
@@ -75,12 +77,12 @@ Adobe\textsuperscript{\textregistered} Lightroom Classic 12.0
 	\label{tb:reagent-list}
 	\resizebox{\linewidth}{!}{
 	\begin{tabular}{lllll}
-	\textbf{Product name (abbrv.)} & \textbf{Manufacturer} & \textbf{Supplier} & \textbf{Catalogue} & \textbf{Dilution} \\
+	\textbf{Product name (abbrv.)} & \textbf{Manufacturer} & \textbf{Supplier} & \textbf{Catalogue} & \textbf{Concentration} \\
 		\midrule
-    TO-PRO-3 &  InVitrogen$^{TM}$  & Thermo Fisher	& T3605 & 1:20 \\
+    TO-PRO$^{TM}$-3 Iodide (642/661) &  InVitrogen$^{TM}$  & Thermo Fisher & T3605 & 1.2 \micro M \\
     Ethidium Homodimer-1 &  InVitrogen$^{TM}$ & Thermo Fisher &  E1169 & 4 \micro L/sample \\
-    Apotracker$^{TM}$ Green & BioLegend & Fisher Scientific & 50-207-9934 & NA \\
-    Calcein-AM & Invitrogen$^{TM}$ & Thermo Fisher & C1430 & 1:80 \\ 
+    Apotracker$^{TM}$ Green & BioLegend & Fisher Scientific & 50-207-9934 & 560 nM \\
+    Calcein-AM & Invitrogen$^{TM}$ & Thermo Fisher & C1430 & 170 nM \\ 
     CS\&T RUO beads & BD Biosciences & BD Biosciences & 661414 &  4 drops/mL \\
     8-peak validation beads & Spherotech & BD Biosciences & 653144 & 4 drops/mL \\
     6-peak validation beads & Spherotech & BD Biosciences & 653145 & 4 drops/mL \\
@@ -104,7 +106,6 @@ Adobe\textsuperscript{\textregistered} Lightroom Classic 12.0
     Eukitt\textsuperscript{\textregistered} Quick-hardening mounting medium & Orsatec GmbH & Sigma Aldrich & 03989 \\
     Type N Immersion Oil for Microscopy & Nikon & ? & MXA20234 \\
     Methanol & Merck & Sigma Aldrich & 1.06009.2511 \\
-    4\% formaldehyde in MAS &&& \\
     Percoll$^{TM}$ & Cytiva Sweden AB & Sigma Aldrich & GE17-0891-02 \\
     Centrifuge tubes, Oak Ridge, 50 mL & Nalgene\textsuperscript{\textregistered} & VWR & 525-0046 \\
 		\bottomrule
@@ -131,8 +132,6 @@ Adobe\textsuperscript{\textregistered} Lightroom Classic 12.0
                           & 0.05 M TRIS/HCl, pH=7.6 \\ 
     PBS                                  & 136.9 mM \ce{NaCl}, 2.7 mM \ce{KCl}, 10.1 mM \ce{Na2HPO4}, 1.8 mM \ce{KH2PO4} \\
     Sorensen Buffer       & 66.67 mM \ce{KH2PO4}, 66.67 mM \ce{Na2HPO4}$\cdot$\ce{2H2O}, pH=6.8 \\
-    Leibovitz-15          &                                              \\
-    HBSS                  &                                              \\
     Hemolymph solution    &  470 mM \ce{NaCl}, 10 mM \ce{KCl}, 10 mM \ce{CaCl2}, 10 mM HEPES \\
                           & 47.7 mM \ce{MgSO4}, pH=7.41 \\
 		\bottomrule
@@ -140,16 +139,35 @@ Adobe\textsuperscript{\textregistered} Lightroom Classic 12.0
 	}
 \end{table}
 
+BD Microlance$^{TM}$ 3, 23G x 1" - Nr. 16, 0.6mm x 25 mm, sterile, REF 300800
+HENKE-JECT 1 mL syringes, 1mL, luer, REF 8300014579, HENKE SASS WOLF GmbH, Tuttlingen, Germany
+
 \section{Method}
-\subsection{Experimental setup/}
-\emph{Mytilus edulis} (mean+-SD shell length cm and age?) were obtained from Snadder og Snaskum AS (Indre Fosen, Norway), transportation, that the supplier were asked not to shrub the shells, animal housing prior to experiment (erated, flow through volume, temperature, water type/source, time period, feeding, did they attach with byssus?), decribe depuration period
+\subsection{Animal housing}
+Adult blue mussels (\emph{Mytilus edulis}) of x.x$\pm{5}$ cm shell length were obtained from Snadder og Snaskum AS (Indre Fosen, Norway). Upon arrival at the marine animal housing facilities of NTNU, Centre of Fisheries and Aquaculture (SeaLab), the mussels were transferred to 50 L filtered seawater flow-through tanks (11 L/min) supplied by a direct inlet from Trondheimsfjorden at 80 m depth ($\SI{7.5}{\celsius}$). Here, the mussels were kept to acclimatize for 2 days before transfer to the experimental exposure setup.
+
+Time of mussel harvest/purchuse?
+
+Describe water treatment in more detail: include information regarding sand-filter, protein-skimmer, 0.5 um filter bags and UV-treatment.
+
+Because the watertreatment left no natural feed for the mussels, the filtered seawater were suplemented with algea (species) [frequency]
+
+
+\subsection{Experimental setup/design}
+- Specs related to flowrate, feeding (alge conc: Coulter counter), how often was nano particles changed (every 3-4 days: check article), concentrations (ICP-MS --> mg/L in stocks and exp tanks), zetasizer --> size and surface potential
+
+include figure of exp setup?
+
+depuration period: check article
+
+storage from depuration to sampling: mussels were not kept on ice, but were washed and taken directly upstairs for measuring weight, length, height and width for condition index, and were given to us for FCM sampling afterwards. If we were delayed, they were kept in the fridge until hemolymph sampling 
 
 \subsection{Hemolymph sampling technique}
-To minimize the possibility of contaminating hemolymph samples during extraction, a simple and time-effective sampling technique modified from the nonlethal technique of Gustafson et al., 2005 was developed. A "blind" method of withdrawal through a notch in the posterior dorsal shell or through the exhalant syphon frequently resulted in considerable contamination with debris from the pallial fluid or the lungs (data not shown). Therefore, the hemolymph sampling technique employed was centered around achieving good visual contact with the posterior adductor muscle and the position of the needle within the muscle during hemolymph withdrawal, and was mainly constricted by the requirement of an intact digestive gland.
+To minimize the possibility of contaminating hemolymph samples during extraction, a simple and time-effective sampling technique slightly modified from the nonlethal technique of Gustafson et al., 2005 was used. A "blind" method of withdrawal through a notch in the posterior dorsal shell or through the exhalant syphon frequently resulted in considerable contamination with debris from the pallial fluid (data not shown). Therefore, the hemolymph sampling technique employed was centered around achieving good visual contact with the posterior adductor muscle and the position of the needle within the muscle during hemolymph withdrawal, and was mainly constricted by the requirement of an intact digestive gland.
 
-The digestive gland is located dorsally (towards the hinge), slightly off-center towards the anterior end (Eggermont, 2020). In order to access and see the posterior adductor muscle while staying clear of the digestive gland, the valves were prised apart ventrally by gently forcing a tissue forceps between the valves midway of the mussel's length, or slightly posterior of the byssal mass (Fig. \ref{fig:Hemolymph_sampling_illustration}a). When the pallial cavity opened, pallial fluid (seawater) was drained away from the posterior adductor muscle by positioning the mussel's umbo on a paper tissue for 15-30 seconds. Since the posterior adductor muscle is oblong in the anteroposterior direction, penetrating the muscle from the posterior end pointing straight anteriorly gave the operator better margins to avoid piercing the muscle. To create a free path to the muscle from the posterior direction, the connecting mantle immediately surrounding the exhalant syphon where cut with a scalpel (Fig. \ref{fig:Hemolymph_sampling_illustration}b and d), holding the blunt spine of the scalpel blade facing the posterior adductor muscle.  Thus, when illuminating the pallial cavity from above with the ventral aspect facing upwards, the operator was able to supervise the position of the needle in the muscle sinus through the slightly transparent muscle fibers, as seen in Fig. \ref{fig:Hemolymph_sampling_illustration}c. The mussels were placed in the palm of the operator's non-dominant arm, 3$^{rd}$-5$^{th}$ digits firmly gripping the mussel, first and second digits holding the syringe steady in the anteroposterior direction, while the dominant arm were used to withdraw the syringe plunger.
+The digestive gland is located dorsally (towards the hinge), slightly off-center towards the anterior end (Eggermont, 2020). In order to access and see the posterior adductor muscle while staying clear of the digestive gland, the valves were prised apart ventrally by gently forcing a tissue forceps between the valves midway of the mussel's length, or slightly posterior of the byssal mass (Fig. \ref{fig:Hemolymph_sampling_illustration}a). When the pallial cavity opened, pallial fluid (seawater) was drained away from the posterior adductor muscle by positioning the mussel's umbo on a paper tissue for 15-30 seconds. Since the posterior adductor muscle is oblong in the anteroposterior direction, penetrating the muscle from the posterior end pointing straight anteriorly gave the operator better margins to avoid piercing the muscle. To create a free path to the muscle from the posterior direction, the connecting mantle immediately surrounding the exhalant syphon where cut with a scalpel (Fig. \ref{fig:Hemolymph_sampling_illustration}b and d), holding the blunt spine of the scalpel blade facing the posterior adductor muscle. Thus, when illuminating the pallial cavity from above with the ventral aspect facing upwards, the operator was able to supervise the position of the needle inside the posterior adductor muscle sinus through the slightly transparent muscle fibers, as seen in Fig. \ref{fig:Hemolymph_sampling_illustration}c. For this work, 1.0 mL syringes equipped with sterile 23 gauge hypodermic needles were used. Hemolymph samples were gently withdrawn at an approximate rate of 0.25 mL/min, in order to prevent the negative pressure inside the muscle from becoming so great that pallial fluid would seep inside between the muscle fibers. The mussels were placed in the palm of the operator's non-dominant arm, 3$^{rd}$-5$^{th}$ digits firmly gripping the mussel, first and second digits holding the syringe steady in the anteroposterior direction, while the dominant arm were used to withdraw the syringe plunger.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \begin{subfigure}[b]{.45\textwidth}
         \centering
@@ -183,13 +201,18 @@ The digestive gland is located dorsally (towards the hinge), slightly off-center
 \end{figure}
 
 \subsection{Selection of hemocyte medium}
-The hemocytes of \emph{M. edulis} have a tendency to form aggregates upon mechanical stress, e.g. when the hemolymph is withdrawn through a thin syringe needle. Since accurate flow cytometric quantifications rely on single-cell measurements, there was a need to minimize hemocyte aggregation occurring from hemolymph withdrawal during staining procedures, until the samples could by analyzed on the flow cytometer. In the literature, several authors have dealt with this problem by aspirating hemolymph samples directly into slightly acidic EDTA-containing solutions buffered by citric acid (\cite{Söderhall1983, Bachere1988, LeFoll2010}). Since hemocyte aggregation is a Ca$^{2+}$-dependent process (\cite{Rolton2020}), withdrawal of hemolymph into an EDTA-containing buffer effectively slows the rate of hemocyte aggregation, although it does not inhibit aggregation completely. [Include tests to investigate if EDTA alters hemocyte viability within 15 minutes or if it effects cytograms]. Another frequently reported method is to withdraw the hemolymph into cold filtered seawater (FSW), while keeping the samples on ice until analysis.
+\subsubsection{Preventing hemocyte aggregation}
+The hemocytes of \emph{M. edulis} have a tendency to form aggregates upon mechanical stress, e.g. when the hemolymph is withdrawn through a thin syringe needle. Since accurate flow cytometric quantifications rely on single-cell measurements, there was a need to minimize hemocyte aggregation from occurring during staining procedures, until the samples could by analyzed on the flow cytometer. For the purpose of micro-nucleus scoring of spread and stained cells, it is also essential to keep the hemocytes from clumping together. The basophilic hemocytes tend to spread on top of each other: rendering their individual cytoplasms indistinguishable from another.
 
-In search for the most effective method for this work, hemolymph samples were withdrawn into syringes pre-filled with a number of different "anticoagulant" or "antiaggregative" buffers (1:1) reported in the literature. After preliminary testing, the most promising buffers encountered where the Modified Alsever's Solution (MAS, pH=6.2) with ethylenediaminetetraacetic acid (EDTA) and citric acid reported by \cite{LeFoll2010}, and the similar Anticoagulant Buffer (ACB, pH=7.6) with EDTA reported by \cite{Pipe1997}. Since these three factors (EDTA and/or low pH or keeping samples on ice) might introduce inconveniences related to staining procedures, an experiment was devised in order to test their effect on hemocyte aggregation under the conditions intended for our FCM analysis, such that a cost-effect assessment could be performed. The experiment was seeded from the observation that FCM singlet hemocyte counts tended to decrease over time from hemolymph withdrawal, and were based on the assumption that the decrease was caused by aggregation alone. Thus, the proportion of aggregated hemocytes in a sample at a given time could be retraced from the initial hemocyte count when performing several counts of the same sample over time. 
+In the literature, several authors have dealt with this problem by aspirating hemolymph samples directly into slightly acidic EDTA-containing solutions buffered by citric acid (\cite{Söderhall1983, Bachere1988, LeFoll2010}). Since hemocyte aggregation is a Ca$^{2+}$-dependent process (\cite{Torreilles1999, Chen1995}), withdrawal of hemolymph into a buffer containing divalent metal-ion chelators effectively slows the rate of hemocyte aggregation, allthough it does not inhibit aggregation completely. Another frequently reported method is to dilute the hemolymph in cold filtered seawater (FSW), while keeping the samples on ice prior to analysis.
 
-250 \micro L hemolymph was withdrawn from 23 individual mussels into 250 \micro L Hemolymph saline (HLS, n=8) on ice, MAS (n=7) or ACB (n=8), and the number of singlet hemocyte events were determined by acquiring 20 \micro L sample on the FCM immediately thereafter. Each sample was run with identical acquisition and FCM fluidics settings (see table \ref{tb:FCM_settings}), with a doublet exclusion gate and FSC-A vs. SSC-A hemocyte gate held constant. To account for any extra aggregation occurring from gentle mixing with any flow cytometry reagents, the samples were added 6 \micro L 1 \micro M TO-PRO-3 iodide and incubated for 15 minutes before the second measurement. Three more singlet hemocyte counts where recorded of each sample at 30, 45 and 60 minutes post-withdrawal, to discern the buffers' ability to prevent aggregation during longer incubation periods.
+In search for the most effective method for this work, hemolymph samples were withdrawn into syringes pre-filled with a number of different "anticoagulant" or "antiaggregative" buffers (1:1) reported in the literature. Initially, the degree of aggregation was evaluated by inspecting microscopy slides of fixed and stained adhered hemocytes. After preliminary testing, the most promising buffers encountered where the Modified Alsever's Solution (MAS, pH=6.2), and the similar Anticoagulant Buffer (ACB, pH=7.6) with EDTA reported by \cite{Pipe1997}. Since the use of EDTA (MAS and ACB), low pH (MAS) or keeping samples on ice (FSW) might introduce inconveniences related to staining procedures, extra handling requirements and possibly impairing hemocyte viability, an experiment was devised in order to test their relative effects on hemocyte aggregation under the conditions intended for our FCM analysis. In this way a weighted cost-effect analysis could be performed to choose the most suitable buffer for this work.
 
-To test the experimental assumption of aggregation as the sole mechanism behind decreases in hemocyte counts, four hemocyte samples were moderately shaken to suspend any sedimented hemocytes before sample acquisition. This further increased the rate of aggregation (data not shown), which ruled out sedimentation as an important mechanism. Being the only other mechanism conceivably involved, the assumption was regarded as valid under the current experimental conditions.
+The experiment was seeded from the observation that FCM singlet hemocyte counts tended to decrease over time from hemolymph withdrawal, and were based on the assumption that the decrease was caused by aggregation alone. Thus, the proportion of aggregated hemocytes in a sample at a given time could be retraced from the initial hemocyte count when performing several counts of the same sample over time. 
+
+250 \micro L hemolymph was withdrawn from 23 individual mussels into 250 \micro L Hemolymph saline (HLS, n=8) on ice, MAS (n=7) or ACB (n=8), and the number of singlet hemocyte events were determined by acquiring 20 \micro L sample on the flow cytometer immediately thereafter. Each sample was run with identical acquisition and FCM fluidics settings (see table \ref{tb:FCM_settings}), with a doublet exclusion gate and FSC-A vs. SSC-A hemocyte gate held constant. To account for any extra aggregation occurring from gentle mixing with any flow cytometry reagents, the samples were added 6 \micro L 1 \micro M TO-PRO$^{TM}$-3 iodide and incubated for 15 minutes before the second measurement. Three more singlet hemocyte counts where recorded of each sample at 30, 45 and 60 minutes post-withdrawal, to discern the buffers' ability to prevent aggregation during longer incubation periods.
+
+To test the experimental assumption of aggregation as the sole mechanism behind decreases in hemocyte counts, four hemocyte samples were moderately shaken to resuspend any sedimented hemocytes before sample acquisition. This further increased the rate of aggregation (data not shown), which ruled out sedimentation as an important mechanism. Being the only other conceivable mechanism involved, the assumption was regarded as valid under the current experimental conditions.
 
 The proportion of aggregated hemocytes where calculated according to equation \ref{eq: proportion_agg}.
 
@@ -238,28 +261,48 @@ D_{3} =\begin{cases}
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/greys368.pdf}
-    \caption{The proportion of aggregated \emph{M. edulis} hemocytes in hemolymph samples aspirated into 250 \micro L MAS (n=7), ACB (n=8) and HLS (n=8) buffers (1:1), plotted against time (min) after withdrawal from the posterior adductor muscle. The lines depict the proportion of aggregated hemocytes vs. time using the three different buffers, as predicted by the fitted logistic regression model.}
+    \caption{The proportion of aggregated \emph{M. edulis} hemocytes in hemolymph samples withdrawn into 250 \micro L MAS (n=7), ACB (n=8) and HLS (n=8) buffers (1:1), plotted against time (min) after withdrawal from the posterior adductor muscle. The three lines depict the predicted proportion of aggregated hemocytes at time t after aspiration, when using the three different buffers, as predicted by the fitted logistic regression model.}
     \label{fig:aggregation}
 \end{figure}
 
-Interpreting the logistic sub-models, it evident that MAS and ACB effectively slowed the rate of aggregation during the first 30 minutes post-withdrawal. When MAS was used as a hemocyte medium, the predicted mean proportion of aggregated hemocytes after 20 minutes was 0.25, CI = (0.20, 0.30). This is not significantly different from the mean proportion when ACB was used (0.31, CI=(0.27, 0.37)), but both buffers containing EDTA had significantly lower hemocyte aggregation after 20 minutes compared to HLS (0.50, CI=(0.38, 0.61)). Although the model is over-dispersed, these estimates provided some insight into the three factor's relative abilities to prevent hemocyte aggregation. From these results, it was decided to draw all hemolymph samples into MAS (1:1). Since complete inhibition of hemocyte aggregation is unachievable, samples were run on the flow cytometer directly after staining procedures. Hemocytes that aggregated in spite of these efforts were gated out of analysis using a FSC-A vs. FSC-H doublet exclusion gate (see Gating Strategy). 
+Interpreting the logistic sub-models, it evident that MAS and ACB effectively slowed the rate of aggregation during the first 30 minutes post-withdrawal. When MAS was used as hemocyte medium, the predicted mean proportion of aggregated hemocytes after 20 minutes was 0.25, CI = (0.20, 0.30). This was not significantly different from the predicted mean proportion when ACB was used (0.31, CI=(0.27, 0.37)), but both buffers containing EDTA and lacking free Ca$^{2+}$ were predicted to have significantly lower hemocyte aggregation after 20 minutes compared to samples that were withdrawn into HLS and kept on ice (0.50, CI=(0.38, 0.61)).
 
-\subsection{Hemolymph Withdrawal/Extraction/Collection of hemolymph}
-Using the method described above...
-Technicalities of the withdrawal (1 mL syringes with 27 gauge hypodermic needles).
-Syringe filled with 0.5 mL anticoagulant solution (ALS or AA).
-[Should check if EDTA changes the cytogram, because it would be nice to report that it doesn't affect them.] 
-Volume withdrawn, time used when aspirating these volumes
-Dilution correction to 1:1 hemolymph:MAS after withdrawal if volume > 0.5 mL hemolymph. 
-Hemolymph was not pooled or centrifuged (crude hemolymph). Report pH and osmolarity of the MAS buffer, and say that it is similar to the osmolarity of hemolymph/seawater 990 mOsm (Hartl, 2010). The osmolarity of MAS and ACB were adjusted to approximately 990 mOsm by the addition of \ce{NaCl}, to reflect that of \emph{M. edulis} hemolymph (Hartl, 2010)
+Although the model is over-dispersed, these estimates provided some insight into the three factor's relative abilities to prevent hemocyte aggregation within the first hour post-withdrawal. The combination of a Ca${2+}$-free and EDTA-containing buffer is effective in reducing hemocyte aggregation compared to simply keeping samples on ice. When using the latter method, large aggregates are usually formed within the syringe immediately after hemolymph aspiration, even though the hemolymph saline has been pre-chilled at $\SI{4}{\celsius}$. For this method to be effective, the hemolymph most likely has to be diluted many-fold. Such an approach would be inconvenient when preparing microscopy slides of a certain desired cell density, and too time-consuming when acquiring 10.000 events on a flow cytometer. This methodology were therefore ruled out.
+
+Comparing the relative effectiveness of MAS and ACB in preventing hemocyte aggregation, it is evident that neither citrate or maintaining a slightly acidic pH is required for the purpose. It might be that the slightly higher concentration of EDTA in ACB compensates for the lack of citrate. But either way, the acidic pH most likely plays a minor role. Since a high concentration of EDTA has been reported by some authors to impair hemocyte viability \cite{Grandiosa2018, Burkhard2009}, a further comparison of MAS and ACB with regards to acute effects on viability had to be investigated.
+
+
+Include details in the function of glucose
+\subsubsection{Hemocyte medium and viability}
+
+
+Present bargraphs of hemocyte viability after 15 minutes, 2 and 20 hours post-withdrawal, or just present the numbers?
+
+Aspirate two samples from the same mussel using different buffers to confirm that the hemocyte medium in fact does not change the SSC vs. FSC profiles of the hemocyte subpopulations within 15 minute incubation. Maybe use crude hemolymph as control?
+
+Withdraw hemolymph into HLS (n=8) and MAS (n=8) to confirm that the hemocyte viability does is not decreased within the first 15 minutes of incubation. We already have data on ACB from the ENTRANS project, but not of MAS and HLS after the new method of mixing hemolymph and stains with a pipette.
+
+Report pH and osmolarity of the MAS and ACB buffer, and say that it is similar to the osmolarity of hemolymph/seawater 990 mOsm (Hartl, 2010).
+- The osmolarity of MAS and ACB were adjusted to approximately 990 mOsm by the addition of \ce{NaCl}, to reflect that of \emph{M. edulis} hemolymph (Hartl, 2010)
+- This could be co-presented with the fact that cells did not swell during the incubation period, deducted form the fact that the mean FCS-A did not change.
+
+Since the slightly acidic MAS buffer were not significantly more efficient than ACB, and EDTA did not alter it was decided to draw all hemolymph samples into ACB (1:1). As complete inhibition of hemocyte aggregation is unachievable, hemocytes that aggregated in spite of these efforts were gated out of analysis using a FSC-A vs. FSC-H doublet exclusion gate (see Gating Strategy).
+
+The use of EDTA-containing buffers did not seem to affect hemocyte viability either, which were not significantly different between the groups (data not shown). 
+
+\subsection{Hemolymph collection}
+By using the sampling technique described above, 0.5 mL hemolymph was withdrawn from each mussel into 1.0 mL syringes pre-filled with 0.5 mL anticoagulant buffer (ACB) and equipped with 23 gauge hypodermic needles.
+
+- Should check if EDTA changes the cytogram, because it would be nice to report that it doesn't affect them during the 15 minute incubation period 2 hours + 20 hours
+
+- Time used when aspirating 0.5 mL hemolymph (should go to hemolymph sampling technique)
+
+- Hemolymph was not pooled or centrifuged. 
 
 \subsection{Determination of hemocyte concentration and subpopulations}
 "The total hemocyte concentration, morphometry and definition of sub-populations were determined using side scatter (SSC) and forward scatter (FSC) light. Side scatter light corresponds to the relative internal complexity or granularity of the cells and FSC corresponds to the relative cell size" \cite{Rolton2020}
-What did I use it for?
 
 Scoring a defined subpopulation of hemocytes for nuclear anomalies by light microscopy is a time-consuming and labor-intensive process... Bridge to semi-automation: inter-operator variability, subjectivity etc.
-
-With the BD Accuri C6 Plus benchtop flow cytometer, a maximum of three distinct hemocyte subpopulations (clusters) could be distinguished from the hemolymph on Forwards scatter (FCS) vs. Side scatter (SSC) dotplots. (don't oversell the FCM ability to distinguish them... In most adult mussels however, the basophilic and eosinophilic granulocyte subpopulations are partly or substantially overlapping. Since the BD Accuri C6 Plus isn't equipped with adjustable laser gain settings, these subpopulations could not be further separated instrumentally, and any attempt to gate on these subpopulations based solely on light scattering properties would introduce a considerable uncertainty. Since eosinophilic granulocytes produce/have more autofluorescence than the basophilic, and display higher density of granules (granularity), a bivariate plot of green fluorescence (518-548 nm) on log scale vs. SSC could accurately separate these subpopulations in about 1/10 of individuals (n=46, HMS data, data not shown), however the mean absolute error were [continue here]
 
 Concider including the experiment that was performed to validate the BD Accuri C6 Plus hemocyte counting technique with a technique using counting beads. Mention that a hemocytometer/counting chamber was used for the initial method development. It's a lot of data and work, which never looks bad. [Maybe not a separate subsection, but include under FCM or elsewere?]
 
@@ -276,9 +319,7 @@ Describe gating strategy herein? Debris exclusion; doublet exclusion --> hemocyt
 
 Theory behind Annexin-V/Apo-15: Annexin V
 has affinity for phosphatidylserine, which is externalized to the
-outer layer of the plasma membrane in the earlier stages of
-apoptosis. Annexin V also binds internal phosphatidylserine in
-permeable membranes, i.e. dead cells. Thus, dead cells are Apo-15+ ToPro3+, while the early apoptotiv cells are only Apo15+.
+outer layer of the plasma membrane in the earlier stages of apoptosis. Annexin V also binds internal phosphatidylserine in permeable membranes, i.e. dead cells. Thus, dead cells are Apo-15+ ToPro3+, while the early apoptotiv cells are only Apo15+.
 
 \begin{table}[H]
 	\centering
@@ -288,18 +329,20 @@ permeable membranes, i.e. dead cells. Thus, dead cells are Apo-15+ ToPro3+, whil
 	\begin{tabular}{lllll}
 	\textbf{Experiment nr.} & \textbf{Event-triggering threshold} & \textbf{Acquisition stop-condition} & \textbf{Flow rate (\micro L/min)} & \textbf{Core size (\micro m)} \\
 		\midrule
-    Aggregation & 80.000 FCM & acquired volume, 20 \micro L & 30 & 10 \\
-    Fill & in & when & the experiment is set & completely \\
+    Aggregation & 80.000 FSC-H & acquired volume, 20 \micro L & 30 & 10 \\
+    Calcein AM and TO-PRO$^{TM}$-3 Iodide & 80.000 FSC-H & 10.000 hemocyte events & 36 & 16 \\
+    Apo-15 and TO-PRO$^{TM}$-3 Iodide & 80.000 FSC-H & 10.000 hemocyte events & 36 & 16 \\
 		\bottomrule
 	\end{tabular}
 	}
 \end{table}
 
+\subsection{Slide preparation}
+Refer to the MN cytome assay by Bolognesi, and mention that we fixed and stained hemocytes in suspension to produce slides without aggregated hemocytes. Since the cells were dead, they did not spread or produce pseudopodia, which allowed us to observe the actual size and form which they would posses ass they flowed through the laser of the flow cytometer.
+
 \subsection{Assay Validation}
 Both dead cell stain and apoptosis stain has to be validated. For TO-PRO-3 perform the same experiment with 70\% methanol-killed cells as you did for Calcein-AM + EthD-1, and use Calcein-AM to stain live cells.
 How to do this for the Apo-stain?
-
-\subsection{Detecting }
 
 \subsection{Measurements and calculations}
 (\cite{R-project})
