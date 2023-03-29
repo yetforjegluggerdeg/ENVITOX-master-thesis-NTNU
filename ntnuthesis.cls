@@ -151,6 +151,7 @@
 \usepackage{textcomp,gensymb}
 \usepackage{listings}
 \usepackage{lipsum}
+\usepackage{longtable}
 
 %\usepackage[export]{adjustbox}
 
