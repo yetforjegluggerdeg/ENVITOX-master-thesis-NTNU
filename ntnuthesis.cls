@@ -153,6 +153,38 @@
 \usepackage{lipsum}
 \usepackage{longtable}
 
+%colored boxes/circles for legends inside figure captions
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+% Defining some gray scale colors outside the named colors
+\definecolor{graa}{rgb}{0.66, 0.66, 0.66}
+\definecolor{dimgray}{rgb}{0.40, 0.40, 0.40}
+\definecolor{lysegraa}{rgb}{0.94, 0.94, 0.94}
+
+
+\newcommand{\graybox}{\raisebox{0.01pt}{\tikz{\node[draw,scale=1.0,regular polygon, regular polygon sides=4,fill=black!10!gray](){};}}}
+
+\newcommand{\customgraybox}{\raisebox{0.01pt}{\tikz{\node[draw,scale=1.0,regular polygon, regular polygon sides=4,fill=black!10!graa](){};}}}
+
+\newcommand{\dimgraybox}{\raisebox{0.01pt}{\tikz{\node[draw,scale=1.0,regular polygon, regular polygon sides=4,fill=black!10!dimgray](){};}}}
+
+\newcommand{\lightgraybox}{\raisebox{0.01pt}{\tikz{\node[draw,scale=1.0,regular polygon, regular polygon sides=4,fill=black!10!lightgray](){};}}}
+
+\newcommand{\darkgraybox}{\raisebox{0.01pt}{\tikz{\node[draw,scale=1.0,regular polygon, regular polygon sides=4,fill=black!10!darkgray](){};}}}
+
+\newcommand{\lysegraabox}{\raisebox{0.01pt}{\tikz{\node[draw,scale=1.0,regular polygon, regular polygon sides=4,fill=black!10!lysegraa](){};}}}
+
+\newcommand{\whitebox}{\raisebox{0.01pt}{\tikz{\node[draw,scale=1.0,regular polygon, regular polygon sides=4,fill=none](){};}}}
+
+\newcommand{\lightgraycircle}{\raisebox{0.5pt}{\tikz{\node[draw,scale=0.5,circle,fill=black!20!lightgray](){};}}}
+
+\newcommand{\graycircle}{\raisebox{0.5pt}{\tikz{\node[draw,scale=0.5,circle,fill=black!20!gray](){};}}}
+
+\newcommand{\darkgraycircle}{\raisebox{0.5pt}{\tikz{\node[draw,scale=0.5,circle,fill=black!20!darkgray](){};}}}
+
+\newcommand{\lysegraacircle}{\raisebox{0.5pt}{\tikz{\node[draw,scale=0.5,circle,fill=black!20!lysegraa](){};}}}
 %\usepackage[export]{adjustbox}
 
 %%% Egendefinerte kommandoer %%%%%%%%%%%%%%%%%%%
