@@ -207,7 +207,7 @@
 \RequirePackage{graphicx}                   % including figures
 \RequirePackage{amsmath}                    % advanced math typesetting
 \RequirePackage[                            % subfigures with captions within figures
-    font=small,                             % and customisation of captions
+    font=footnotesize,                             % and customisation of captions
     labelfont=bf,
     margin=\parindent
 ]{caption}
