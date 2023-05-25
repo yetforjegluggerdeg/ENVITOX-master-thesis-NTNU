@@ -231,7 +231,10 @@ MAS	&	20 hours	&	9237	&	10	&	1033	&	685	\\
 \end{longtable}    
 \end{center}
 
-\subsection{Experimental determination of optimal TO-PRO$^{TM}$-3 Iodide concentration}
+\subsection{Experimental determination of optimal TO-PRO-3 Iodide concentration}
+
+The raw data from the experimental determination of an optimal TO-PRO$^{TM}$-3 Iodide concentration for a flow cytometric dye exclusion test is shown in table \ref{tb:ToPro3_stainopt}. The estimated parameters of the fitted log-logistic model are presented in \ref{tb:loglogistic_ToPro3}.
+
 
 \begin{table}[H]
 	\centering
@@ -243,30 +246,59 @@ MAS	&	20 hours	&	9237	&	10	&	1033	&	685	\\
 	    \multirow{2}[-5]{*}{TO-PRO$^{TM}$-3 Iodide} & \multirow{2}[-5]{*}{Incubation} & \multicolumn{2}{c}{Mean Fluorescent Intensity} & \multirow{2}{*}{MFI$_{ToPro3^{+}}$ - MFI$_{ToPro3^{-}}$} \\
         (\micro M) & (min) & ToPro3$^{+}$ & ToPro3$^{-}$ & \\
 		\midrule
-0.06	&	15	&	392703	&	376969	&	15734	\\
-0.1	    &	15	&	1890000	&	25248	&	1864752	\\
-0.3	    &	15	&	2730000	&	41224	&	2688776	\\
-0.2	    &	15	&	3180000	&	32451	&	3147549	\\
-0.6	    &	15	&	3940000	&	24301	&	3915699	\\
-0.8	    &	15	&	4410000	&	38235	&	4371765	\\
-8	    &	15	&	5080000	&	103215	&	4976785	\\
-1.2	    &	15	&	5600000	&	53399	&	5546601	\\
-4	    &	15	&	5800000	&	75454	&	5724546	\\
-2	    &	15	&	6480000	&	55799	&	6424201	\\
-0.06	&	30	&	389641	&	375228	&	14413	\\
-0.1	    &	30	&	1750000	&	32331	&	1717669	\\
-0.2	    &	30	&	2140000	&	40248	&	2099752	\\
-0.3	    &	30	&	2650000	&	64275	&	2585725	\\
-0.6	    &	30	&	3870000	&	34453	&	3835547	\\
-0.8	    &	30	&	4200000	&	57948	&	4142052	\\
-8	    &	30	&	4950000	&	161830	&	4788170	\\
-1.2	    &	30	&	5510000	&	80123	&	5429877	\\
-4	    &	30	&	5860000	&	113580	&	5746420	\\
-2	    &	30	&	6520000	&	80156	&	6439844	\\
+  0     &   15  &    764    &   554     &   210 \\
+0.03	&	15	&	867000	&	6750	&	860250	\\
+0.06	&	15	&	865000	&	6488	&	858512	\\
+0.1	&	15	&	2670000	&	19378	&	2650622	\\
+0.3	&	15	&	3710000	&	43720	&	3666280	\\
+0.2	&	15	&	3750000	&	41441	&	3708559	\\
+0.6	&	15	&	5920000	&	62519	&	5857481	\\
+0.6	&	15	&	5330000	&	40903	&	5289097	\\
+1.2	&	15	&	7700000	&	103179	&	7596821	\\
+2	&	15	&	8550000	&	298543	&	8251457	\\
+4	&	15	&	9240000	&	352373	&	8887627	\\
+8	&	15	&	9550000	&	456001	&	9093999	\\
+0.1	&	30	&	2470000	&	28374	&	2441626	\\
+0.2	&	30	&	3860000	&	48720	&	3811280	\\
+0.3	&	30	&	3640000	&	68309	&	3571691	\\
+0.6	&	30	&	5690000	&	94568	&	5595432	\\
+0.6	&	30	&	5320000	&	60620	&	5259380	\\
+1.2	&	30	&	7580000	&	155710	&	7424290	\\
+2	&	30	&	8710000	&	486028	&	8223972	\\
+4	&	30	&	9410000	&	577181	&	8832819	\\
+8	&	30	&	9670000	&	713160	&	8956840	\\
    		\bottomrule
 	\end{tabular}
 }
 \end{table}
 
 
+\begin{table}[H]
+	\centering
+	\caption{Log-logistic regression analysis of the relationship between TO-PRO$^{TM}$-3 Iodide concentration and the difference in median fluorescent intensity (MFI) between ToPro3$^{-}$ and ToPro3$^{-}$ populations. Parameter estimates with 95\% CI, standard errors, t-value and the belonging p-value.}
+	\label{tb:loglogistic_ToPro3}
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{cccccc}
+        \toprule
+	\textbf{Parameter} & \textbf{Estimate} & \textbf{95\% CI} & \textbf{Std. Error} & \textbf{t-value} & \textbf{Pr(T > $\mid$ t $\mid)$} \\
+		\midrule
+  \emph{b} & -0.94088 & [-1.182762, -0.6989903] & 0.11 & -8.7992 & < 0.001 \\
+  \emph{d} & 9890700  & [8701569, 11079860]     & 530000 & 18.8155 & < 0.001 \\
+  \emph{e} & 0.41655  & [0.2622887, 0.5708113]  & 0.068 & 6.10085 & < 0.001 \\
+  &&&&& \\
+  \multicolumn{6}{l}{Pseudo R$^{2}$ = 0.99} \\
+  \multicolumn{6}{l}{Residual standard error: 416074.3 on 9 degrees of freedom} \\
+		\bottomrule
+	\end{tabular}
+	}
+\end{table}
+
+
+
+Pseudo-R$^{2}$ by (\cite{Shabenberger2002}), which the statistic used by the \emph{R2nls} function for .nls and .drm type objects in the \emph{aomisc} package in R.
+
+\begin{equation}
+\label{eq:PseudoR2}
+Pseudo ~ R^2 = 1 - \dfrac{SS_{res}}{SS_{tot}}
+\end{equation}
 

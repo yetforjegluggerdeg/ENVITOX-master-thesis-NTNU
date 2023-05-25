@@ -99,22 +99,25 @@ The second round of percoll gradient separation yielded: 15\%-33\% interface: FC
 
 \subsection{Scoring of necrotic haemocytes by flow cytometry}
 \subsubsection{Determination of optimal TO-PRO$^{TM}$-3 Iodide staining concentration}
-Viable and \ce{MeOH}-killed haemocytes could be separated according to TO-PRO-3 Iodide fluorescence when incubated in concentrations $\geq$ 100 nM (Fig. \ref{fig:ToPro3_stain_opt}A). As seen in Fig. \ref{fig:ToPro3_stain_opt}B, the resolution between ToPro3$^{-}$ and ToPro3$^{+}$ events drastically increased in the range of 100 nM to 2 \micro M TO-PRO$^{TM}$-3 Iodide, with a linear decrease when incubated in concentrations > 2 \micro M. The decreasing difference in mean fluorescent intensity (MFI) > 2 \micro M reflects both a saturation of dsDNA-bound TO-PRO-3
+Viable and \ce{MeOH}-killed haemocytes could be separated according to TO-PRO-3 Iodide fluorescence in the whole range of tested concentrations (30 nM - 8 \micro M). A representative sample is shown in Fig. \ref{fig:ToPro3_stain_opt}A to illustrate the data visualization and gating strategy. As shown in Fig. \ref{fig:ToPro3_stain_opt}B, the resolution between ToPro3$^{-}$ and ToPro3$^{+}$ events increased with TO-PRO$^{TM}$-3 Iodide concentration according to the log-logistic function shown in (\ref{eq:fitted.LL4}), with a marked stagnation > 1.2 \micro M. The model explained most of the variation in the data (Pseudo-R$^{2}$ = 0.99, see table \ref{tb:loglogistic_ToPro3}), and should therefore be a good predictor of the expected resolution between necrotic and viable haemocytes in the tested range of TO-PRO$^{TM}$-3 Iodide.
 
+\begin{equation}
+\label{eq:fitted.LL4}
+y_{i} = \dfrac{9890700}{1 + (x_i / 0.41655)^{-0.94088}} + \epsilon_i
+\end{equation}
 
+The predicted difference in MFI at 1.2 \micro M was 7.220.000 (arbitrary units), 95\% PI[6.170.000, 8.260.000]. Since the slope of function \ref{eq:fitted.LL4} had a fast decrease for x > 1.2, the predicted difference in MFI at x = 1.2 \micro M was contained within the prediction intervals for the rest of the function's range. Furthermore, the MFI of the ToPro3$^{-}$ populations increased abruptly at concentrations $\geq$ 2 \micro M, indicating a potential cytotoxic effect of either TO-PRO$^{TM}$-3 Iodide or the DMSO solvent at high concentrations.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/Method development/ToPro3 stainopt figure mean.pdf}
-    \caption{\textbf{Experimental determination of the optimal TO-PRO$^{TM}$-3 Iodide concentration for a dye exclusion test of membrane integrity}. 10 aliquots of pooled methanol-killed (70\% \ce{MeOH}, 30 min) and viable haemocytes (1:1) were stained with different concentrations of TO-PRO$^{TM}$-3 Iodide (30 nM - 8 \micro M). 640 nm-exited fluorescence from dsDNA-bound TO-PRO$^{TM}$-3 Iodide were collected on the FL4 detector (675/25 nm) of the BD Accuri C6 Plus flow cytometer, recording 10.000 events from each sample after 15 and 30 minute incubation. \textbf{A)} ToPro3$^{-}$ and ToPro3$^{+}$ events were gated on log scale for each sample, \textbf{B)} and their difference in mean fluorescent intensity (MFI) after 15 (\protect\lysegraacircle) and 30 minutes (\protect\darkgraycircle) of incubation were plotted against the concentration of TO-PRO$^{TM}$-3 Iodide.}
+    \includegraphics[width=1.0\textwidth]{figures/Method development/ToPro3 stainopt LL4 figure.pdf}
+    \caption{\textbf{Experimental determination of the optimal TO-PRO$^{TM}$-3 Iodide concentration for a dye exclusion test of membrane integrity}. 10 aliquots of pooled methanol-killed (70\% \ce{MeOH}, 30 min) and viable haemocytes (1:1) were stained with different concentrations of TO-PRO$^{TM}$-3 Iodide (30 nM - 8 \micro M). 640 nm-exited fluorescence from dsDNA-bound TO-PRO$^{TM}$-3 Iodide were collected on the FL4 detector (675/25 nm) of the BD Accuri C6 Plus flow cytometer, recording 10.000 events from each sample after 15 and 30 minute incubation. \textbf{A)} ToPro3$^{-}$ and ToPro3$^{+}$ events were gated on log scale for each sample, \textbf{B)} and their difference in mean fluorescent intensity (MFI) after 15 (\protect\lysegraacircle) and 30 minutes (\protect\darkgraycircle) of incubation were plotted against the concentration of TO-PRO$^{TM}$-3 Iodide. Red line: fitted log-logistic regression model; blue dashed lines: prediction intervals.}
     \label{fig:ToPro3_stain_opt}
 \end{figure}
 
+Based on these results, there was not much to gain from increasing the TO-PRO$^{TM}$-3 Iodide concentration further. 1.2 \micro M TO-PRO$^{TM}$-3 Iodide was therefore chosen to score necrotic haemocytes by flow cytometry, together with 50 nM Calcein AM.
 
-
-
-
-
+The results are also unambiguous regarding the incubation period. According to Figure \ref{fig:ToPro3_stain_opt}B, the resolution between viable and necrotic cells did not increase after the initial 15 minute incubation period. The MFI of necrotic haemocytes did increase somewhat in the extended incubation period, but the resolution remained unchanged due to a concurrent proportional increase among the viable haemocytes (see table \ref{tb:ToPro3_stainopt}, Appendix B). Extending the incubation period beyond 15 minutes would therefore be of little use.
 
 
 
