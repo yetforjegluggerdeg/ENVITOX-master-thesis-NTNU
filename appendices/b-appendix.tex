@@ -127,6 +127,32 @@ H8	&	MPSS	&	60	&	1346	&	2822	\\
 \end{longtable}    
 \end{center}
 
+
+
+\begin{table}[H]
+	\centering
+	\caption{The proportion of aggregated haemocytes were modeled as a function of log (time) from haemolymph withdrawal, with buffer (MPSS, ACB, MAS) as categorical explanatory variable. The model (\ref{eq:logit}) was fitted as a glm() function with "quasibinomial" error distribution and "logit" link function, as shown in code listing 3.1. Parameter estimates with 95\% CI, standard errors, t-value and the belonging p-value are presented.}
+	\label{tb:loglogistic_aggregation}
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{cccccc}
+        \toprule
+	\textbf{Parameter} & \textbf{Estimate} & \textbf{95\% CI} & \textbf{Std. Error} & \textbf{t-value} & \textbf{Pr(T > $\mid$ t $\mid)$} \\
+		\midrule
+  \emph{$\alpha_{1}$} & -1.3874 &  [-3.7768, -0.3240] & 1.0211 & -1.359 & 0.18 \\
+  \emph{$\beta_{1}$}  &  0.4573 &  [0.1777, 1.1333]   & 0.2880 &  1.588 & 0.12\\
+  \emph{$\alpha_{2}$} & -4.3905 & [-6.2053, -1.7100]  & 1.2051 & -3.643 & 0.000445\\
+  \emph{$\beta_{2}$}  &  1.2175 & [0.4550, 1.7330]    & 0.3427 &  3.553 & 0.000604 \\
+  \emph{$\alpha_{3}$} & -5.0427 & [ -6.8589, -2.3669] & 1.2033 & -4.191 & < 0.0000638 \\
+  \emph{$\beta_{3}$}  & 1.3146 & [0.5638, 1.8086]     & 0.3356 & 3.918  & < 0.000172 \\
+  
+  &&&&& \\
+  \multicolumn{6}{l}{Pseudo R$^{2}$ = 0.99} \\
+  \multicolumn{6}{l}{Residual standard error: 416074.3 on 9 degrees of freedom} \\
+		\bottomrule
+	\end{tabular}
+	}
+\end{table}
+
 \pagebreak
 
 
@@ -282,9 +308,9 @@ The raw data from the experimental determination of an optimal TO-PRO$^{TM}$-3 I
         \toprule
 	\textbf{Parameter} & \textbf{Estimate} & \textbf{95\% CI} & \textbf{Std. Error} & \textbf{t-value} & \textbf{Pr(T > $\mid$ t $\mid)$} \\
 		\midrule
-  \emph{b} & -0.94088 & [-1.182762, -0.6989903] & 0.11 & -8.7992 & < 0.001 \\
-  \emph{d} & 9890700  & [8701569, 11079860]     & 530000 & 18.8155 & < 0.001 \\
-  \emph{e} & 0.41655  & [0.2622887, 0.5708113]  & 0.068 & 6.10085 & < 0.001 \\
+  \emph{b} & -0.94088 & [-1.182762, -0.6989903] & 0.11 & -8.7992 & < 0.0001 \\
+  \emph{d} & 9890700  & [8701569, 11079860]     & 530000 & 18.8155 & < 0.0001 \\
+  \emph{e} & 0.41655  & [0.2622887, 0.5708113]  & 0.068 & 6.10085 &  0.0001 \\
   &&&&& \\
   \multicolumn{6}{l}{Pseudo R$^{2}$ = 0.99} \\
   \multicolumn{6}{l}{Residual standard error: 416074.3 on 9 degrees of freedom} \\
@@ -302,3 +328,39 @@ Pseudo-R$^{2}$ by (\cite{Shabenberger2002}), which the statistic used by the \em
 Pseudo ~ R^2 = 1 - \dfrac{SS_{res}}{SS_{tot}}
 \end{equation}
 
+
+\begin{table}[H]
+	\centering
+	\caption{Raw data from epifluorescent microscopy cross-validation of flow cytometric gating strategy for scoring of necrotic haemocytes based TO-PRO$^{TM}$-3 Iodide (TP3) and Calcein (CAM) fluorescence. Samples were analyzed on a \emph{BD Accuri C6 Plus} flow cytometer and a \emph{Nikon 90i} upright microscope equipped with a \emph{Digital Sight Fi1c} microscope camera. B-2A and LED-Cy5-A filtercubes were used for collection of Calcein and dsDNA-bound TO-PRO$^{TM}$-3 Iodide fluorescence, respectively.}
+	\label{tb:ToPro3 Calcein validation}
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{cccccc}
+        \toprule
+	    \multirow{2}{*}{Scoring method} & \multirow{2}{*}{Slide ID} & \multicolumn{4}{c}{Count} \\
+        && CAM$^{+}$ TP3$^{-}$ & CAM$^{-}$ TP3$^{+}$ & CAM$^{+}$TP3$^{+}$ & CAM$^{-}$ TP3$^{-}$ \\
+		\midrule
+FCM	        &	M1	&	12056	&	882	    &	14	&	8	\\
+FCM	        &	M2	&	8464	&	1339	&	53	&	8	\\
+FCM	        &	M3	&	4670	&	4926	&	19	&	51	\\
+FCM	        &	M4	&	2563	&	6790	&	59	&	73	\\
+FCM	        &	M5	&	1484	&	8604	&	32	&	14	\\
+FCM	        &	M6	&	346	    &	9800	&	16	&	15	\\
+FCM       	&	M7	&	4118	&	5560	&	9	&	104	\\
+FCM      	&	M8	&	0	    &	9422	&	0	&	10	\\
+FCM	        &	M9	&	10701	&	5	    &	13	&	9	\\
+FCM	        &	M10	&	14500	&	6952	&	42	&	34	\\
+Microscopy	&	M1	&	149	    &	6	    &	0	&	0	\\
+Microscopy	&	M2	&	248	    &	45	    &	1	&	0	\\
+Microscopy	&	M3	&	68	    &	75	    &	2	&	0	\\
+Microscopy	&	M4	&	42	    &	92	    &	0	&	0	\\
+Microscopy	&	M5	&	64	    &	295	    &	0	&	0	\\
+Microscopy	&	M6	&	5	    &	167	    &	0	&	0	\\
+Microscopy	&	M7	&	108    	&	193	    &	2	&	0	\\
+Microscopy	&	M8	&	0	    &	247  	&	0	&	3	\\
+Microscopy	&	M9	&	252	    &	1	    &	0	&	4	\\
+Microscopy	&	M10	&	222	    &	132	    &	0	&	0	\\
+
+   		\bottomrule
+	\end{tabular}
+}
+\end{table}

@@ -218,18 +218,35 @@
 ]{subcaption}
 \RequirePackage{xcolor}                     % selecting text color
 \RequirePackage{emptypage}                  % empty pages should be blank
-\RequirePackage{csquotes}                   % recommended for biblatex
+\RequirePackage{csquotes}             % recommended for biblatex
+\RequirePackage{xpatch}
+
+
+
 \RequirePackage[
-    backend=biber,
+    backend=biber,  
     style=authoryear,            % style=ieee orginalt
-    maxbibnames=4,
+    maxbibnames=3,
     minbibnames=3,
     maxcitenames=3,
     mincitenames=1,
     citestyle=authoryear,      % try authoryear, but define comma and/or parentheses/brackets
     sorting=nty,
     dashed=false
-]{biblatex}                                 % for bibliography
+]{biblatex}    
+
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}
+  \setunit*{\addnbthinspace}
+  \printfield{number}
+  \setunit{\addcomma\space}
+  \printfield{eid}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\renewbibmacro{in:}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% for bibliography
 \RequirePackage{csvsimple}                  % tables from csv files
 \RequirePackage{booktabs}                   % better formatting of tables
 \RequirePackage{gnuplottex}                 % for generating gnuplots on the fly

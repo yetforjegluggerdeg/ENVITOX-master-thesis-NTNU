@@ -167,7 +167,10 @@
 \section{Method development}
 This section describes in detail the work and experiments that were performed in the development of a hybrid flow cytometry- and microscopy-based version of The Mussel Micronucleus Cytome Assay by Bolognesi and Fenech (2012). The finalized assay is presented in it's entirety in the method section, in the context of it's application to test the potential genotoxic and cytotoxic effects of aged \ce{TiO2} and Ag engineered nanoparticles. The results from this section is presented in the Results chapter (\ref{section:Results_Method_Development}), and the reader can benefit from a read through that section before continuing with the method section and the main results (4.2).
 
+Include some technical stuff? E.g., unless stated otherwise, 10.000 events were acquired from each sample with 36 uL/min and 16 \micro L core size. 80.000 FSH-H was used as the only threshold, and doublet haemocytes were gated out of analysis with a FSH-H vs FSC-A singlets gate.
+
 \subsection{Haemolymph sampling technique}
+\label{subsection:haemolymph sampling technique}
 To minimize the possibility of contaminating hemolymph samples during extraction, a simple and time-effective sampling technique adapted from the nonlethal technique of Gustafson et al., 2005 was used. "Blind" methods of withdrawal through a notch in the posterior dorsal shell or through the exhalant syphon frequently resulted in considerable contamination with debris from the pallial fluid. Therefore, the hemolymph sampling technique employed was centered around achieving good visual contact with the posterior adductor muscle and the position of the needle within the muscle during hemolymph withdrawal, and was mainly constricted by the requirement of an intact digestive gland.
 
 The digestive gland is located dorsally (towards the hinge), slightly off-center towards the anterior end of the shell (Eggermont, 2020). In order to access and see the posterior adductor muscle while staying clear of the digestive gland, the valves were prised apart ventrally by gently forcing a tissue forceps between the valves midway of the mussel's length, or slightly posterior of the byssal mass (Fig. \ref{fig:Hemolymph_sampling_illustration}a). When the pallial cavity opened, pallial fluid (seawater) was drained away from the posterior adductor muscle by positioning the mussel's umbo on a paper tissue for 15-30 seconds. Since the posterior adductor muscle is oblong in the anteroposterior direction, penetrating the muscle from the posterior end pointing straight anteriorly gave the operator better margins to avoid piercing the muscle.
@@ -240,7 +243,7 @@ The proportion of aggregated haemocytes where calculated according to equation \
     \end{pmatrix}
 \end{equation}
 \
-Where $\hat{p}$ is the proportion of aggregated haemocytes, N$_{to}$ is the initial number of singlet haemocytes in the sample and N$_{tx}$ is the number of singlet haemocytes at time x after hemolymph withdrawal. The proportion of aggregated haemocytes were modelled as a function of log time, with buffer as a categorical explanatory variable, using the base R glm() function with a "quasibinomial" error distribution and "logit" link function, as shown in Code listing 3.1. Instead of using the calculated proportions ($\hat{p}$), the response variable was formatted as a two-column matrix of aggregated and singlet haemocyte counts (see equation \ref{eq:agg_free_matrix}), such that logistic regression was possible. The logistic GLM model coded the categorical explanatory variable's factor levels into dummy variables (see equation \ref{eq:dummy_variables}), and used the MAS buffer as reference level. The resultant logistic model can be written out as in equation \ref{eq:logit} on the original scale, where $\alpha + \beta_{1}x_{i}$ is the linear predictor of the reference level, $\alpha_{2}$ and $\alpha_{3}$ are the difference in y-intercept for the MPSS and ACB buffers, while $\beta_{2}$ and $\beta_{3}$ are the differences in slopes for the same buffers, respectively. The data is presented in figure \ref{fig:aggregation}, together with the three buffers' "sub-models".
+Where $\hat{p}$ is the proportion of aggregated haemocytes, N$_{to}$ is the initial number of singlet haemocytes in the sample and N$_{tx}$ is the number of singlet haemocytes at time x after hemolymph withdrawal. The proportion of aggregated haemocytes were modelled as a function of log time, with buffer as a categorical explanatory variable, using the base R glm() function with a "quasibinomial" error distribution and "logit" link function, as shown in Code listing 3.1. Instead of using the calculated proportions ($\hat{p}$), the response variable was formatted as a two-column matrix of aggregated and singlet haemocyte counts (see equation \ref{eq:agg_free_matrix}), such that logistic regression was possible. The logistic GLM model coded the categorical explanatory variable's factor levels into dummy variables (see equation \ref{eq:dummy_variables}), and the MPSS buffer was set as the reference level. The resultant logistic model can be written out as in equation \ref{eq:logit} on the original scale, where $\alpha_{1} + \beta_{1}x_{i}$ is the linear predictor of the reference level, $\alpha_{2}$ and $\alpha_{3}$ represents the difference in y-intercept for the ACB and MAS buffers, while $\beta_{2}$ and $\beta_{3}$ represents the differences in slopes for the same buffers, respectively.
 
 \begin{lstlisting}[language=R, caption = {The R source code run to fit the logistic proportion aggregation model.}]
 model = glm(y ~ log(t) + Buffer + log(t):Buffer,
@@ -250,19 +253,19 @@ family = quasibinomial(link = "logit")
 \begin{equation}
     \label{eq:dummy_variables}
 D_{2} =\begin{cases}
-      1, & \text{MPSS}\\
-      0, & \text{not MPSS},
+      1, & \text{ACB}\\
+      0, & \text{not ACB},
     \end{cases}
     \quad
 D_{3} =\begin{cases}
-      1, & \text{ACB}\\
-      0, & \text{not ACB}
+      1, & \text{MAS}\\
+      0, & \text{not MAS}
     \end{cases}
 \end{equation}
 
 \begin{equation}
 \label{eq:logit}
-\hat{p}_{i} = \dfrac{1}{1 + e^{-(\alpha \: + \: \beta_{1} x_{i} \: + \: \alpha_{2} D_{2} \: + \: \alpha_{3} D_{3} \: + \: \beta_{2} D_{2} \: + \: \beta_{3} D_{3} \: + \: \epsilon_{i})}}
+\hat{p}_{i} = \dfrac{1}{1 + e^{-(\alpha_{1} \: + \: \beta_{1} x_{i} \: + \: \alpha_{2} D_{2} \: + \: \alpha_{3} D_{3} \: + \: \beta_{2} D_{2} \: + \: \beta_{3} D_{3} \: + \: \epsilon_{i})}}
 \end{equation}
 
 \subsubsection{Haemocyte viability}
@@ -279,7 +282,7 @@ To test wether the EDTA-containing buffers had any effects on haemocyte viabilit
 
 The 700 \micro L remaining of each hemolymph sample were stored for another 2 and 20 hours, and the same staining and flow cytometric measurements were repeated at these timepoints. Because of considerable aggregation and sedimentation of haemocytes in MPSS after 2 and 20 hours, and those kept in MAS and ACB for 20 hours, the haemocytes in these samples were resuspended with a wide bore pipette before the second and third rounds of staining.
 
-\subsection{Cytologic characterization of M.edulis haemocyte subpopulations}
+\subsection{Cytologic characterization of haemocyte subpopulations}
 \label{subsection:morph}
 For the purpose of characterizing and imaging the different haemocyte cell types of \emph{M. edulis} in a non-spread state, samples were withdrawn into an equal volume of ice-cold MPSS and transferred directly onto glass slides. The glass slides were kept in a humid chamber for up to 5 minutes before cells were fixed in ice cold methanol (5$\times$ 1 sec dips). This assured haemocyte attachment, but circumvented the profound morphological changes accompanied by the haemocytes’ process of spreading. Slides were stained with the Hemacolor\textsuperscript{\textregistered} kit according to the manufacturer’s recommendations, air dried, mounted with Eukitt\textsuperscript{\textregistered} and coverslipped. Stained haemocytes were examined and imaged under brightfield illumination on a Nikon Eclipse 90i upright microscope with a 100$\times$/1.40 oil immersion objective and a Nikon DS-Fi1 microscope camera.
 
@@ -293,9 +296,14 @@ The slides were placed on the stage of a Nikon Eclipse 80i upright microscope, a
 
 [Concider including measurements with the Coulter Counter as a comparison to cells fixed in formaldehyde. In that case, insert the methodology here.]
 
-\subsection{Flow cytometric characterization of haemocyte subpopulations}
-In order to
 
+\subsection{Flow cytometric characterization of haemocyte subpopulations by light-scatter measurements}
+Throughout the methodological and experimental work that was done in relation to this project, more than 500 adult mussels were samples for haemolymph, and the majority of these samples were run as suspensions of living haemocytes on the BD Accuri C6 Plus Flow Cytometer. The purposes of these measurements varied to a large extent, but the samples were invariably examined as bivariate plots of Forward Scatter (FSC) vs. Side Scatter light (SSC) at some point in the analyses. These investigations revealed a substantial amount of variation between individual mussels in terms of the relative proportions of their haemocyte subpopulations and their separation according to FSC. vs. SSC. A quantitative flow cytometric characterization of the haemocyte subpopulations of \emph{M. edulis} can be found in Le Foll et al. (2010), who utilized a flow cytometer equipped with a Coulter-type electronic cell-volume analyzer to characterize haemocytes in terms of cell diameter (\micro M) vs. SSC. Instead of repeating this endeavor with relative units of FSC, the objective of the current flow cytometric characterization was to present the typical light-scatter profile of an adult mussels, while representing the observed variation with a few examples of extreme observations. The haemolymph samples were withdrawn into an equal volume of ACB according to the technique described in section \ref{subsection:haemolymph sampling technique}, and were analyzed on the flow cytometer directly thereafter.
+
+\subsection{Relating cytologically defined cell types to light-scatter profiles}
+As mentioned in theory section \ref{subsection:haemocyte_classification}, the use of flow cytometers with cell sorting capabilities can simplify the process of verifying a classification derived from flow cytometric measurements. However, since the BD Accuri C6 Plus is not equipped with a cell sorter, other measures were taken to relate the cytologically defined cell types in section \ref{subsection:Results_cytchar} to the subpopulations defined by flow cytometry in section \ref{subsection:Results_FlowChar}.
+
+Cell sorters facilitate visual inspections of cells with known measured characteristics following a flow cytometric measurement. This workflow can be reversed if the cells are sorted by other means prior to flow cytometric acquisition. This section describes how pools of Giemsa-stained haemocytes were separated by isopycnic centrifugation, and how the isolated cell fractions were characterized by flow cytometry and microscopy thereafter. Subsequently, the flow cytometric "separation" of haemocytes according to green/yellow eosin fluorescence is described.
 
 \subsubsection{Isopycnic centrifugation}
 Formaldehyde-fixed haemocytes were separated on discontinuous Percoll gradients according to the protocol by Friebel and Renwrantz (1995), with minor modifications. The separation was performed in duplicate with pooled haemocytes from a total of six adult mussels (shell length 55-70 mm). For both gradients, the haemolymph of three individual mussels (1.5-2.0 mL/mussel) were withdrawn into an equal volume of 5\% formaldehyde in MPSS, wherein the haemocytes were fixed for one hour after pooling. The fixed haemocytes were stained with 0.75 \% Eosin and 3 \% Giemsa according to the procedure in section~\ref{subsection:CytCar}. After pelleting, stained haemocytes were resuspended in Tris-Buffered Saline (TBS, 900 mOsm) to an approximate concentration of $9\times10^{6}$ cells/mL, before layering 2 mL suspension on top of both gradients. Discontinuous Percoll gradients consisted of 15\%, 33\%, 38\%, 43\% and 90\% Percoll stock in TBS (vol/vol), and were constructed by carefully layering 2 mL of each Percoll concentration in 15 mL Falcon centrifuge tubes with conical bottoms (Corning, New York, US).
@@ -305,7 +313,7 @@ The centrifugation was started at 120G for 10 minutes (\SI{4}{\celsius}), follow
 The pelleted cell fractions were resuspended in Sorensen buffer and divided into two aliquots; one aliquot were used to prepare smears according to the procedure in section \ref{subsection:CytCar}, while the remaining aliquots were further diluted in 1 mL Sorensen buffer for flow cytometric characterization. A total of 10.000 events were acquired from each cell fraction on the flow cytometer (36 \micro L flow rate, 16 \micro m core size), in addition to 30.000 events from both pools that were set aside prior to centrifugation. The relative proportion (\%) of cell types in each fraction were ascertained by performing 1000-cell differential counts.
 
 \subsubsection{Identification of eosinophilic granulocytes by SSC and eosin fluorescence}
-Since Eosin is fluorescent in the green/yellow spectrum (Ex$_{max}$/Em$_{max}$: 517/543 nm) (\cite{Koegle2020}), blue laser-exited fluorescence from this anionic dye can be collected on the FL1 detector (518-548 nm) of the BD Accuri C6 Plus flow cytometer (BD Biosciences, California, US). If the haemocytes of \emph{M. edulis} are permeabilized and stained with eosin prior to flow cytometric analysis, the fluorescent signal from Eosin can be used to identify eosinophilic granulocytes on FSC vs. SSC dotplots by backgating. This approach was attempted by Le Foll an colleagues (2010), who detached spread haemocytes stained by eosin with an EDTA/trypsin solution followed by flow cytometric analysis. As noted in the theory section (\ref{subsection:haemocyte_classification}), their results indicated that FL1$^{bright}$ events corresponded to haemocytes with high SSC values. However, this exact methodology did not result in two well-defined FL1$^{bright}$ and FL1$^{dim}$ peaks, such that the lower bound of their electronic FL1$^{bright}$ gate had to be drawn more or less arbitrarily. It could therefore not be used to quantify the proportion of eosinophilic haemocytes - especially since the identity of the FL1$^{bright}$ events were never verified by microscopy.
+Since Eosin is fluorescent in the green/yellow spectrum (Ex$_{max}$/Em$_{max}$: 517/543 nm) (\cite{Koegle2020}), blue laser-exited fluorescence from this anionic dye can be collected on the FL1 detector (518-548 nm) of the BD Accuri C6 Plus flow cytometer (BD Biosciences, California, US). If the haemocytes of \emph{M. edulis} are permeabilized and stained with eosin prior to flow cytometric analysis, the fluorescent signal from Eosin can be used to identify eosinophilic granulocytes on FSC vs. SSC dotplots by backgating. This approach was attempted by Le Foll an colleagues (2010), who detached spread haemocytes stained by eosin with an EDTA/trypsin solution followed by flow cytometric analysis. As noted in the theory section (\ref{subsection:haemocyte_classification}), their results indicated that FL1$^{bright}$ events corresponded to haemocytes with high SSC values. However, this exact methodology did not result in well-defined FL1$^{bright}$ and FL1$^{dim}$ peaks, such that the lower bound of their electronic FL1$^{bright}$ gate had to be drawn more or less arbitrarily. It could therefore not be used to quantify the proportion of eosinophilic haemocytes - especially since the identity of the FL1$^{bright}$ events were never verified by microscopy.
 
 To investigate the potential application of eosin fluorescence and side scatter as discriminators in a flow cytometric differential count of \emph{M. edulis} haemocytes, an attempt to optimize the basic method of Le Foll et al. (2010) were undertaken. This process involved exploring different fixatives, methods of fixation, eosin staining solutions and the duration of both fixation and staining, in order to achieve a practically applicable resolution between eosinophilic granulocytes and the rest of the haemocytes.
 
@@ -314,14 +322,16 @@ Haemolymph was withdrawn from the posterior adductor muscle of 9 adult mussels i
 The only smears without high degrees of unspecific binding were those fixed in 5\% formaldehyde. To reduce the passive diffusion of eosin into non-target cells, 5\% formaldehyde in MPSS was selected for further testing - being the softest fixative of the three. By diluting Eosin in Sorensen buffer, a set of staining solutions with 0.25\%, 0.5\%, 0.75\%, 1.0\%, 1.5\%, 3\%, 5\%, and 8\% Eosin (vol/vol) were prepared. The haemolymph of 4 new mussels where fixed in 5\% formaldehyde for 30 minutes, pooled and st 
 
 \subsection{Scoring of necrotic haemocytes by flow cytometry}
-To discriminate between viable and necrotic haemocytes by flow cytometry, a two-color fluorescence assay with the cell-permeant probe Calcein acetoxymethyl and the non-permeant dsDNA-binding dye TO-PRO$^{TM}$-3 Iodide (Molecular Probes, Eugene, OR) was chosen. This combination of probes was primarily selected for two reasons: (1) it enables simultaneous measurement of intracellular esterase activity and plasma membrane integrity - two recognized parameters of cell viability, and (2) there is virtually no fluorescent spillover between the probes, such that the uncompensated raw data can be used directly.
+To discriminate between viable and necrotic haemocytes by flow cytometry, a two-color fluorescence assay with the cell-permeant probe Calcein acetoxymethyl and the non-permeant dsDNA-binding dye TO-PRO$^{TM}$-3 Iodide (Molecular Probes, Eugene, OR) was chosen. This combination of probes was primarily selected for two reasons: (1) it enables simultaneous measurement of intracellular esterase activity and plasma membrane integrity - two recognized parameters of cell viability and (2) there is virtually no fluorescent spillover between the probes, such that the uncompensated raw data can be applied directly. Moreover, a complementary double staining methodology like this allows for discrimination between haemocytes and contaminating non-cellular particles. Since cells with intact plasma membranes retain esterase activity, double negative events (Calcein$^{-}$ ToPro3$^{-}$) must represent particles or bacteria, since they do not contain dsDNA (ToPro3$^{-}$). 
 
 Since Calcein AM is commonly used in the LIVE/DEAD\textsuperscript{\textregistered} Viability/Cytotoxicity Kit for mammalian cells (Molecular Probes, Eugene, OR), the staining protocol of this kit was used as a guide for obtaining an adequate fluorescent signal from hydrolyzed Calcein on the FL1 detector (518-548 nm). The manufacturer's recommendation of 50 nM Calcein AM mL$^{-1}$ cell suspension (0.1-5 $\times 10^{6}$ cells) gave a bright fluorescent signal in live cells after 15 minute incubation, so no further optimization was required. Information on suitable concentrations of TO-PRO$^{TM}$-3 Iodide for flow cytometric dye exclusion tests was however sparse, such that this had to be determined experimentally.
 
 \subsubsection{Determination of optimal TO-PRO$^{TM}$-3 Iodide staining concentration}
-The optimal TO-PRO$^{TM}$-3 Iodide concentrations for a flow cytometric dye exclusion assay would ideally fulfill two requirements. The first would be to give the highest possible resolution between viable and necrotic cells in terms of fluorescent intensity. Secondly, and of equal importance; the concentration cannot be acutely cytotoxic to haemocytes within the time-frame of staining and flow cytometric acquisition. To determine a suitable range of concentrations for this assay, a pool of dead (70\% methanol 30 min) and freshly withdrawn haemocytes was prepared. The methanol-killed hameocytes were washed three times in MPSS, resuspended ACB and gently mixed with freshly withdrawn heamocytes in ACB. The suspension was divided into 11 aliquotes of 1 mL, and all but one was stained with TO-PRO$^{TM}$-3 in the range of 30 nM to 8 \micro M. After incubating for 15 minutes (protected from light), 10 000 events were acquired from each sample on the flow cytometer. To examine wether the fluorescent signal intensity increased with further incubation, the same samples were incubated for another 15 minutes before the measurement was repeated.
+The optimal TO-PRO$^{TM}$-3 Iodide concentrations for a flow cytometric dye exclusion assay would ideally fulfill two requirements. The first would be to give the highest possible resolution between viable and necrotic cells in terms of fluorescent intensity. Secondly, and of equal importance; the concentration cannot be acutely cytotoxic to haemocytes within the time-frame of staining and flow cytometric acquisition. To determine a suitable range of concentrations for this assay, a pool of dead (70\% \ce{MeOH}, 30 min) and freshly withdrawn haemocytes was prepared. The methanol-killed hameocytes were washed three times in MPSS, resuspended ACB and gently mixed with freshly withdrawn heamocytes in ACB. The suspension was divided into 11 aliquotes of 1 mL, and all but one was stained with TO-PRO$^{TM}$-3 in the range of 30 nM to 8 \micro M. After incubating for 15 minutes (protected from light), 10 000 events were acquired from each sample on the flow cytometer. To examine wether the fluorescent signal intensity increased with further incubation, the same samples were incubated for another 15 minutes before the measurement was repeated.
 
-Red laser-exited fluorescence from dsDNA-bound TO-PRO$^{TM}$-3 Iodide was collected on the FL4 detector (675/25 nm) of the BD Accuri C6 Plus flow cytometer. A histogram representation of the fluorescence revealed two distinct populations of events: one population of ToPro3$^{-}$ events and one population of ToPro3$^{+}$ events. The mean fluorescent intensity (MFI) of the two populations were calculated for each aliquot, and the difference was plotted against the staining-concentrations of TO-PRO$^{TM}$-3 Iodide. In order to predict a suitable range of concentrations from the data, the MFI differences were regressed on the TO-PRO$^{TM}$-3 concentration using a log-logistic model. Since the data required a model range bound by 0 and some unknown positive integer (0, \emph{a}), a four-parameter log-logistic function from the remote drc() package was used (v3.0-1; \cite{drc}). This function allows the lower asymptote to be fixed to 0, as shown in code listing 3.2. The general function is seen in (\ref{eq:LL4}), where \emph{b} and \emph{e} represents the slope parameter and inflection point, while \emph{d} and \emph{c} represents the upper and lower asymptotes, respectively.
+Red laser-exited fluorescence from dsDNA-bound TO-PRO$^{TM}$-3 Iodide was collected on the FL4 detector (675/25 nm) of the BD Accuri C6 Plus flow cytometer. A histogram representation of the fluorescence revealed two distinct populations of events: one population of ToPro3$^{-}$ events and one population of ToPro3$^{+}$ events. The mean fluorescent intensity (MFI) of the two populations were calculated for each aliquot, and their difference was plotted against the staining-concentrations of TO-PRO$^{TM}$-3 Iodide.
+
+In order to predict a suitable range of concentrations from the data, the MFI differences were regressed on the TO-PRO$^{TM}$-3 concentration using a log-logistic model. Since the data required a model range bound by 0 and some unknown positive integer (0, \emph{a}), a four-parameter log-logistic function from the remote drc() package was used (v3.0-1; \cite{drc}). This function allows the lower asymptote to be fixed to 0, as shown in code listing 3.2. The general function is seen in (\ref{eq:LL4}), where \emph{b} and \emph{e} represents the slope parameter and inflection point, while \emph{d} and \emph{c} represents the upper and lower asymptotes, respectively.
 
 \begin{lstlisting}[language=R, caption = {The R source code run to fit the four-parameter log-logistic regression model in RStudio.}]
 model = drm(y ~ x, data = df, fct = LL.4(fixed = c(NA, 0, NA, NA), 
@@ -336,11 +346,64 @@ y_{i} = c + \dfrac{d-c}{1 + (x_i / e)^b} + \epsilon_i
 Potential cytotoxicity at high concentrations was evaluated by examining the ToPro3$^{-}$ populations (SSC vs. FL4), to see wether any of the freshly withdrawn haemocytes were starting loose their ability to exclude TO-PRO$^{TM}$-3 Iodide.
 
 \subsubsection{Gating Strategy}
+\label{subsubsection: gating validation}
+To establish a quadrant gating strategy for scoring necrotic and viable haemocytes according to Calcein and dsDNA-bound TO-PRO$^{TM}$-3 Iodide fluorescence, three pools of haemocytes were prepared: (1) \ce{MeOH}-killed (70\% \ce{MeOH}, 30 min), (2) newly withdrawn (ACB, 1:1) and (3) a 1:1 mixture of both. Each pool was divided into four aliquots of 1 mL, where three of them were stained with either Calcein AM (50 nM), TO-PRO$^{TM}$-3 Iodide (1.2 \micro M) or both, and the fourth was kept as an unstained (US) control. After incubating for 15 minutes, 10.000 events were acquired from each sample on the flow cytometer.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.7\textwidth]{figures/Gating strategy/TP3 Calcein gating strategy 2.pdf}
+    \caption{\textbf{FL1 (533/30 nm) vs. FL4 (675/25 nm) quadrant gating for flow cytometric scoring of necrotic (Calcein$^{-}$ ToPro3$^{+}$) an viable (Calcein$^{+}$ ToPro3$^{-}$) haemocytes.} By preparing a pool of \ce{MeOH}-killed and newly withdrawn haemocytes in antiaggregative buffer (ACB), gates were drawn according to the florescent profiles of \textbf{A)} Unstained controls, \textbf{B)} Calcein FMOs, \textbf{C)} TO-PRO$^{TM}$-3 Iodide FMOs and \textbf{D)} aliquotes stained with both probes.}
+    \label{fig:TP3_Calcein_gating_strat}
+\end{figure}
+
+The unstained controls were used to establish a tentative lower left quadrant gate (Calcein$^{-}$ ToPro3$^{-}$), as seen in Fig. \ref{fig:TP3_Calcein_gating_strat}A. This quadrant was expanded in both directions to include all Calcein$^{-}$ events of the Calcein FMOs and all the ToPro3$^{-}$ events of the TO-PRO$^{TM}$-3 Iodide FMOs (see Fig. \ref{fig:TP3_Calcein_gating_strat}B and C). When the double stained samples were run, the viable and methanol-killed haemocytes populated the upper left and lower right quadrants, exclusively.
 
 \subsubsection{Method validation}
+A flow cytometer is a very sensitive instrumentation for measuring fluorescent signals, and with a throughput of up to 10.000 events s$^{-1}$, these instruments represent a far superior technology for counting fluorescent cells compared to epifluorescent microscopy. However, the result obtained from a flow cytometric assay is entirely dependent on the gating strategy employed to generate the results. An effort was therefore made to cross-validate the gating strategy presented in the previous section by epifluorescent microscopy.
 
+Methanol-killed (70\% \ce{MeOH}, 30 min) and freshly withdrawn haemocytes (ACB, 1:1) were mixed in semi-random proportions to prepare 10 samples with 0-100\% necrotic haemocytes. Samples were stained with Calcein AM (50 nM) and TO-PRO$^{TM}$-3 Iodide (1.2 \micro M) for 15 minutes, and 10.000 events were acquired from each sample on the BD Accuri C6 Plus flow cytometer. Events were gated according to the strategy presented in Fig. \ref{fig:TP3_Calcein_gating_strat}.
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Method development/Cy5 B2A/M7 7 Cy5 cropped.png}
+        \caption{TO-PRO$^{TM}$-3 Iodide fluorescence collected from microscopic field with a LED-Cy5-A filter cube.}
+        \label{subfig:a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Method development/Cy5 B2A/M7 7 B2A cropped.png}
+        \caption{Calcein fluorescence collected from the same microscopic field with a B-2A filter cube.}
+        \label{subfig:b}
+    \end{subfigure}
+    \newline
+    \begin{subfigure}[b]{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Method development/Cy5 B2A/M7 7 DIC cropped.png}
+        \caption{Microscopic field imaged by DIC microscopy to verify cellular identities of fluorescent signals.}
+        \label{subfig:c}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Method development/Cy5 B2A/M7 7 Merged cropped.png}
+        \caption{Merged RGB image from the red and green color planes of image \emph{a} and \emph{b}, respectively.}
+        \label{subfig:d}
+    \end{subfigure}
+    \caption{An illustration of the image analysis used to score necrotic and viable haemocytes by epifluorescence and DIC microscopy at 20x magnification.}
+    \label{fig:Epifluorescent_scoring}
+\end{figure}
 
+Following flow cytometric acquisition, the 10 samples were transferred onto glass slides, coverslipped and put on the stage of a Nikon 90i upright microscope equipped with a DS-Fi1c microscope camera (Nikon, Tokyo, JP). Ten microscopic fields were imaged per slide at 20x magnification, and each field was imaged in three subsequent steps (see Fig. \ref{fig:Epifluorescent_scoring}): (1) Epifluorescence microscopy with a LED-Cy5-A filter cube, 6 s exposure and 4.8 gain (2) epifluorescent microscopy with a B-2A filter cube, 400 ms exposure and 2.0 gain, followed by (3) DIC microscopy. The red and green color planes of the two epifluorescence images were merged into an RGB image in NIS Elements D (D v.3.22.15) software, and the percentages of necrotic, viable and doubly stained haemocytes were scored using the merged image (see Fig. \ref{fig:Epifluorescent_scoring}d). The DIC images were used to confirm the identity of the fluorescent signals, such that only cellular fluorescence was included in the counts.
+
+To examine the correlation between results obtained by flow cytometry and fluorescent microscopy, the percentage of necrotic haemocytes (Calcein$^{-}$ ToPro3$^{+}$) were analyzed by linear regression using the base R lm() function (\cite{R-project}). The percentage of necrotic haemocytes (\%) were calculated according to (\ref{eq:necrotic hemocytes_2}), such that double positive haemocytes were counted as viable. The imaging process took up to one 1 hour per slide, so any double positive haemocytes had most likely become necrotic during the course of microscopy. It should be noted that samples were prepared and scored 1 at a time to minimize the occurrence of \emph{in vitro} necrosis.
+
+\begin{equation}
+    \label{eq:necrotic hemocytes_2}
+    \text{Necrotic haemocytes (\%)} = \dfrac{n_{Calcein^{-}ToPro3^{+}}}{n_{total} - n_{Calcein^{-}ToPro3^{-}}} \times 100
+\end{equation}
 
 \section{Method}
 \subsection{Animal housing}
