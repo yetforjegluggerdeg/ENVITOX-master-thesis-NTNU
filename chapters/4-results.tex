@@ -4,6 +4,7 @@
 \section{Method development}
 \label{section:Results_Method_Development}
 \subsection{Haemocyte medium: inhibition of aggregation}
+The proportions of aggregated haemocytes in MPSS, ACB and MAS are plotted against time post-withdrawal in Fig. \ref{fig:aggregation}, together with the mean proportions predicted from the sub-models (\ref{eq:agg_submodels}a-c) of the fitted log-logistic model. The estimated model parameters 
 
 \begin{figure}[!ht]
     \centering
@@ -11,6 +12,22 @@
     \caption{The proportion of aggregated hemocytes in 250 \micro L hemolymph withdrawn into an equal volume of Modified Alsever's Solution (\protect\lysegraacircle, n=7), Anticoagulant Buffer (\protect\graycircle, n=8) or Marine Physiological Saline Solution (\protect\darkgraycircle, n=8), plotted against time (min) after withdrawal from the posterior adductor muscle. The three regression lines illustrate the predicted proportions at time t for the three different buffers, as predicted by the fitted logistic regression model.}
     \label{fig:aggregation}
 \end{figure}
+ 
+\begin{subequations}
+    \label{eq:agg_submodels}
+    \begin{equation}
+        \text{MPSS:} ~ y_{i} = \dfrac{1}{1 + e^{-(-1.3874 + 0.4573\times log(x_{i}))}} + \epsilon_i
+    \end{equation}
+    \begin{equation}
+         \text{ACB:} ~ y_{i} = \dfrac{1}{1 + e^{-(-5.7779 + 1.6748\times log(x_{i}))}} + \epsilon_i \label{eq:ACB}
+    \end{equation}
+    \begin{equation}
+        \text{MAS:} ~ y_{i} = \dfrac{1}{1 + e^{-(-6.4301 + 1.7719\times log(x_{i}))}} + \epsilon_i
+    \end{equation}
+\end{subequations}
+  
+
+
 
 Interpreting the logistic sub-models, it is evident that MAS and ACB effectively slowed the rate of aggregation during the first 30 minutes post-withdrawal. When MAS was used as hemocyte medium, the predicted mean proportion of aggregated hemocytes after 15 minutes was 0.16, 95\% CI [0.12, 0.22]. This was not significantly different from the predicted mean proportion when ACB was used (0.22, 95\% CI [0.18, 0.28]), but both buffers containing EDTA and lacking free Ca$^{2+}$ were predicted to have significantly lower hemocyte aggregation after 15 minutes, compared to samples that were withdrawn into MPSS and kept on ice (0.46, 95\% CI [0.33, 0.60]).
 

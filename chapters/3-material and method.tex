@@ -220,35 +220,45 @@ In search for the most effective method for this work, hemolymph samples were wi
 \subsubsection{Haemocyte aggregation}
 An experiment was seeded from the observation that FCM singlet haemocyte counts tended to decrease over time from hemolymph withdrawal, and were based on the assumption that aggregation was the main driving factor. The proportion of aggregated haemocytes in a sample at a given time could therefore be retraced from the initial haemocyte count when performing several counts of the same sample over time. Since the difference in density between buffers would be negligible, the sedimentation rates would be independent of the haemocyte medium. Any observed differences would thus be caused by differences in the buffers' ability to inhibit aggregation.
 
-500 \micro L hemolymph was withdrawn from 23 individual mussels into syringes prefilled with either 500 \micro L MAS (RT, n=7), ACB (RT, n=8) or cold Hemolymph Saline (MPSS, \SI{4}{\celsius}, n=8). Tris-buffered MPSS (pH=7.4) was used as a proxy for FSW, such that pH and osmolarity could be controlled. The diluted hemolymph was transferred to 12$\times$75 mm polystyrene tubes and the initial haemocyte count were determined by acquiring 20 \micro L sample on the flow cytometer immediately thereafter. Each sample was run with identical acquisition and fluidics settings (see table \ref{tb:FCM_settings}), and the cells were gated on by a singlet inclusion gate (FSC-A vs. FSC-H) and a haemocyte gate (FSC-A v. SSC-A, see gating strategy). To account for any extra aggregation occurring from gentle mixing with flow cytometry reagents in the planned assay, each sample was gently pipetted up and down four times following the initial count. The second count were performed precisely 15 minutes later to mimic the incubation periods of our flow cytometry reagents. Three more singlet haemocyte counts where acquired from each sample at 30, 45 and 60 minutes post-withdrawal, to discern the buffers' ability to prevent aggregation during longer incubation periods. Samples withdrawn into MPSS were kept on ice between each singlet haemocyte count.
+500 \micro L hemolymph was withdrawn from 24 individual mussels into syringes prefilled with either 500 \micro L MAS (RT, n=8), ACB (RT, n=8) or cold Marine Physiological Saline Solution (MPSS, \SI{4}{\celsius}, n=8). Tris-buffered MPSS (pH=7.4) was used as a proxy for FSW, such that pH and osmolarity could be controlled. The diluted hemolymph was transferred to 12$\times$75 mm polystyrene tubes and the initial haemocyte count were determined by acquiring 20 \micro L sample on the flow cytometer immediately thereafter. Each sample was run with identical acquisition and fluidics settings (see table \ref{tb:FCM_settings}), and the cells were gated on by a singlet inclusion gate (FSC-A vs. FSC-H) and a haemocyte gate (FSC-A v. SSC-A, see gating strategy). To account for any extra aggregation occurring from gentle mixing with flow cytometry reagents in the planned assay, each sample was gently pipetted up and down four times following the initial count. The second count were performed precisely 15 minutes later to mimic the incubation periods of our flow cytometry reagents. Three more singlet haemocyte counts where acquired from each sample at 30, 45 and 60 minutes post-withdrawal, to discern the buffers' ability to prevent aggregation during longer incubation periods. Samples withdrawn into MPSS were kept on ice between each singlet haemocyte count.
 
-\subsubsection{Logistic regression of the proportion of aggregated haemocytes}
-
-The proportion of aggregated haemocytes where calculated according to equation \ref{eq: proportion_agg}.
+\subsubsection{Mixed logistic regression of the proportion of aggregated haemocytes}
+The dataset consisted of 107 observations ($y_{ij}, t_{ij}$) from 24 individual mussels ($i$), $i = 1,...,n_{i}$, where $y_{ij}$ denotes the proportion of aggregated haemocytes from mussel $i$ at timepoint $t_{ij}$, $j = 1,...,n_{j}$, where $j$ represents repeated measurements of mussel $i$ at $t = (0, 60]$ minutes post-withdrawal. If we let $N_{t0}$ represent the initial haemocyte count of mussel $i$ at $t \approx 0$, the proportion of aggregated haemocyte at time $t_{ij}$ was calculated according to (\ref{eq: proportion_agg}):
 
 \begin{equation}
     \label{eq: proportion_agg}
-    \hat{p} = \dfrac{N_{t0} - N_{tx}}{(N_{t0} - N_{tx}) + N_{tx}} = \dfrac{N_{t0} - N_{tx}}{N_{t0}}
+    y_{ij} = \dfrac{N_{t0} - N_{ij}}{(N_{t0} - N_{ij}) + N_{ij}} = \dfrac{N_{t0} - N_{ij}}{N_{t0}}
 \end{equation}
+
+\noindent where $N_{ij}$ denotes the hemocyte count of mussel $i$ at time $t_{ij}$.
+
+The buffers' ability to inhibit haemocyte aggregation was tested statistically by mixed effects logistic regression, such that the within-individual correlation could be modelled as random effects to account for repeated measurements. The proportions were modelled as a function of log time, with buffer as a categorical explanatory variable. The mixed logistic regression model was fitted by maximum likelihood (Laplace approximation) using the \emph{glmer} function of the R package \emph{lme4} (\cite{lme4}), with a "binomial" error distribution and "logit" link function, as shown in Code listing 3.1. However, instead fitting the model with the calculated proportions ($y_{ij}$), the response variable was formatted as a two-column matrix of aggregated and singlet haemocyte counts, for the response to be weighted by $N_{t0}$. The format of the response matrix is shown in (\ref{eq:agg_free_matrix}).
+
+\begin{lstlisting}[language=R, caption = {The R source code run to fit the logistic proportion aggregation model.}]
+model = glmer(data = df, formula = y ~ log(t)*Buffer + (log(t)|ID),
+                 family = binomial(link = "logit"))
+\end{lstlisting}
 
 \begin{equation}
     \label{eq:agg_free_matrix}
-    y = 
+    y_{i} := \begin{pmatrix}
+     M_{1} \\
+     \vdots \\
+     M_{i} \\
+     \vdots \\
+     M_{n_{i}} \\
+    \end{pmatrix}
+    , \; \; \; \; M_{i} \: = \:
     \begin{pmatrix}
-      N_{t0_{1}} - N_{tx_{1}} &  N_{t0_{1}} \\
-      N_{t0_{2}} - N_{tx_{2}} &  N_{t0_{2}} \\
-      N_{t0_{3}} - N_{tx_{3}} &  N_{t0_{3}} \\
-      \vdots                   & \vdots       \\
-      N_{t0_{n}} - N_{tx_{n}} &  N_{t0_{n}} \\
+      N_{t0} - N_{i1}     &  N_{t0} \\
+      \vdots              &  \vdots \\
+      N_{t0} - N_{ij}     &  N_{t0} \\
+      \vdots              & \vdots \\
+      N_{t0} - N_{in_{j}} &  N_{t0} \\      
     \end{pmatrix}
 \end{equation}
-\
-Where $\hat{p}$ is the proportion of aggregated haemocytes, N$_{to}$ is the initial number of singlet haemocytes in the sample and N$_{tx}$ is the number of singlet haemocytes at time x after hemolymph withdrawal. The proportion of aggregated haemocytes were modelled as a function of log time, with buffer as a categorical explanatory variable, using the base R glm() function with a "quasibinomial" error distribution and "logit" link function, as shown in Code listing 3.1. Instead of using the calculated proportions ($\hat{p}$), the response variable was formatted as a two-column matrix of aggregated and singlet haemocyte counts (see equation \ref{eq:agg_free_matrix}), such that logistic regression was possible. The logistic GLM model coded the categorical explanatory variable's factor levels into dummy variables (see equation \ref{eq:dummy_variables}), and the MPSS buffer was set as the reference level. The resultant logistic model can be written out as in equation \ref{eq:logit} on the original scale, where $\alpha_{1} + \beta_{1}x_{i}$ is the linear predictor of the reference level, $\alpha_{2}$ and $\alpha_{3}$ represents the difference in y-intercept for the ACB and MAS buffers, while $\beta_{2}$ and $\beta_{3}$ represents the differences in slopes for the same buffers, respectively.
 
-\begin{lstlisting}[language=R, caption = {The R source code run to fit the logistic proportion aggregation model.}]
-model = glm(y ~ log(t) + Buffer + log(t):Buffer,
-family = quasibinomial(link = "logit")
-\end{lstlisting}
+The factor levels of the categorical explanatory variable was defined as dummy variables (see equation \ref{eq:dummy_variables}), where the MPSS buffer was set as reference level. Thus, the fitted proportion of aggregated haemocytes ($y_{ij}$) in a sample from mussel \emph{i} = [1, 24] at time $t_{ij}$, \emph{j} = (0, 60], can be written out on \emph{logit} scale as in (\ref{eq:logit}), where $\alpha_{1} \: + \: \beta_{1}log(t_{ij})$ is the linear predictor of the reference level, $\alpha_{2}$ and $\alpha_{3}$ represents the difference in y-intercept for the ACB and MAS buffers, $\beta_{2}$ and $\beta_{3}$ represents the differences in slopes, while $\gamma_{0i}$ and $\gamma_{1i}$ represents the individual-specific deviation from the population intercept and slope, respectively. The linear predictors relate to the log proportions according to (\ref{eq:linear_predictors}), where the dummy variables $D_{2}$ and $D_{3}$ have been solved according to (\ref{eq:dummy_variables}).
 
 \begin{equation}
     \label{eq:dummy_variables}
@@ -265,7 +275,16 @@ D_{3} =\begin{cases}
 
 \begin{equation}
 \label{eq:logit}
-\hat{p}_{i} = \dfrac{1}{1 + e^{-(\alpha_{1} \: + \: \beta_{1} x_{i} \: + \: \alpha_{2} D_{2} \: + \: \alpha_{3} D_{3} \: + \: \beta_{2} D_{2} \: + \: \beta_{3} D_{3} \: + \: \epsilon_{i})}}
+y_{ij} = \dfrac{1}{1 + e^{-(\alpha_{1} \: + \: \beta_{1} log(t_{ij}) \: + \: D_{2}(\alpha_{2} + \beta_{2}log(t_{ij})) \: + \:  D_{3}(\alpha_{3} + \beta_{3}log(t_{ij})) \: + \: \gamma_{0i} \: + \: \gamma_{1i}log(t_{ij}))}}
+\end{equation}
+
+\begin{equation}
+    \label{eq:linear_predictors}
+    log(\dfrac{y_{ij}}{1-y_{ij}}) = \begin{cases}
+        \alpha_{1} + \gamma_{0i} + (\beta_{1} + \gamma_{1i})log(t_{ij}), & i \: \text{in MPSS group}, \\
+        \alpha_{1} + \alpha_{2} + \gamma_{0i} + (\beta_{1} + \beta_{2} + \gamma_{1i})log(t_{ij}), & i \: \text{in ACB group}, \\
+        \alpha_{1} + \alpha_{3} + \gamma_{0i} + (\beta_{1} + \beta_{3} + \gamma_{1i})log(t_{ij}), & i \: \text{in MAS group} \\
+    \end{cases}
 \end{equation}
 
 \subsubsection{Haemocyte viability}
@@ -296,7 +315,6 @@ The slides were placed on the stage of a Nikon Eclipse 80i upright microscope, a
 
 [Concider including measurements with the Coulter Counter as a comparison to cells fixed in formaldehyde. In that case, insert the methodology here.]
 
-
 \subsection{Flow cytometric characterization of haemocyte subpopulations by light-scatter measurements}
 Throughout the methodological and experimental work that was done in relation to this project, more than 500 adult mussels were samples for haemolymph, and the majority of these samples were run as suspensions of living haemocytes on the BD Accuri C6 Plus Flow Cytometer. The purposes of these measurements varied to a large extent, but the samples were invariably examined as bivariate plots of Forward Scatter (FSC) vs. Side Scatter light (SSC) at some point in the analyses. These investigations revealed a substantial amount of variation between individual mussels in terms of the relative proportions of their haemocyte subpopulations and their separation according to FSC. vs. SSC. A quantitative flow cytometric characterization of the haemocyte subpopulations of \emph{M. edulis} can be found in Le Foll et al. (2010), who utilized a flow cytometer equipped with a Coulter-type electronic cell-volume analyzer to characterize haemocytes in terms of cell diameter (\micro M) vs. SSC. Instead of repeating this endeavor with relative units of FSC, the objective of the current flow cytometric characterization was to present the typical light-scatter profile of an adult mussels, while representing the observed variation with a few examples of extreme observations. The haemolymph samples were withdrawn into an equal volume of ACB according to the technique described in section \ref{subsection:haemolymph sampling technique}, and were analyzed on the flow cytometer directly thereafter.
 
@@ -315,11 +333,11 @@ The pelleted cell fractions were resuspended in Sorensen buffer and divided into
 \subsubsection{Identification of eosinophilic granulocytes by SSC and eosin fluorescence}
 Since Eosin is fluorescent in the green/yellow spectrum (Ex$_{max}$/Em$_{max}$: 517/543 nm) (\cite{Koegle2020}), blue laser-exited fluorescence from this anionic dye can be collected on the FL1 detector (518-548 nm) of the BD Accuri C6 Plus flow cytometer (BD Biosciences, California, US). If the haemocytes of \emph{M. edulis} are permeabilized and stained with eosin prior to flow cytometric analysis, the fluorescent signal from Eosin can be used to identify eosinophilic granulocytes on FSC vs. SSC dotplots by backgating. This approach was attempted by Le Foll an colleagues (2010), who detached spread haemocytes stained by eosin with an EDTA/trypsin solution followed by flow cytometric analysis. As noted in the theory section (\ref{subsection:haemocyte_classification}), their results indicated that FL1$^{bright}$ events corresponded to haemocytes with high SSC values. However, this exact methodology did not result in well-defined FL1$^{bright}$ and FL1$^{dim}$ peaks, such that the lower bound of their electronic FL1$^{bright}$ gate had to be drawn more or less arbitrarily. It could therefore not be used to quantify the proportion of eosinophilic haemocytes - especially since the identity of the FL1$^{bright}$ events were never verified by microscopy.
 
-To investigate the potential application of eosin fluorescence and side scatter as discriminators in a flow cytometric differential count of \emph{M. edulis} haemocytes, an attempt to optimize the basic method of Le Foll et al. (2010) were undertaken. This process involved exploring different fixatives, methods of fixation, eosin staining solutions and the duration of both fixation and staining, in order to achieve a practically applicable resolution between eosinophilic granulocytes and the rest of the haemocytes.
+To investigate the potential application of eosin fluorescence and side scatter as discriminators in a flow cytometric differential count of \emph{M. edulis} haemocytes, an attempt to optimize the basic method of Le Foll et al. (2010) was undertaken. This process involved exploring different fixatives, methods of fixation, eosin staining solutions and the duration of both fixation and staining - in order to achieve a practically applicable resolution between eosinophilic granulocytes and the rest of the haemocytes. 
 
 Haemolymph was withdrawn from the posterior adductor muscle of 9 adult mussels into an equal volume of methanol (n=3), 3:1 methanol:glacial acetic acid (n=3) or 5\% formaldehyde in MPSS (n=3) and fixed for 30 minutes in suspension. The fixed haemocytes were pelleted by centrifugation (250G, 5 min, \SI{20}{\celsius}) and resuspended in the eosin component of the Hemacolor\textsuperscript{\textregistered} kit. After staining for 5, 10 or 15 minutes, the stained haemocytes were pelleted (180G, 5 min, \SI{20}{\celsius}), resuspended in 100 \micro L Sorensen buffer and transferred onto glass slides. The slides were coverslipped and inspected under brightfield illumination on a Nikon Eclipse Ni-U upright microscope with a 40x/0.75 objective.
 
-The only smears without high degrees of unspecific binding were those fixed in 5\% formaldehyde. To reduce the passive diffusion of eosin into non-target cells, 5\% formaldehyde in MPSS was selected for further testing - being the softest fixative of the three. By diluting Eosin in Sorensen buffer, a set of staining solutions with 0.25\%, 0.5\%, 0.75\%, 1.0\%, 1.5\%, 3\%, 5\%, and 8\% Eosin (vol/vol) were prepared. The haemolymph of 4 new mussels where fixed in 5\% formaldehyde for 30 minutes, pooled and st 
+The only smears without high degrees of unspecific eosin staining were those fixed in 5\% formaldehyde. To reduce the passive diffusion of eosin into non-target cells, 5\% formaldehyde in MPSS was selected for further testing - being the softest fixative of the three. By diluting Eosin in Sorensen buffer, a set of staining solutions with 0.25\%, 0.5\%, 0.75\%, 1.0\%, 1.5\%, 3\%, 5\%, and 8\% Eosin (vol/vol) were prepared. The haemolymph of 4 new mussels where fixed in 5\% formaldehyde for 30 minutes, pooled and st  
 
 \subsection{Scoring of necrotic haemocytes by flow cytometry}
 To discriminate between viable and necrotic haemocytes by flow cytometry, a two-color fluorescence assay with the cell-permeant probe Calcein acetoxymethyl and the non-permeant dsDNA-binding dye TO-PRO$^{TM}$-3 Iodide (Molecular Probes, Eugene, OR) was chosen. This combination of probes was primarily selected for two reasons: (1) it enables simultaneous measurement of intracellular esterase activity and plasma membrane integrity - two recognized parameters of cell viability and (2) there is virtually no fluorescent spillover between the probes, such that the uncompensated raw data can be applied directly. Moreover, a complementary double staining methodology like this allows for discrimination between haemocytes and contaminating non-cellular particles. Since cells with intact plasma membranes retain esterase activity, double negative events (Calcein$^{-}$ ToPro3$^{-}$) must represent particles or bacteria, since they do not contain dsDNA (ToPro3$^{-}$). 
@@ -331,7 +349,7 @@ The optimal TO-PRO$^{TM}$-3 Iodide concentrations for a flow cytometric dye excl
 
 Red laser-exited fluorescence from dsDNA-bound TO-PRO$^{TM}$-3 Iodide was collected on the FL4 detector (675/25 nm) of the BD Accuri C6 Plus flow cytometer. A histogram representation of the fluorescence revealed two distinct populations of events: one population of ToPro3$^{-}$ events and one population of ToPro3$^{+}$ events. The mean fluorescent intensity (MFI) of the two populations were calculated for each aliquot, and their difference was plotted against the staining-concentrations of TO-PRO$^{TM}$-3 Iodide.
 
-In order to predict a suitable range of concentrations from the data, the MFI differences were regressed on the TO-PRO$^{TM}$-3 concentration using a log-logistic model. Since the data required a model range bound by 0 and some unknown positive integer (0, \emph{a}), a four-parameter log-logistic function from the remote drc() package was used (v3.0-1; \cite{drc}). This function allows the lower asymptote to be fixed to 0, as shown in code listing 3.2. The general function is seen in (\ref{eq:LL4}), where \emph{b} and \emph{e} represents the slope parameter and inflection point, while \emph{d} and \emph{c} represents the upper and lower asymptotes, respectively.
+In order to predict a suitable range of concentrations from the data, the MFI differences were regressed on the TO-PRO$^{TM}$-3 concentration using a log-logistic model. Since the data required a model range bound by 0 and some unknown positive integer (0, \emph{a}), a four-parameter log-logistic function from the R package \emph{drc} was used (v3.0-1; \cite{drc}). This function allows the lower asymptote to be fixed to 0, as shown in code listing 3.2. The general function is seen in (\ref{eq:LL4}), where \emph{b} and \emph{e} represents the slope parameter and inflection point, while \emph{d} and \emph{c} represents the upper and lower asymptotes, respectively.
 
 \begin{lstlisting}[language=R, caption = {The R source code run to fit the four-parameter log-logistic regression model in RStudio.}]
 model = drm(y ~ x, data = df, fct = LL.4(fixed = c(NA, 0, NA, NA), 
@@ -340,7 +358,7 @@ names = c("b", "c", "d", "e")))
 
 \begin{equation}
 \label{eq:LL4}
-y_{i} = c + \dfrac{d-c}{1 + (x_i / e)^b} + \epsilon_i
+y_{i} = c + \dfrac{d-c}{1 + (x_i / e)^b}
 \end{equation}
 
 Potential cytotoxicity at high concentrations was evaluated by examining the ToPro3$^{-}$ populations (SSC vs. FL4), to see wether any of the freshly withdrawn haemocytes were starting loose their ability to exclude TO-PRO$^{TM}$-3 Iodide.
