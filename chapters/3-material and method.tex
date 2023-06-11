@@ -280,11 +280,13 @@ y_{ij} = \dfrac{1}{1 + e^{-(\alpha_{1} \: + \: \beta_{1} log(t_{ij}) \: + \: D_{
 
 \begin{equation}
     \label{eq:linear_predictors}
-    log(\dfrac{y_{ij}}{1-y_{ij}}) = \begin{cases}
+    \resizebox{\linewidth}{!}{$
+    log\dfrac{P(y_{ij} = 1 \mid t_{ij}, \gamma_{0i}, \gamma_{1i})}{P(y_{ij} = 0 \mid t_{ij}, \gamma_{0i}, \gamma_{1i})} = \begin{cases}
         \alpha_{1} + \gamma_{0i} + (\beta_{1} + \gamma_{1i})log(t_{ij}), & i \: \text{in MPSS group}, \\
         \alpha_{1} + \alpha_{2} + \gamma_{0i} + (\beta_{1} + \beta_{2} + \gamma_{1i})log(t_{ij}), & i \: \text{in ACB group}, \\
         \alpha_{1} + \alpha_{3} + \gamma_{0i} + (\beta_{1} + \beta_{3} + \gamma_{1i})log(t_{ij}), & i \: \text{in MAS group} \\
     \end{cases}
+    $}
 \end{equation}
 
 \subsubsection{Haemocyte viability}

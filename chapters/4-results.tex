@@ -4,48 +4,82 @@
 \section{Method development}
 \label{section:Results_Method_Development}
 \subsection{Haemocyte medium: inhibition of aggregation}
-The proportions of aggregated haemocytes in MPSS, ACB and MAS are plotted against time post-withdrawal in Fig. \ref{fig:aggregation}, together with the mean proportions predicted from the sub-models (\ref{eq:agg_submodels}a-c) of the fitted log-logistic model. The estimated model parameters 
+The proportions of aggregated haemocytes in MPSS, ACB and MAS are plotted against time post-withdrawal in Fig. \ref{fig:aggregation}, together with their predicted mean proportions, or more accurately: the predicted proportion of aggregated haemocytes in mussels with random effects $\gamma_{0i}$ and $\gamma_{1i}$ = 0. Predictions were made from the estimated fixed effects in order to address the marginal effect of "Buffer" on the population-averaged proportions. The estimated regression coefficients of the generalized linear mixed effect model is presented in Table \ref{tb:regression_table}, while the fixed effect sub-models are shown in (\ref{eq:mixed_submodels}).
+
+\begin{equation}
+    \label{eq:mixed_submodels}
+    y_{ij} = \begin{cases}
+        \dfrac{1}{1 + e^{-(-1.7192 + 0.5516 \times log(t_{ij}))}},  & i \: \text{in MPSS group}, \\
+        \dfrac{1}{1 + e^{-(-6.9842 + 1.8400 \times log(t_{ij}))}},  & i \: \text{in ACB group}, \\
+        \dfrac{1}{1 + e^{-(-7.7198 + 2.0138 \times log(t_{ij}))}},  & i \: \text{in MAS group} \\
+    \end{cases}
+\end{equation}
+
+Figure \ref{fig:aggregation}D unambiguously demonstrates that both ACB and MAS exerted an immediate decelerating effect on the rate of haemocyte aggregation. This inhibitory effect is evident from the estimated differences in slopes and intercepts from the MPSS sub-model, which were significantly different from zero (see Table \ref{tb:regression_table}). Since the effect sizes are a bit challenging to interpret from the isolated coefficients, the linear predictors of the three sub-models are evaluated on link scale in Fig. \ref{fig:LogOdds}, i.e. as predictors for the log odds of the proportion of aggregated haemocytes ($log P(y_{ij} = 1) / P(y_{ij} = 0)$).
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/Method development/agg_plot_scaled.pdf}
-    \caption{The proportion of aggregated hemocytes in 250 \micro L hemolymph withdrawn into an equal volume of Modified Alsever's Solution (\protect\lysegraacircle, n=7), Anticoagulant Buffer (\protect\graycircle, n=8) or Marine Physiological Saline Solution (\protect\darkgraycircle, n=8), plotted against time (min) after withdrawal from the posterior adductor muscle. The three regression lines illustrate the predicted proportions at time t for the three different buffers, as predicted by the fitted logistic regression model.}
+    \includegraphics[width=1.0\textwidth]{figures/Method development/Propagg x4 plot.pdf}
+    \caption{\textbf{Inhibition of hemocyte aggregation from withdrawing samples into three different anticoagulant buffers.} The proportion of aggregated hemocytes is plotted against time from haemolymph withdrawal after diluting samples in an equal volume of \textbf{A)} Marine Physiological Saline Solution (MPSS, n=8), \textbf{B)} Modified Alsever's Solution (MAS, n=8) or \textbf{C)} Anticoagulant Buffer (ACB, n=8).  \textbf{D)} The same data is combined into one scatter-plot with regression curves representing the mean proportions of aggregated haemocytes in MPSS (\protect\darkgraycircle), MAS (\protect\lysegraacircle) and ACB (\protect\graycircle), as predicted from the fitted mixed logistic regression model. Note that data-points have been jittered on the x-axis to prevent overlap.}
     \label{fig:aggregation}
 \end{figure}
- 
-\begin{subequations}
-    \label{eq:agg_submodels}
-    \begin{equation}
-        \text{MPSS:} ~ y_{i} = \dfrac{1}{1 + e^{-(-1.3874 + 0.4573\times log(x_{i}))}} + \epsilon_i
-    \end{equation}
-    \begin{equation}
-         \text{ACB:} ~ y_{i} = \dfrac{1}{1 + e^{-(-5.7779 + 1.6748\times log(x_{i}))}} + \epsilon_i \label{eq:ACB}
-    \end{equation}
-    \begin{equation}
-        \text{MAS:} ~ y_{i} = \dfrac{1}{1 + e^{-(-6.4301 + 1.7719\times log(x_{i}))}} + \epsilon_i
-    \end{equation}
-\end{subequations}
-  
 
-
-
-Interpreting the logistic sub-models, it is evident that MAS and ACB effectively slowed the rate of aggregation during the first 30 minutes post-withdrawal. When MAS was used as hemocyte medium, the predicted mean proportion of aggregated hemocytes after 15 minutes was 0.16, 95\% CI [0.12, 0.22]. This was not significantly different from the predicted mean proportion when ACB was used (0.22, 95\% CI [0.18, 0.28]), but both buffers containing EDTA and lacking free Ca$^{2+}$ were predicted to have significantly lower hemocyte aggregation after 15 minutes, compared to samples that were withdrawn into MPSS and kept on ice (0.46, 95\% CI [0.33, 0.60]).
-
-Although the model is over-dispersed, these estimates provided some insight into the three factor's relative abilities to prevent hemocyte aggregation within the first hour post-withdrawal. The combination of a Ca$^{2+}$-free and EDTA-containing buffer was effective in reducing hemocyte aggregation compared to simply diluting and keeping samples on ice. When using the latter method, visible aggregates were usually formed within the syringe immediately after hemolymph aspiration, even though the hemolymph saline was been pre-chilled at $\SI{4}{\celsius}$. For this method to be effective, the hemolymph most likely has to be diluted many-fold. Such an approach would be inconvenient when preparing microscopy slides of a certain desired cell density, and too time-consuming when acquiring 10.000 events on a flow cytometer. This approach was therefore ruled out of question.
-
-Comparing the relative effectiveness of MAS and ACB in preventing hemocyte aggregation, it is evident that neither citrate or maintaining a slightly acidic pH is required for the purpose. It might be that the slightly higher concentration of EDTA in ACB compensates for the lack of citrate. But either way, the acidic pH most likely plays a minor role. Since high concentrations of EDTA has been reported to impair hemocyte viability by some authors (\cite{Grandiosa2018, Burkhard2009}), a further comparison of MAS and ACB with regards to acute effects on viability had to be investigated.
-
-\subsection{Haemocyte medium: effect on viability}
- The percentage of necrotic hemocytes kept in at the three timepoints are presented in figure \ref{fig:BufferViability}. \lipsum[2]
+\begin{table}[H]
+	\centering
+	\caption{Parameter estimates of the fitted mixed logistic regression model and their 95\% confidence intervals. Marginal and conditional R$^{2}$ are presented as parameters of model fit, together with the model's residual deviance.}
+	\label{tb:regression_table}
+	\begin{tabular}{llllc}
+        \toprule
+	\textbf{Covariate} & \textbf{Symbol} & \textbf{Estimate$^{b}$} & \textbf{95\% CI$^{a}$} & \textbf{S.E.}\\
+		\midrule
+  \emph{Intercept}                          & $\alpha_1$ & -1.72*     & [-3.24, -0.202] & 0.740 \\
+  \emph{log(t)}                             & $\beta_1$  & 0.552**    & [0.189, 0.915]  & 0.177 \\
+  \emph{Buffer$_{ACB}$}                     & $\alpha_2$ & -5.27***   & [-7.41, -3.11]  & 1.05  \\
+  \emph{Buffer$_{MAS}$}                     & $\alpha_3$ & -6.00***   & [-8.18, -3.86]  & 1.06  \\
+  \emph{log(t)} $\cdot$ \emph{Buffer$_{ACB}$} & $\beta_2$& 1.29***    & [0.775, 1.80]   & 0.251 \\
+  \emph{log(t)} $\cdot$ \emph{Buffer$_{MAS}$} & $\beta_3$& 1.46***    & [0.950, 1.98]   & 0.253 \\
+  \emph{SD}$(\gamma_{0i})$                  & $\tau_0^2$ & 2.09       & [1.57, 2.91]    & -     \\
+  \emph{SD}$(\gamma_{1i})$                  & $\tau_1^2$ & 0.500      & [0.379, 0.694]  & -     \\
+  &&& \\
+  \multicolumn{5}{l}{Marginal R$^{2}$ = 0.87$^{c}$} \\
+  \multicolumn{5}{l}{Conditional R$^{2}$ = 0.98$^{c}$} \\
+  \multicolumn{5}{l}{Residual deviance: 13498 on 98 degrees of freedom} \\
+		\bottomrule
+  \multicolumn{5}{l}{\footnotesize $^{a}$Computed 95\% confidence intervals based on Likelihood Ratio Test of the profile likelihood.} \\
+  \multicolumn{5}{l}{\footnotesize $^{b}$ *, **, *** indicates statistical significance on 95\%, 99\% and 99.9\% confidence levels, respectively.} \\
+  \multicolumn{5}{l}{\footnotesize Confidence levels were obtained from z-statistics of the asymptotic Wald test.} \\
+    \multicolumn{5}{l}{\footnotesize $^{c}$Calculated according to the method proposed by Nakagawa and Schielzeth (2013).} \\
+	\end{tabular}
+\end{table}
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=1.13\textwidth]{figures/Method development/grouped bargraph scaled.pdf}
-    \caption{The mean percentages of TO-PRO$^{TM}$-3 Iodide positive hemocytes after 15 minute, 2 hours and 20 hours incubation in \protect\lysegraabox \ Marine Physiological Saline Solution (n=8), \protect\customgraybox \ Anticoagulant Buffer (n=8) or \protect\darkgraybox \ Modified Alsever's Solution (n=8). Calcein acetoxymethyl (Invitrogen$^{TM}$) was used as a live cell counter-stain. Each datapoint is expressed as a percentage of 10.000 recorded hemocyte events, and the error bars represent 95\% confidence intervals of group means. Asterisks above error bars represent significance level of two sample t-test comparisons with }
+    \includegraphics[width=1.0\textwidth]{figures/Method development/Log Odds plot.pdf}
+    \caption{The log odds of the proportion of aggregated haemocytes plotted against time (min) after haemolymph withdrawal, when haemolymph samples were withdrawn into Marine Physiological Saline Solution (MPSS), Anticoagulant Buffer (ACB) or Modified Alsever's Solution (MAS). The three curves illustrates the logit-scale predictors of the fitted mixed logistic regression model for the three buffers.}
+    \label{fig:LogOdds}
+\end{figure}
+
+Given the that the proportion of aggregated haemocytes is 0.50 when the log odds is equal to zero, Fig. \ref{fig:LogOdds} shows that 1/2 of the haemocytes withdrawn into MPSS had aggregated within 23 minutes post-withdrawal. This interpretation is valid for mussels where the random effects of time; $\gamma_{0i}$ and $\gamma_{1i}$ = 0. For samples withdrawn into ACB or MAS on the other hand, the cells did not achieve this degree of aggregation until 45 and 46 minutes post-withdrawal, respectively. The three log odds curves depicted in Fig. \ref{fig:LogOdds} shows that the inhibitory effects of ACB and MAS were modelled through their significantly lower y-intercepts compared to the MPSS sub-model (Table \ref{tb:regression_table}). Since these estimates were significant after accounting for within-mussel correlations (<0.0001), we can conclude that EDTA is an effective haemocyte anticoagulant on the short term.
+
+The effect was largest during the initial 15-20 minutes, before the degree of aggregation slowly approached that of MPSS around 60 minutes post-withdrawal. In haemolymph samples withdrawn into ACB or MAS, the mean proportions of aggregated haemocytes after 15 minutes were 0.14 95\% CI [0.07, 0.22] and  0.20 95\% CI [0.07, 0.32], respectively. There were no significant differences between the buffers with EDTA, but both ACB and MAS had significantly lower proportions at this timepoint compared to samples withdrawn into cold MPSS (0.48 95\% CI [0.39, 0.56]). \newline
+
+Although the model is over-dispersed, these estimates provide some insight into the three buffers relative abilities to prevent hemocyte aggregation within the first hour post-withdrawal. The combination of a Ca$^{2+}$-free and EDTA-containing buffer was effective in reducing hemocyte aggregation compared to simply diluting and keeping samples on ice. When using the latter method, visible aggregates were usually formed within the syringes immediately after hemolymph aspiration, even though the MPSS were pre-chilled at $\SI{4}{\celsius}$. For this method to be effective, the hemolymph most likely has to be diluted many-fold. Such an approach would be inconvenient when preparing haemolymph smears with a certain desired density, and too time-consuming when acquiring 10.000 events on a flow cytometer. This approach was therefore ruled out of question.
+
+Comparing the relative effectiveness of MAS and ACB in preventing hemocyte aggregation, it is evident that neither citrate or maintaining a slightly acidic pH is required for the purpose. It might be that the slightly higher concentration of EDTA in ACB compensates for the lack of citrate. But either way, the acidic pH most likely plays a minor role. Since high concentrations of EDTA has been reported to impair hemocyte viability (\cite{Grandiosa2018, Burkhard2009}), a direct comparison of MAS and ACB with regards to acute effects on viability was required for a final decision.
+
+\subsection{Haemocyte medium: effect on viability}
+ The mean percentages of necrotic hemocytes after 15 min, 2 hours and 20 hours incubation in MPSS, ACB and MAS are presented in Figure \ref{fig:BufferViability}, with error bars representing 95\% confidence intervals around group means.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/Method development/buffer viability bargraph scaled.pdf}
+    \caption{The mean percentages of TO-PRO$^{TM}$-3 Iodide positive hemocytes after 15 minute, 2 hours and 20 hours incubation in Marine Physiological Saline Solution (\, \protect\lysegraabox, \ n=8), Anticoagulant Buffer (\, \protect\customgraybox, \ n=8) and Modified Alsever's Solution (\, \protect\darkgraybox, \ n=8). Error bars represent 95\% confidence intervals around group means, asterisks *, **, *** above error bars denotes confidence level of Welch Two Sample t-test comparisons with the MPSS control group, while asterisks above horizontal lines represent ACB vs. MAS comparisons.}
     \label{fig:BufferViability}
 \end{figure}
 
-- Report results fro where I checked if EDTA changed the cytogram, because it would be nice to report that it doesn't affect them during the 15 minute incubation period.
+The differences between the negative control group (MPSS) and the two EDTA-containing buffers were not significantly different from zero after 15 minute incubation. There was however a marginal difference between MAS and ACB, where samples incubated in MAS had 0.17\% less necrotic cells on average compared to those kept in ACB for 15 minutes. This relationship was consistent across all three incubation periods, allthough the differences after 2 and 20 hours were not significantly different from zero (Fig. \ref{fig:BufferViability}).
+
+Moreover, as the incubation period was increased to 2 and 20 hours, the percentages of necrotic haemocytes in ACB and MAS increased relative to the negative control group. The differences were significantly / or report the actual differences with confidence intervals.
 
 \subsection{Cytologic characterization of \emph{M. edulis} hemocyte subpopulations}
 \label{subsection:Results_cytchar}
@@ -53,7 +87,7 @@ The hemolymph of \emph{Mytilus edulis} comprised a mixed population of cells dif
 
 Based on the basophilic or eosinophilic nature of their granules and other cytoplasmic contents, cytologic staining with 3 \% Wright's-Giemsa or the Hemacolor\textsuperscript{\textregistered} kit gave rise to two distinct staining profiles: basophilic and eosinophilic haemocytes. The cytoplasm of eosinophilic hemocytes (Figure \ref{fig:celltypes}, K-O) were densely packed with pink to dark purple granules of varying size and abundance. Hence, they are referred to as eosinophilic granulocytes herein. Their individual granules were usually not distinguishable in a non-spread state, but instead gave their cytoplasm an irregular pink color (Figure \ref{fig:celltypes}, K and O). These haemocytes had cell diameters in the range of 6-16 \micro m, with a mean of 9.06$\pm1.25$ \micro m. Two strikingly homogeneous features of this cell type was a small acentrically located nucleus, and a regular spherical outline in a non-spread state. With abundant pink cytoplasm making up the majority of the cells' surface area - even in the smallest specimens - the eosinophilic granulocytes could also be characterized by a low nuclear-cytoplasmic ratio (N:C ratio). If not fixed and stained before smearing - or within minutes of applying haemolymph to a glass slide - eosinophilic granulocytes were almost exclusively observed as spread cells. 
 
-\begin{figure}[!ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/Anatomy/cell types brightfield updated 2.pdf}
     \caption{100$\times$ brightfield micrographs of the three haemocyte types found in the haemolymph of \emph{Mytilus edulis}, fixed and stained on glass slides with the Hemacolor\textsuperscript{\textregistered} kit before the hemocytes had time to spread notably. \textbf{(A-E)} Blast-like hyaline basophils. \textbf{(F-J)} Basophilic granulocytes. \textbf{(K-O)} Eosinophilic granulocytes. Samples were withdrawn into MPSS (1:1), scale bars = 10 \micro m.}
@@ -62,10 +96,10 @@ Based on the basophilic or eosinophilic nature of their granules and other cytop
 
 Compared to the eosinophilic granulocytes, the basophilic hemocytes encompassed a more heterogeneous population. Common to all of them were a larger nucleus that occupied more of the cells' total surface area (higher N:C ratio). The shape of which varied from spherical to oval, or had a distinct bean-shaped or irregular outline. But judged from the morphological criteria of cell size, granularity and N:C ratio, there were essentially two distinct subpopulations of basophilic haemocytes. One population of small hyaline blast-like haemocytes (5.63 $\pm{0.72}$ \micro m) displaying only a marginal rim of dove blue cytoplasm and no apparent cytoplasmic granules (Figure \ref{fig:celltypes}, A-E), and one population of larger haemocytes (8.07 $\pm{1.25}$ \micro m), displaying abundant basophilic cytoplasm with varying degrees of cytoplasmic granulation and vacuolation (Figure \ref{fig:celltypes}, F-J). The basophillic granules appeared much smaller than those of the eosinophilic granulocytes, and were usually not very conspicuous unless haemocytes were subjected to osmotic swelling prior to fixation and staining. Under differential interference contrast (DIC) illumination however, their granules created highly irregular surface topographies in spread cells that could be observed without such treatment. On the basis of these morphological differences, the basophilic haemocytes were subdivided into blast-like haemocytes and basophilic granulocytes herein. 
 
-\begin{figure}[!ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/Anatomy/diameters scaled density plot.pdf}
-    \caption{Size distribution of \protect\dimgraybox \ small blast-like basophils (n=154), \protect\lightgraybox \ basophilic granulocytes (n=821), \protect\lysegraabox \ eosinophilic granulocytes (n=1030) and \protect\whitebox \ the total haemocyte population of \emph{Mytilus edulis} (n=2005). The diameters of 100 formaldehyde-fixed haemocytes was measured in each of 20 individual mussels, and the density was scaled to the number of observations of each cell type.}
+    \caption{Size distribution of \protect\dimgraybox \ small blast-like basophils (n=154), \protect\lightgraybox \ basophilic granulocytes (n=821), \protect\lysegraabox \ eosinophilic granulocytes (n=1030) and \protect\whitebox \ the total haemocyte population of \emph{Mytilus edulis} (n=2005). The diameters of 100 formaldehyde-fixed haemocytes were measured in each of 20 individual mussels, and the density was scaled to the number of observations of each cell type.}
     \label{fig:Diameters}
 \end{figure}
 
@@ -105,13 +139,25 @@ The second round of percoll gradient separation yielded: 15\%-33\% interface: FC
 
 
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{figures/Method development/Eosin fluorescence figure.pdf}
-    \caption{\textbf{Eosinophilic granulocytes can be distinguished from the two basophilic cell types according to eosin fluorescence ($\geq$ 515 nm).} Formaldehyde-fixed haemocytes stained in 0.75\% eosin and 3\% Giemsa were imaged at $\times$60 under \textbf{A)} brightfield illumination and \textbf{B)} by epifluorescence microscopy with a B-2A filter cube. The slide was mounted with Eukitt\textsuperscript{\textregistered} and coverslipped prior to microscopy. Eo: eosinophilic granulocyte; B: basophilic haemocyte; scale bars = 10 \micro m. }
-    \label{fig:eosin_fluorescence_B2A}
-\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Method development/B2A eosin fluorescence/Epi eosin fluorescence.pdf}
+        \caption{Hemocytes imaged under brightfield illumination.}
+        \label{ffig:a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Method development/B2A eosin fluorescence/Brightfield eosin fluorescence.pdf}
+        \caption{Haemocytes imaged by epifluorescence microscopy with a B-2A filtercube.}
+        \label{ffig:b}
+    \end{subfigure}
+    \caption{\textbf{Eosinophilic granulocytes can be distinguished from the two basophilic cell types according to eosin fluorescence ($\geq$ 515 nm).} Formaldehyde-fixed haemocytes stained in 0.75\% eosin and 3\% Giemsa were imaged at $\times$60 under \textbf{a)} brightfield illumination and \textbf{b)} by epifluorescence microscopy with a B-2A filter cube. The slide was mounted with Eukitt\textsuperscript{\textregistered} and coverslipped prior to microscopy. Eo: eosinophilic granulocyte; B: basophilic haemocyte; scale bars = 10 \micro m. }
+    \label{fig:Eosin_fluorescence_B2A}
+\end{figure}
 
 
 \begin{figure}[!ht]

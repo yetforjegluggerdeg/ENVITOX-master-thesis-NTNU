@@ -53,3 +53,50 @@ HENKE-JECT 1 mL syringes, 1mL, luer, REF 8300014579, HENKE SASS WOLF GmbH, Tuttl
 Since no single experiment would convey the amount of variation observed, no experiments were dedicated to characterize the subpopulations quantitatively. A quantitative approach would nor be especially interesting in itself, since the relative units of FSC and SSC vary heavily between instruments and with instrument settings. The exact light-scatter values are only meaningful when measured on the same instrument, and the insights gained from such measurements are mainly pertained to the relative light-scatter profiles of the different subpopulations.
 
 The deviance-based R$^{2}$ is calculated to according to equation to: $R^{2} = 1 \dfrac{Residual ~ deviance}{Null ~ deviance}$. The adjusted deviance-based R$^{2}$ is calculated according to: $Adjusted ~ R^{2} = 1 - \dfrac{n-1}{n-p}(1 - R^{2})$. This was done using the \emph{adjR2()} function of the \emph{glmtoolbox} in RStudio (\cite{RStudio}).
+
+\begin{table}[H]
+	\centering
+	\caption{Parameter estimates with 95\% CI, Wald z-values and the belonging p-value are presented for the fitted mixed logistic regression model presented in result section \ref{section:Results_Method_Development}.}
+	\label{tb:loglogistic_aggregation_oddsratios_copy}
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{lccccc}
+        \toprule
+	\textbf{Covariate} & \textbf{Symbol} & \textbf{Estimate} & \textbf{95\% CI$^{a}$} & \textbf{z-value$^{b}$} & \textbf{Pr(Z > $\mid$ z $\mid)$} \\
+		\midrule
+  \emph{Intercept}                          & $\alpha_1$ & -1.7192 & [-3.2364, -0.2024] & -2.323 & 0.02    \\
+  \emph{log(t)}                             & $\beta_1$  & 0.5516  & [0.1885, 0.9150]   & 3.109  & 0.002   \\
+  \emph{Buffer$_{ACB}$}                     & $\alpha_2$ & -5.2650 & [-7.4142, -3.1110] & -5.032 & < 0.0001 \\
+  \emph{Buffer$_{MAS}$}                     & $\alpha_3$ & -6.0006 & [-8.1814, -3.8623] & -5.687 & < 0.0001 \\
+  \emph{log(t)} $\cdot$ \emph{Buffer$_{ACB}$} & $\beta_2$  & 1.2884  & [0.7749, 1.8000]   & 5.138  & < 0.0001 \\
+  \emph{log(t)} $\cdot$ \emph{Buffer$_{MAS}$} & $\beta_3$   & 1.4622  & [0.9492, 1.9841]   & 5.778  & < 0.0001 \\
+  \emph{SD}$(\gamma_{0i})$                  & $\tau_0^2$  & 2.0874  & [1.5726, 2.9047]   & -      & -        \\
+  \emph{SD}$(\gamma_{1i})$                  & $\tau_1^2$  & 0.5001  & [0.3788, 0.6936]   & -      & -        \\
+  &&&&& \\
+  \multicolumn{6}{l}{Marginal R$^{2}$ = 0.87} \\
+  \multicolumn{6}{l}{Conditional R$^{2}$ = 0.98} \\
+  \multicolumn{6}{l}{Residual deviance: 13498 on 98 degrees of freedom} \\
+		\bottomrule
+  \multicolumn{6}{l}{\footnotesize $^{a}$Profiled 95\% confidence intervals based on the Likelihood Ratio Test.}\\
+  \multicolumn{6}{l}{\footnotesize $^{b}$ z-statistics derived from the asymptotic Wald test.}
+	\end{tabular}
+ }
+\end{table}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/Method development/Eosin fluorescence figure.pdf}
+    \caption{\textbf{Eosinophilic granulocytes can be distinguished from the two basophilic cell types according to eosin fluorescence ($\geq$ 515 nm).} Formaldehyde-fixed haemocytes stained in 0.75\% eosin and 3\% Giemsa were imaged at $\times$60 under \textbf{A)} brightfield illumination and \textbf{B)} by epifluorescence microscopy with a B-2A filter cube. The slide was mounted with Eukitt\textsuperscript{\textregistered} and coverslipped prior to microscopy. Eo: eosinophilic granulocyte; B: basophilic haemocyte; scale bars = 10 \micro m. }
+    \label{fig:reserve}
+\end{figure}
+
+0.14$\pm{0.09}$ and  0.20$\pm{0.12}$
+
+
+%Buffer  mean   std.dev  df  S.E.     CI_lower   CI_upper
+1 ACB    0.142  0.0863   8   0.0305   0.0703    0.215
+2 MAS    0.195  0.120    6   0.0488   0.0695    0.321
+3 MPSS   0.475  0.0986   8   0.0348   0.393     0.557
+
+MPSS vs. MAS, p = 0.0002139 >
+MPSS vs. ACB, p = 0.0000024 >
+ACB vs.  MAS, p = 0.3572    diff

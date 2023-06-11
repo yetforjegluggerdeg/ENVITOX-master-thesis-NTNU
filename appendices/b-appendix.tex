@@ -142,33 +142,7 @@ Mussel ID & Buffer & t (min) & $N_{tx}$ & $N_{t0}$ \\
 
 
 
-\begin{table}[H]
-	\centering
-	\caption{The proportion of aggregated haemocytes were modeled as a function of log (time) from haemolymph withdrawal, with buffer (MPSS, ACB, MAS) as categorical explanatory variable within individual correlation modelled as random effects Parameter estimates with 95\% CI, standard errors, t-value and the belonging p-value are presented.}
-	\label{tb:loglogistic_aggregation_oddsratios}
-	\resizebox{\linewidth}{!}{
-	\begin{tabular}{lccccc}
-        \toprule
-	\textbf{Covariate} & \textbf{Symbol} & \textbf{Estimate} & \textbf{95\% CI$^{a}$} & \textbf{z-value$^{b}$} & \textbf{Pr(Z > $\mid$ z $\mid)$} \\
-		\midrule
-  \emph{Intercept}                          & $\alpha_1$ & -1.7192 & [-3.2364, -0.2024] & -2.323 & 0.02    \\
-  \emph{log(t)}                             & $\beta_1$  & 0.5516  & [0.1885, 0.9150]   & 3.109  & 0.002   \\
-  \emph{Buffer$_{ACB}$}                     & $\alpha_2$ & -5.2650 & [-7.4142, -3.1110] & -5.032 & < 0.0001 \\
-  \emph{Buffer$_{MAS}$}                     & $\alpha_3$ & -6.0006 & [-8.1814, -3.8623] & -5.687 & < 0.0001 \\
-  \emph{log(t)} $\cdot$ \emph{Buffer$_{ACB}$} & $\beta_2$  & 1.2884  & [0.7749, 1.8000]   & 5.138  & < 0.0001 \\
-  \emph{log(t)} $\cdot$ \emph{Buffer$_{MAS}$} & $\beta_3$   & 1.4622  & [0.9492, 1.9841]   & 5.778  & < 0.0001 \\
-  \emph{SD}$(\gamma_{0i})$                  & $\tau_0^2$  & 2.0874  & [1.5726, 2.9047]   & -      & -        \\
-  \emph{SD}$(\gamma_{1i})$                  & $\tau_1^2$  & 0.5001  & [0.3788, 0.6936]   & -      & -        \\
-  &&&&& \\
-  \multicolumn{6}{l}{Marginal R$^{2}$ = 0.87} \\
-  \multicolumn{6}{l}{Conditional R$^{2}$ = 0.98} \\
-  \multicolumn{6}{l}{Residual deviance: 13498 on 98 degrees of freedom} \\
-		\bottomrule
-  \multicolumn{6}{l}{\footnotesize $^{a}$Profiled 95\% confidence intervals based on the Likelihood Ratio Test.}\\
-  \multicolumn{6}{l}{\footnotesize $^{b}$ z-statistics derived from the asymptotic Wald test.}
-	\end{tabular}
- }
-\end{table}
+
 
 The marginal and conditional R$^{2}$-values were calculated according to (\cite{Nakagawa2013}), using the \emph{summ} function of the R Package \emph{jtools} (\cite{jtools}).
 
