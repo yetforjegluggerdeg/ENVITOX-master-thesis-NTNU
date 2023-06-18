@@ -1,9 +1,10 @@
-\chapter{Results}
-\label{chap:results}
+\chapter{Results: Method Development}
+\label{chap:results_method_development}
 
-\section{Method development}
-\label{section:Results_Method_Development}
-\subsection{Haemocyte medium: inhibition of aggregation}
+\section{Haemocyte medium}
+The following section presents results from two experiments that were conducted to explore the suitability of three haemocyte media for applications in flow cytometric assays. They are compared with regard to their ability to inhibit haemocyte aggregation, without affecting the viability of haemocytes.
+
+\subsection{Inhibition of haemocyte aggregation}
 The proportions of aggregated haemocytes in \acrshort{mpss}, \acrshort{acb} and \acrshort{mas} are plotted against time post-withdrawal in Figure \ref{fig:aggregation}, together with their predicted mean proportions, or more accurately: the predicted proportion of aggregated haemocytes in mussels with random effects $\gamma_{0i}$ and $\gamma_{1i}$ = 0. Predictions were made from the estimated fixed effects in order to address the marginal effect of "Buffer" on the population-averaged proportions. The estimated regression coefficients of the generalized linear mixed effect model is presented in Table \ref{tb:regression_table}, while the fixed effect sub-models are shown in (\ref{eq:mixed_submodels}).
 
 \begin{equation}
@@ -63,25 +64,21 @@ Given the that the predicted proportion of aggregated haemocytes is 0.50 when th
 
 The effect was largest during the initial 15-20 minutes, before the degree of aggregation slowly approached that of \acrshort{mpss} around 60 minutes post-withdrawal. In haemolymph samples withdrawn into \acrshort{acb} or \acrshort{mas}, the mean proportions of aggregated haemocytes after 15 minutes were 0.14 95\% CI [0.07, 0.22] and  0.20 95\% CI [0.07, 0.32], respectively. There were no significant differences between the buffers with \acrshort{edta}, but both \acrshort{acb} and \acrshort{mas} had significantly lower proportions at this timepoint compared to samples withdrawn into cold \acrshort{mpss} (0.48 95\% CI [0.39, 0.56]).
 
-Even though the model is over-dispersed, these estimates provide some insight into the three buffers relative abilities to prevent hemocyte aggregation within the first hour post-withdrawal. The combination of a Ca$^{2+}$-free and \acrshort{edta}-containing buffer was effective in reducing hemocyte aggregation compared to simply diluting and keeping samples on ice. When the latter method was used, visible aggregates usually formed within the syringes immediately after hemolymph aspiration, even though the \acrshort{mpss} was pre-chilled on ice. For this method to be effective, the hemolymph most likely has to be diluted many-fold. Such an approach would be inconvenient when preparing haemolymph smears with a certain desired density, and too time-consuming when acquiring 10.000 events on a flow cytometer. This approach was therefore ruled out of question.
-
-Comparing the relative effectiveness of \acrshort{mas} and \acrshort{acb} in preventing hemocyte aggregation, it is evident that neither citrate or maintaining a slightly acidic pH is required for the purpose. It might be that the slightly higher concentration of \acrshort{edta} in \acrshort{acb} compensates for the lack of citrate. But either way, the acidic pH most likely plays a minor role. Since high concentrations of \acrshort{edta} has been reported to impair hemocyte viability (\cite{Grandiosa2018, Burkhard2009}), a direct comparison of \acrshort{mas} and \acrshort{acb} with regards to acute effects on viability was required for a final decision.
-
-\subsection{Haemocyte medium: effect on viability}
+\subsection{EDTA cytotoxicity}
  The mean percentages of necrotic hemocytes in \acrshort{mpss}, \acrshort{acb} and \acrshort{mas} after 15 minutes, 2 hours and 20 hours incubation are presented in Figure \ref{fig:BufferViability}, with error bars representing 95\% confidence intervals around group means. Within group differences in means at the three incubation periods are presented Table \ref{tb:Paired_ttests}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{figures/Method development/buffer viability bargraph scaled.pdf}
-    \caption{The mean percentages of TO-PRO$^{TM}$-3 Iodide positive hemocytes after 15 minute, 2 hours and 20 hours incubation in Marine Physiological Saline Solution (\, \protect\lysegraabox, \ n=8), Anticoagulant Buffer (\, \protect\customgraybox, \ n=8) and Modified Alsever's Solution (\, \protect\darkgraybox, \ n=8). Error bars represent 95\% confidence intervals around group means, asterisks *, **, *** above error bars denotes confidence level of one-tailed two sample t-test comparisons with the \acrshort{mpss} control group, while asterisks above horizontal lines represent \acrshort{acb} vs. \acrshort{mas} comparisons.}
+    \includegraphics[width=0.75\textwidth]{figures/Method development/EDTA cytotoxicity.pdf}
+    \caption{The mean percentages of TO-PRO$^{TM}$-3 Iodide positive hemocytes after 15 minute, 2 hours and 20 hours incubation in Marine Physiological Saline Solution (\, \protect\lysegraabox, \ n=8), Anticoagulant Buffer (\, \protect\customgraybox, \ n=8) and Modified Alsever's Solution (\, \protect\darkgraybox, \ n=8). Error bars represent 95\% confidence intervals around group means, *, **, *** above error bars denotes confidence level of one-tailed two sample t-test comparisons with the \acrshort{mpss} control group, while asterisks above horizontal lines represent \acrshort{acb} vs. \acrshort{mas} comparisons. NS: Not Significant.}
     \label{fig:BufferViability}
 \end{figure}
 
-The difference between the negative control group (\acrshort{mpss}) and the two \acrshort{edta}-containing buffers were not significantly different from zero after 15 minute incubation. There was however a marginal difference between \acrshort{mas} and \acrshort{acb}, where samples incubated in \acrshort{acb} had 0.17\% more necrotic cells on average compared to those kept in \acrshort{mas} for 15 minutes (t(14) = 2.96, p=.005). This relationship was consistent across all three incubation periods, allthough the differences after 2 and 20 hours were not significantly different from zero (Figure \ref{fig:BufferViability}).
+The difference between the negative control group (\acrshort{mpss}) and the two \acrshort{edta}-containing buffers were not significantly different from zero after 15 minute incubation. But as the incubation period was increased to 2 and 20 hours, the percentages of necrotic haemocytes in \acrshort{acb} and \acrshort{mas} increased relative to the negative control group. After 2 hours incubation, there were 0.40\% and 0.27\% more necrotic haemocytes in \acrshort{acb} (t(14) = 4.29, p<.001) and \acrshort{mas} (t(14) = 2.86, p=.006) compared to cold \acrshort{mpss}, respectively. After 20 hours incubation, these differences had increased to 6.96\% (t(14) = 3.78, p=.003) and 5.12\% (t(14) = 4.82, p<.001).
 
-Moreover, as the incubation period was increased to 2 and 20 hours, the percentages of necrotic haemocytes in \acrshort{acb} and \acrshort{mas} increased relative to the negative control group. After 2 hours incubation, there were 0.40\% and 0.27\% more necrotic haemocytes in \acrshort{acb} (t(14) = 4.29, p<.001) and \acrshort{mas} (t(14) = 2.86, p=.006) compared to cold \acrshort{mpss}, respectively. After 20 hours incubation, these differences had increased to 6.96\% (t(14) = 3.78, p=.003) and 5.12\% (t(14) = 4.82, p<.001).
+The mean percentage of necrotic haemocytes increased significantly with the incubation period in both MAS and ACB (Table \ref{tb:Paired_ttests}). Since the concentration of EDTA was constant across all timepoints, this increase was dose-dependent as the exposure duration was the only variable factor. There were no significant increase in the percentage of necrotic haemocytes in MPSS from 15 minutes to 2 hours incubation, but a significant increase of 1.184\% was observed after 20 hours (p<.026).
 
-\begin{table}[h]
+\begin{table}[h!]
 \centering
 	\caption{Paired two-tailed t-tests were used to assess wether the percentages of necrotic haemocytes increased with incubation time within each group. The difference between means at t = 15 min, 2 hours and 20 hours are presented with 95\% confidence intervals and the belonging p-value.}
 	\label{tb:Paired_ttests}
@@ -93,10 +90,8 @@ Moreover, as the incubation period was increased to 2 and 20 hours, the percenta
 		\midrule
      \multirow{2}{*}{MPSS} &  2 hours  &  15 min  & -0.018 & [-0.023, -0.015] & .78 \\
      &  20 hours &  2 hours & 1.184  & [1.157, 1.211]   & .026 \\
-    &&&&& \\
-    \multirow{2}{*}{ACB} &   2 hours  &  15 min  & 0.279  & [0.272, 0.285]   & .025 \\
+    \multirow{2}{*}{ACB} &   2 hours  &  15 min  & 0.438  & [0.433, 0.444]   & .00187 \\
        &   20 hours &  2 hours & 7.742  & [7.627, 7.857]   & .00324 \\
-    &&&&& \\
     \multirow{2}{*}{MAS} &   2 hours  &  15 min  & 0.319  & [0.313, 0.324]   & .00690 \\
         &   20 hours &  2 hours & 6.037  & [5.970, 6.105]   & <.001 \\
 		\bottomrule
@@ -104,7 +99,21 @@ Moreover, as the incubation period was increased to 2 and 20 hours, the percenta
  }
 \end{table}
 
-These results would suggest that \acrshort{edta} is cytotoxic to haemocytes at the concentrations used in \acrshort{acb} (13.4 mM) and \acrshort{mas} (11.5 mM), since there was a significant dose-dependent increase in the percentage of necrotic haemocytes when \acrshort{acb} and \acrshort{mas} were used as anticoagulants (Table \ref{tb:Paired_ttests}). However, since there was no significant differences between the \acrshort{edta}-containing buffers and the negative control group after 15 minutes of incubation, this cytotoxic effect has no relevant manifestations within the time-frame of the planned flow cytometric analyses. As long as haemolymph samples are stained and processed within 30 minutes of sampling, a flow cytometric dye exclusion/inclusion assay with TO-PRO$^{TM}$-3 Iodide and \acrshort{calceinam} should not have time to detect \emph{in vitro} necrosis caused by the buffers themselves.
+
+\subsection{Cytotoxicity of acidic haemocyte medium pH}
+The mean percentage of early and late apoptotic haemocytes after 15 minutes incubation in non-adjusted Modified Alsever's Solution (\acrshort{namas}, pH = 6.1) and Anticoagulant Buffer (ACB, pH = 7.6) is presented as bargraphs in Figure \ref{fig:pH_Apo}, with error bars representing 95\% confidence intervals around group means. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/Method development/Apo15 pH.pdf}
+    \caption{The mean percentage of early apoptotic (Apo15$^{+}$/ToPro3$^{-}$) and late apoptotic haemocytes (Apo15$^{+}$/ToPro3$^{+}$) after 15 minutes incubation in Anticoagulant Buffer (\, \protect\customgraybox, \ n=18) and non-adjusted Modified Alsever's Solution (\, \protect\darkgraybox, \ n=18). Error bars represent 95\% confidence intervals around group means. Asterisks *, **, *** denotes confidence level of one-tailed two sample t-test comparisons.}
+    \label{fig:pH_Apo}
+\end{figure}
+
+Haemocytes that were incubated in the acidic MAS buffer showed a significant induction of apoptosis relative to samples kept in ACB. The mean percentage of early apoptotic haemocytes in naMAS were 53 times higher than in ACB (t(17) = 6.04, p<.001), while that of late apoptotic haemocytes were 31 times higher (t(17) = 3.57, p=.00117). The percentages of early and late apoptotic haemocytes in ACB were consistently low, with mean percentages of 0.165$\pm{0.2}$\% and 0.144$\pm{0.09}$\%, respectively.
+
+\section{Development of a flow cytometric differential count}
+This section presents the results of several experiments that were conducted in order to develop and validate a flow cytometric differential count of the cell types present in the haemolymph of \emph{M. edulis}. Section \ref{subsection:CytCar} presents a cytological characterization of the haemocytes according to i.a., cell size, granularity and staining affinities in accordance with the current scientific practice in invertebrate immunology. The flow cytometric characterization in section \ref{subsection:Results_FlowChar} presents the subpopulations of haemocytes that were separated according to FSC (relative size) and side scatter (internal complexity), and set these results in context of the cytologically defined cell types. The next section (\ref{subsection:evidence}) presents results from two experiments that were aimed to uncover the relationship between the cytologically defined cell types and the subpopulations discernible by light scatter measurements. Lastly, the gating strategy for the differential count is presented with proof of concept. The results are presented and discussed consecutively since each subsequent section builds on the preceding.
 
 \subsection{Cytologic characterization of \emph{M. edulis} hemocyte subpopulations}
 \label{subsection:Results_cytchar}
@@ -128,10 +137,7 @@ Compared to the eosinophilic granulocytes, the basophilic hemocytes encompassed 
     \label{fig:Diameters}
 \end{figure}
 
-The size distributions of the three haemocyte types are shown as three kernel-smoothened density plots in Figure \ref{fig:Diameters}, together with that of the total haemocyte population. The densities have been scaled to the number of observations of each cell type, such that their relative proportions can be visualized. In the 20 adult mussels examined here, the small blast-like basophils were the least abundant cell type, making up 7.9 $\pm{5.6}$\% of the total haemocyte population. In 14 out of 20 mussels, the blast-like basophils were followed by the basophilic granulocytes, with a mean relative proportion of 40.7 $\pm{12.9}$\%. In spite of constituting similar proportions as the basophilic granulocytes in several mussels, the eosinophilic granulocytes were the most abundant cell type in the haemolymph of \emph{M. edulis}, constituting 51.5 $\pm{15.3}$\% of the total haemocyte population, on average. The relative proportions of basophilic and eosinophilic granulocytes did however vary to a large extent between individual mussels, as reflected by their standard deviations. [Should I include t.tests in this section? - note: unequal sample sizes]
-
-When incorporating the Coulter Counter data in this section, this article can be used to reference the accuracy of the electronic cell size method which it uses: Mattern CFT, Brackett FS, Olson BJ. Determination of number and size of particles by electrical gating: blood cells. J Appl Physiol 1957;10:56–70
-
+The size distributions of the three haemocyte types are shown as three kernel-smoothened density plots in Figure \ref{fig:Diameters}, together with that of the total haemocyte population. The densities have been scaled to the number of observations of each cell type, such that their relative proportions can be visualized. In the 20 adult mussels examined here, the small blast-like basophils were the least abundant cell type, making up 7.9 $\pm{5.6}$\% of the total haemocyte population. In 14 out of 20 mussels, the blast-like basophils were followed by the basophilic granulocytes, with a mean relative proportion of 40.7 $\pm{12.9}$\%. In spite of constituting similar proportions as the basophilic granulocytes in several mussels, the eosinophilic granulocytes were the most abundant cell type in the haemolymph of \emph{M. edulis}, constituting 51.5 $\pm{15.3}$\% of the total haemocyte population, on average. The relative proportions of basophilic and eosinophilic granulocytes did however vary to a large extent between individual mussels, as reflected by their standard deviations.
 
 \subsection{Flow cytometric characterization of haemocyte subpopulations by light-scatter}
 \label{subsection:Results_FlowChar}
@@ -157,6 +163,7 @@ As seen from the size distributions in Figure \ref{fig:Diameters}, the basophili
 Even thought there is an apparent correlation between cluster 1-3 and the size and internal complexity of the cytologically defined cell types; these interpretations require visual verification before a potential gating strategy can be implemented from these results.
 
 \subsection{Relating cytologically defined cell types to light-scatter profiles}
+\label{subsection:evidence}
 \subsubsection{Flow cytometric characterization of haemocytes pre-separated by isopycnic centrifugation }
 Formaldehyde-fixed haemocytes separated into three distinct cell-bands on the 15/33\%, 38/43\% and 43/90\% gradient interfaces of the discontinuous Percoll gradients. As shown in Figure \ref{fig:Percoll-tubes}, the two upmost bands exhibited a similar blue coloration, while the band located on the 43/90\% interface had a darker purple color. The latter consisted of 96.9$\pm{0.9}$\% eosinophilic granulocytes, with a few basophillic granulocytes scattered among them. From the cell bands located at the 15/33\% interface, a populations of 96.3$\pm{0.2}$\% basophillic haemocytes were isolated. The majority of these cells were basophilic granulocytes (87.5$\pm{1.2}$\%), with a smaller fraction of blast-like basophils (8.8$\pm{1.5}$\%). The middle bands did not yield any of the cell types in high purity, but were predominantly populated by basophilic granulocytes (72.7$\pm{1.5}$\%) with numerous small dark granules.
 
@@ -174,13 +181,12 @@ Formaldehyde-fixed haemocytes separated into three distinct cell-bands on the 15
     \label{fig:Percoll-dotplots}
 \end{figure}
 
-The light scatter profiles of the three isolated cell fractions are depicted in Figure \ref{fig:Percoll-dotplots}, together with that of the unseparated haemocytes. As shown in Figure \ref{fig:Percoll-dotplots}A, the pooled haemocyte were not readily distinguishable as three separate subpopulations according to light scatter prior to centrifugation. Since the relative size and complexity of the three cell types vary between individual mussel to some extent, this is a common phenomenon when the haemolymph of two or more mussels are pooled together. A more distinct clustering is however seen in the 73.8 \% basophilic granulocyte-enriched fraction from the 38/43\% gradient interface (\ref{fig:Percoll-dotplots}C), where the relative proportions of eosinophilic granulocytes (18.4\%) and blast-like basophils (7.8\%) were lower.
+The light scatter profiles of the three isolated cell fractions are depicted in Figure \ref{fig:Percoll-dotplots}, together with that of the unseparated haemocytes. As shown in Figure \ref{fig:Percoll-dotplots}A, the pooled haemocyte were not readily distinguishable as three separate subpopulations prior to centrifugation. Since the relative size and complexity of the three cell types vary slightly between individual mussel, this is a common phenomenon when haemolymph from two or more mussels are pooled together. A more distinct clustering was however seen among haemocytes isolated from the middle cell-band (\ref{fig:Percoll-dotplots}C), where the relative proportions of eosinophilic granulocytes (18.4\%) and blast-like basophils (7.8\%) were lower.
 
 The eosinophilic granulocytes formed a dense cluster of events exhibiting high FSC- and SSC-values (Figure \ref{fig:Percoll-dotplots}B). This is consistent with the expected light scatter profile of this cell type, since they represent highly granulated cells with large cell diameters. The two basophilic cell types from the upper cell band were unambiguously separated from the eosinophilic granulocytes according to SSC, where only a small number of cells exceeded values > 1$\times 10^{6}$ (Figure \ref{fig:Percoll-dotplots}D). This relationship is clearly demonstrated by the overlayed dotplot in Figure \ref{fig:Percoll-dotplots}E, where the eosinophilic granulocytes are shown in pink.
 
-\subsubsection{Flow cytometric characterization of eosinophilic granulocytes according to Eosin fluorescence}
-
-
+\subsubsection{Identification of eosinophilic granulocytes by eosin fluorescence}
+Formaldehyde-fixed haemocytes stained with 0.5\% eosin were separated into distinct eosin$^{bright}$ and eosin$^{dim}$ populations by flow cytometric measurements of eosin fluorescence (Figure \ref{fig:eosin_exp2}B and C). The degree of separation varied to a large extent between individual mussels, but the \acrshort{mfi} of eosin$^{bright}$ events were 11$\pm{9}$ times higher than that of eosin$^{dim}$ events on average. The difference in fluorescent intensity between eosinophilic and basophilic granulocytes is illustrated in Figure \ref{fig:Eosin_fluorescence_B2A}, where Giemsa-stained haemocytes have been imaged by epifluorescence microscopy with a B-2A filtercube (Em: $\geq$ 515 nm; exposure: 250 msec; gain: 3.4).
 
 \begin{figure}[H]
     \centering
@@ -197,28 +203,45 @@ The eosinophilic granulocytes formed a dense cluster of events exhibiting high F
         \caption{Haemocytes imaged by epifluorescence microscopy with a B-2A filtercube.}
         \label{ffig:b}
     \end{subfigure}
-    \caption{\textbf{Eosinophilic granulocytes are distinguished from the two basophilic cell types according to eosin fluorescence ($\geq$ 515 nm).} Formaldehyde-fixed haemocytes stained in 0.75\% eosin and 3\% Giemsa were imaged at $\times$60 magnification under \textbf{a)} brightfield illumination and \textbf{b)} by epifluorescence microscopy with a B-2A filter cube. The slide was mounted with Eukitt\textsuperscript{\textregistered} and coverslipped prior to microscopy. Eo: eosinophilic granulocyte; B: basophilic haemocyte; scale bars = 10 \micro m. }
+    \caption{\textbf{Eosinophilic granulocytes are distinguished from the two basophilic cell types according to eosin fluorescence ($\geq$ 515 nm).} Formaldehyde-fixed haemocytes stained in 0.5\% eosin and 3\% Giemsa were imaged at $\times$60 magnification under \textbf{a)} brightfield illumination and \textbf{b)} by epifluorescence microscopy with a B-2A filter cube. The slide was mounted with Eukitt\textsuperscript{\textregistered} and coverslipped prior to microscopy. Eo: eosinophilic granulocyte; B: basophilic haemocyte; scale bars = 10 \micro m. }
     \label{fig:Eosin_fluorescence_B2A}
 \end{figure}
 
+The pooled sample depicted in Figure \ref{fig:eosin_exp2}A were unambiguously separated into three distinct haemocyte subpopulations according to FSC and SSC. These subpopulations are equivalent to cluster 1-3 in samples of living haemocytes (see Figure \ref{fig:fsc_vs_ssc}). When the eosin$^{bright}$ events were back-gated to bivariate plots of FSC vs. SSC, they invariably corresponded to the subpopulation with high FSC- and SSC-values, i.e., cluster 3. (see Figure \ref{fig:eosin_exp2}D). This is clearly demonstrated by comparing Figure \ref{fig:eosin_exp2}A and D, where the eosin$^{bright}$ events are shown in pink.
 
-\begin{figure}[!ht]
+The correlation between eosin$^{bright}$ events (\%) and the percentage of eosinophilic granulocytes were analyzed by simple linear regression on order to verify the linearity of response. The analysis showed that eosin$^{bright}$ events (\%) recorded by flow cytometry significantly predicted the percentage of eosinophilic granulocytes($\beta$ = 1.06656, 95\% CI [0.96, 1.17], t(8) = 23.3, p<.001), with a mean absolute error of 1.71$\pm{1.6}$\%. The data is presented in Figure \ref{fig:eosin_exp2}E, together with the fitted linear regression model (R$^{2}$ = 0.99, F(1, 8) = 541, p<.001).
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/Method development/Eosin with method validation.pdf}
-    \caption{\textbf{Identification eosinophilic granulocytes on FSC vs. SSC dotplots according to log eosin fluorescence (518-548 nm).} Ten formaldehyde-fixed haemolymph samples were stained with 0.75\% eosin and recorded on the flow cytometer right thereafter \textbf{(A)}. Haemocyte events were gated according to log eosin fluorescence vs. SSC-A \textbf{(B)} and the eosin$^{bright}$ events were gated univariately \textbf{(C)}. The eosin$^{bright}$ events were back-gated to show their light scatter profile relative to eosin$^{dim}$ events \textbf{(D)}. The simple regression of eosin$^{bright}$ events (\%) vs. eosinophilic granulocytes (\%) determined from 1000-cell differential counts are shown in \textbf{(E)}, regression line: y$_{i}$ = -3.20042 + 1.06656x$_{i}$.}
+    \caption{\textbf{Identification eosinophilic granulocytes on FSC vs. SSC dotplots according to log eosin fluorescence (518-548 nm).} Ten formaldehyde-fixed haemolymph samples were stained with 0.5\% eosin and recorded on the flow cytometer right thereafter \textbf{(A)}. Haemocyte events were gated according to log eosin fluorescence vs. SSC-A \textbf{(B)} and the eosin$^{bright}$ events were gated univariately \textbf{(C)}. The eosin$^{bright}$ events were back-gated to show their light scatter profile relative to eosin$^{dim}$ events \textbf{(D)}. The simple regression of eosin$^{bright}$ events (\%) vs. eosinophilic granulocytes (\%) determined from 1000-cell differential counts are shown in \textbf{(E)}, regression line: y$_{i}$ = -3.20042 + 1.06656x$_{i}$.}
     \label{fig:eosin_exp2}
 \end{figure}
 
-Simple linear regression was used to assess the correlation between eosin$^{bright}$ events (\%) and the percentage of eosinophilic granulocytes in ten haemolymph samples. The data demonstrated that eosin$^{bright}$ events (\%) recorded by flow cytometry significantly predicted the percentage of eosinophilic granulocytes in the samples ($\beta$ = 1.06656, 95\% CI [0.96, 1.17], t(8) = 23.3, p<.001), with a mean absolute error of 1.71$\pm{1.6}$\%. The data is presented in Figure \ref{fig:eosin_exp2}E, together with the fitted linear regression model (R$^{2}$ = 0.99, F(1, 8) = 541, p<.001). \newpage
-
-
-
-In some adult mussels, however, the basophilic and eosinophilic granulocyte subpopulations are partly overlapping with regard to internal complexity, i.e., SSC. Since the BD Accuri C6 Plus isn't equipped with adjustable laser gain settings, these subpopulations could not be separated further instrumentally. Thus, any attempts to gate on these subpopulations based solely on light scattering profiles, would in some mussels introduce considerable uncertainty into their relative proportions. [Find the proportion of mussels where they are not well separated, and report that number instead of saying "some" mussels here.]
+\subsection{}
 
 End this section by discussing the identity of cluster 1, 2 and 3 in light of availible scientific data, i.e., Le Foll et a. (2010) and Garcia-Garcia et al. (2008). There exists other papers, but they have not verified or at all tested anything and the quality of their flow data is useless. Begin with the following: Le Foll and Colleagues (2010) reached the same conclusion regarding the identity of events populating cluster 3 in Figure \ref{fig:fsc_vs_ssc}. They did however not distinguish between two blast-like basophils and basophillic granulocytes, which led to them to believe that cluster 1 (cluster 3 in LeFoll et al. (2010)) was populated by "basophils" as a whole. Cluster 2 was thought to correspond to hyalinocytes [this requires a meticulous description, since their discussion is so extensive and detailed].
 
-\subsection{Scoring of necrotic haemocytes by flow cytometry}
-\subsubsection{Determination of optimal TO-PRO$^{TM}$-3 Iodide staining concentration}
+
+
+
+
+
+
+
+\subsection{Haemocyte Differential Count by Flow Cytometry}
+
+
+
+
+
+
+
+
+
+
+\section{Scoring of necrotic haemocytes by flow cytometry}
+\subsection{Determination of optimal TO-PRO-3 Iodide staining concentration}
 Viable and \ce{MeOH}-killed haemocytes could be separated according to TO-PRO-3 Iodide fluorescence in the whole range of tested concentrations (30 nM - 8 \micro M). As shown in Figure \ref{fig:ToPro3_stain_opt}B, the resolution between ToPro3$^{-}$ and ToPro3$^{+}$ events increased with the TO-PRO$^{TM}$-3 Iodide concentration according to the log-logistic function shown in (\ref{eq:fitted.LL4}), with a marked stagnation > 1.2 \micro M. The model explained almost all the variation in the dataset (Pseudo-R$^{2}$ = 0.99, see table \ref{tb:loglogistic_ToPro3}), and should therefore be a good predictor of the expected resolution between necrotic and viable haemocytes in the tested range of TO-PRO$^{TM}$-3 Iodide.
 
 \begin{equation}
@@ -239,7 +262,7 @@ Taken together, these results suggested that the potential gain from increasing 
 
 The results were also unambiguous regarding the incubation period. According to Figure \ref{fig:ToPro3_stain_opt}B, the resolution between viable and necrotic cells did not increase after the initial 15 minute incubation period. The MFI of necrotic haemocytes did increase somewhat in the extended incubation period, but the resolution remained unchanged due to a concurrent proportional increase among the viable haemocytes (see table \ref{tb:ToPro3_stainopt}, Appendix B). Extending the incubation period beyond 15 minutes would therefore be of little use.
 
-\subsubsection{Method validation}
+\subsection{Method validation}
 Simple linear regression was used to examine the correlation between results obtained by epifluorescent microscopy and the flow cytometric gating strategy presented in section \ref{subsubsection: gating validation}. It was found that the established quadrant gating strategy significantly predicted the the percentage of ToPro3$^{+}$ haemocytes (\%) in samples scored by epifluorescent microscopy ($\beta$ = 0.98818, t(8) = 32.8, p<.001). The data is presented in Figure \ref{fig:method_val_1}, together with the fitted linear regression model (R$^{2}$ = 0.99, F(1, 8) = 1059, p<.001).
 
 \begin{figure}[h]
@@ -248,13 +271,3 @@ Simple linear regression was used to examine the correlation between results obt
     \caption{\textbf{Correlation between necrotic haemocyte percentages scored by flow cytometry and epifluorescent microscopy.} 10 samples of freshly withdrawn haemocytes (\acrshort{acb}, 1:1) were mixed with methanol-killed haemocytes in semi-random proportions (0-100\%), stained with Calcein AM (50 nM) and TO-PRO$^{TM}$-3 Iodide (1.2 \micro M) and the percentage of necrotic haemocytes (\%) were scored by both flow cytometry and epifluorescent microscopy. Each datapoint represents one scored sample. Red line: fitted linear regression model.}
     \label{fig:method_val_1}
 \end{figure}
-
-
-
-\newpage
-\section{Hybrid FCM/Microscopy MN Cytome Assay: Results}
-\subsection{MN and other nuclear anomalies}
-\subsection{Haemocyte viability: membrane integrity}
-\subsection{Apoptosis assay}
-\subsection{Haemocyte differential counts and concentration}
-
