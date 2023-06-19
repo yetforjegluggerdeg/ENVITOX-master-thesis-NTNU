@@ -235,6 +235,7 @@
     dashed=false
 ]{biblatex}    
 
+\renewcommand*{\nameyeardelim}{\addcomma\space}
 \renewbibmacro*{volume+number+eid}{%
   \printfield{volume}
   \setunit*{\addnbthinspace}
