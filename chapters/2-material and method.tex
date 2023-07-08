@@ -77,7 +77,6 @@
 	}
 \end{table}
 
-
 \subsection{Microscopy kits and reagents}
 \begin{table}[H]
 	\centering
@@ -90,7 +89,7 @@
     Giemsa's azur eosin methylene blue solution & Merck & Sigma Aldrich & 1.09204.0500 \\
     Hemacolor\textsuperscript{\textregistered} & Sigma Aldrich & Sigma Aldrich & 1.11661 \\
     Eukitt\textsuperscript{\textregistered} Quick-hardening mounting medium & Orsatec GmbH & Sigma Aldrich & 03989 \\
-    Type N Immersion Oil for Microscopy & Nikon & ? & MXA20234 \\
+    Immersion Oil Type N acc. to ISO 8036 & Merck & VWR & 1.03699.0100 \\
     Percoll$^{TM}$ & Cytiva Sweden AB & Sigma Aldrich & GE17-0891-02 \\
 		\bottomrule
 	\end{tabular}
@@ -163,10 +162,13 @@
 \end{table}
 
 
-\section{Method development}
-This section describes in detail the work and experiments that were performed in the development of a hybrid flow cytometry- and microscopy-based version of The Mussel Micronucleus Cytome Assay by Bolognesi and Fenech (2012). The finalized assay is presented in it's entirety in the method section, in the context of it's application to test the potential genotoxic and cytotoxic effects of aged \ce{TiO2} and Ag \acrshort{ENPs}. The results from this section is presented in a separate results chapter (\ref{chap:results_method_development}), which can be beneficial to read through before continuing with the method section and the main results (\ref{chap:results}).
+\section{Method}
+This section describes in detail the work and experiments that were performed in the development of a hybrid flow cytometry- and microscopy-based version of The Mussel Micronucleus Cytome Assay by Bolognesi and Fenech (2012). The finalized assay is presented in it's entirety in the method section, in the context of it's application to test the potential genotoxic and cytotoxic effects of aged \ce{TiO2} and Ag \acrshort{ENPs}. The results from this section is presented in a separate results chapter (5), which can be beneficial to read through before continuing with the method section and the main results (6).
 
 Include some technical stuff? E.g., unless stated otherwise, 10.000 events were acquired from each sample with 36 uL/min and 16 \micro L core size. 80.000 FSH-H was used as the only threshold, and doublet haemocytes were gated out of analysis with a FSH-H vs FSC-A singlets gate.
+
+\subsection{Animal housing}
+Adult blue mussels (\emph{Mytilus edulis}) of x.x$\pm{5}$ cm shell length were obtained from Snadder og Snaskum AS (Indre Fosen, Norway). Upon arrival at the marine animal housing facilities of NTNU, Centre of Fisheries and Aquaculture (SeaLab), the mussels were transferred to 50 L filtered seawater flow-through tanks (11 L/min) supplied by a direct inlet from Trondheimsfjorden at 80 m depth ($\SI{7.5}{\celsius}$). Mussels were wed with algae (Insert species and freq.). Maybe include filter specs (sandfilter, protein-skimmer, UV-treated etc.?)
 
 \subsection{Haemolymph sampling technique}
 \label{subsection:haemolymph sampling technique}
@@ -188,21 +190,21 @@ To create a free path to the muscle from the posterior direction, the connecting
     \begin{subfigure}[b]{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/Sampling technique/uncut color 3495.jpg}
-        \caption{Posterior aspect of mussel with the connecting mantle (red arrow) intact.}
+        \caption{Posterior aspect of mussel with the connecting mantle intact (red arrow).}
         \label{sfig:b}
     \end{subfigure}
     \newline
     \begin{subfigure}[b]{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/Sampling technique/hands colors centered.jpg}
-        \caption{The mussel grip and needle alignment employed, seen from the operators perspective.}
+        \includegraphics[width=\textwidth]{figures/Sampling technique/possible match.jpg}
+        \caption{Mussel with the posterior adductor muscle (red arrow) clearly visible with the connecting mantle cut.}
         \label{sfig:c}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/Sampling technique/possible match.jpg}
-        \caption{Mussel with visible posterior adductor muscle (red arrow) where the mantel was cut.}
+        \includegraphics[width=\textwidth]{figures/Sampling technique/hands colors centered.jpg}
+        \caption{The mussel grip and needle alignment employed, seen from the operators perspective.}
         \label{sfig:d}
     \end{subfigure}
     \caption{An illustration of the method employed to extract hemolymph from the posterior adductor muscle of M. edulis in order to avoid off-target withdrawal of pallial fluid or spermatozoa. The images were captured using a Sony A6400 mirrorless digital camera with a Tamron 17-70mm F/2.8 lens, and were edited with Adobe\textsuperscript{\textregistered} Lightroom Classic 12.0 image editing software.}
@@ -352,7 +354,14 @@ Since their results were never verified by microscopy, their eosinophilic granul
 
 After fixing haemocytes in suspension with concentrated methanol, Carnoy’s fixative and 5\% formaldehyde in MPSS, the only smears without high degrees of unspecific eosin staining were those fixed in 5\% formaldehyde. To reduce the passive diffusion of eosin into non-target cells, 5\% formaldehyde in \acrshort{mpss} was selected for further testing - being the softest fixative of the three. By diluting the eosin component of the Hemacolor\textsuperscript{\textregistered} kit in Sorensen buffer, a set of diluted staining solutions with 0.25\%, 0.5\%, 0.75\%, 1.0\%, 1.5\%, 3\%, 5\%, and 8\% eosin (vol/vol) were prepared. Samples that were stained with the 0.5\% eosin solution (5 min) separated into two distinct populations of events according to log eosin fluorescence. When the eosin$^{bright}$ population was back-gated to FSC vs. SSC dotplots, the presumed light scatter profile of the eosinophilic granulocytes were obtained.
 
-The test wether the eosin$^{bright}$ (\%) events from flow cytometric analyses corresponded the eosinophilic granulocytes exclusively, this methodology was combined with microscopic 1000-cell differential counts, where the percentage of eosinophilic granulocytes was determined relative to the basophilic haemocytes. Haemolymph samples from 10 individual mussels were withdrawn into an equal volume of 5\% formaldehyde in MPSS and stained for 1 hour. The fixed cells were pelleted by centrifugation (180G, 12 min, \SI{20}{\celsius}) and resuspended in 0.5\% eosin in Sorensen buffer. The suspensions were divided into two aliquots, where one was pelleted and resuspended in 1 mL ACB after 5 minutes of staining, while the other was used to prepare Giemsa-smears according to the method described in section \ref{subsection:CytCar}. Samples in ACB were analyzed on the flow cytometer, while the corresponding Giemsa smears were used for differential counts. The correlation between eosin$^{bright}$ events (\%) and the percentage of eosinophilic granulocytes in the samples was tested by simple linear regression, in addition to calculating the mean absolute error (\acrshort{mae}) relative to the differential counts. 
+The test wether the eosin$^{bright}$ (\%) events from flow cytometric analyses corresponded the eosinophilic granulocytes exclusively, this methodology was combined with microscopic 1000-cell differential counts, where the percentage of eosinophilic granulocytes was determined relative to the basophilic haemocytes. Haemolymph samples from 10 individual mussels were withdrawn into an equal volume of 5\% formaldehyde in MPSS and stained for 1 hour. The fixed cells were pelleted by centrifugation (180G, 12 min, \SI{20}{\celsius}) and resuspended in 0.5\% eosin in Sorensen buffer. The suspensions were divided into two aliquots, where one was pelleted and resuspended in 1 mL ACB after 5 minutes of staining, while the other was used to prepare Giemsa-smears according to the method described in section \ref{subsection:CytCar}. Samples in ACB were analyzed on the flow cytometer, while the corresponding Giemsa smears were used for differential counts. The correlation between eosin$^{bright}$ events (\%) and the percentage of eosinophilic granulocytes in the samples was tested by simple linear regression, in addition to calculating the mean absolute error (\acrshort{mae}) relative to the differential counts.
+
+\subsection{Flow cytometric differential haemocyte count}
+Preliminary analyses on the flow cytometer indicated that the haemocyte cell types of \emph{M. edulis} were more effectively separated according to calcein fluorescence (518-548 nm) vs. SSC compared to simple light scatter measurements (FSC vs. SSC). This was largely brought about by the substantial overlap of the two granular cell types according to FSC. In mussels where the granular cell types had additional overlap according SSC, the differential accumulation of calcein could possibly serve as a third parameter to distinguish the cell types in flow cytometric differential haemocyte counts.
+
+To test the applicability of calcein florescence vs. SSC for differential haemocyte counts in \emph{M. edulis}, the haemolymph of 22 untreated adult mussels were sampled two times subsequently. The first round of samples were withdrawn into an equal volume of ACB and stained with 50 \micro M \acrshort{calceinam} for 15 minutes, followed by flow cytometric analysis. The subsequent samples were withdrawn into an equal volume of 5\% formaldehyde in MPSS, where they were fixed for 1 hour. The fixed haemocytes were pelleted by centrifugation (250G, 15 min, \SI{10}{\celsius}) and resuspended in 3\% Giemsa to prepare smears according to the method described in section \ref{subsection:CytCar}. Giemsa smears were used for 1000-cell differential haemocyte counts - where the percentage of eosinophilic granulocytes, basophilic granulocytes and small blast-like basophils were determined microscopically under 40x magnification.
+
+Of the 22 haemolymph samples that were analyzed on the flow cytometer, 20 of these gave rise to three distinct haemocyte subpopulations according to calcein fluorescence vs. SSC. These samples were gated according to the regions presented in figure \ref{fig:DHC_gatestrat} in order to calculate the percentages of the three cell types from 10.000 events/sample. The correlation between the three cell types (\%) from microscopic and flow cytometric differential counts were analyzed by simple linear regression, and the \acrshort{mae} were calculated relative to the microscopic counts.
 
 \subsection{Scoring of necrotic haemocytes by flow cytometry}
 To discriminate between viable and necrotic haemocytes by flow cytometry, a two-color fluorescence assay with the cell-permeant probe Calcein acetoxymethyl and the non-permeant \acrshort{dsdna}-binding dye TO-PRO$^{TM}$-3 Iodide (Molecular Probes, Eugene, OR) was chosen. This combination of probes was primarily selected for two reasons: (1) it enables simultaneous measurement of intracellular esterase activity and plasma membrane integrity - two recognized parameters of cell viability and (2) there is virtually no fluorescent spillover between the probes, such that the uncompensated raw data can be applied directly. Moreover, a complementary double staining methodology like this allows for discrimination between haemocytes and non-cellular particles. Since cells with intact plasma membranes retain esterase activity, double negative events (Calcein$^{-}$ ToPro3$^{-}$) must represent particles or bacteria, since they do not contain \acrshort{dsdna} (ToPro3$^{-}$). 
@@ -381,15 +390,6 @@ Potential cytotoxicity at high concentrations was evaluated by examining the ToP
 \subsubsection{Gating Strategy}
 \label{subsubsection: gating validation}
 To establish a quadrant gating strategy for scoring necrotic and viable haemocytes according to Calcein and \acrshort{dsdna}-bound TO-PRO$^{TM}$-3 Iodide fluorescence, three pools of haemocytes were prepared: (1) \ce{MeOH}-killed (70\% \ce{MeOH}, 30 min), (2) newly withdrawn (\acrshort{acb}, 1:1) and (3) a 1:1 mixture of both. Each pool was divided into four aliquots of 1 mL, where three of them were stained with either Calcein AM (50 nM), TO-PRO$^{TM}$-3 Iodide (1.2 \micro M) or both, and the fourth was kept as an unstained (US) control. After incubating for 15 minutes, 10.000 events were acquired from each sample on the flow cytometer.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=.7\textwidth]{figures/Gating strategy/ToPro3 CAM gating strategy.pdf}
-    \caption{\textbf{FL1 (533/30 nm) vs. FL4 (675/25 nm) quadrant gating for flow cytometric scoring of necrotic (Calcein$^{-}$ ToPro3$^{+}$) an viable (Calcein$^{+}$ ToPro3$^{-}$) haemocytes.} By preparing a pool of \ce{MeOH}-killed and newly withdrawn haemocytes in antiaggregative buffer (\acrshort{acb}), gates were drawn according to the florescent profiles of \textbf{A)} Unstained controls, \textbf{B)} Calcein \acrshort{fmo}s, \textbf{C)} TO-PRO$^{TM}$-3 Iodide FMOs and \textbf{D)} aliquotes stained with both probes.}
-    \label{fig:TP3_Calcein_gating_strat}
-\end{figure}
-
-The unstained controls were used to establish a tentative lower left quadrant gate (Calcein$^{-}$ ToPro3$^{-}$), as seen in Figure \ref{fig:TP3_Calcein_gating_strat}A. This quadrant was expanded in both directions to include all Calcein$^{-}$ events of the Calcein FMOs and all the ToPro3$^{-}$ events of the TO-PRO$^{TM}$-3 Iodide FMOs (see Figure \ref{fig:TP3_Calcein_gating_strat}B and C). When the double stained samples were run, the viable and methanol-killed haemocytes populated the upper left and lower right quadrants, exclusively.
 
 \subsubsection{Method validation}
 A flow cytometer is a very sensitive instrumentation for measuring fluorescent signals, and with a throughput of up to 10.000 events s$^{-1}$, these instruments represent a far superior technology for counting fluorescent cells compared to epifluorescent microscopy. However, the result obtained from a flow cytometric assay is entirely dependent on the gating strategy employed to generate the results. An effort was therefore made to cross-validate the gating strategy presented in the previous section by epifluorescent microscopy.
@@ -451,39 +451,8 @@ Describe in detail how this probe was dissolved in DMSO and diluted to obtain al
 \subsubsection{Method validation}
 
 
+\subsubsection{Flow Cytometry Specs.}
 
-\section{Method}
-\subsection{Animal housing}
-Adult blue mussels (\emph{Mytilus edulis}) of x.x$\pm{5}$ cm shell length were obtained from Snadder og Snaskum AS (Indre Fosen, Norway). Upon arrival at the marine animal housing facilities of NTNU, Centre of Fisheries and Aquaculture (SeaLab), the mussels were transferred to 50 L filtered seawater flow-through tanks (11 L/min) supplied by a direct inlet from Trondheimsfjorden at 80 m depth ($\SI{7.5}{\celsius}$). Here, the mussels were kept to acclimatize for 2 days before transfer to the experimental exposure setup.
-"were fed twice a day with a mixed diet (Chaetoceros sp. and Thalassiosira sp.). Mussels were maintained in locally-sourced seawater, which was sand-filtered and allowed to settle in the dark prior to use. Sand-filter, protein-skimmed and UV-treated."
-
-Time of mussel harvest/purchase?
-
-Describe water treatment in more detail: include information regarding sand-filter, protein-skimmer, 0.5 um filter bags and UV-treatment.
-
-Because the watertreatment left no natural feed for the mussels, the filtered seawater were supplemented with algae [insert species \& frequency].
-
-
-\subsection{Experimental setup/design}
-- Specs related to flowrate, feeding (alge conc: Coulter counter), how often was nano particles changed (every 3-4 days: check article), concentrations (ICP-MS --> mg/L in stocks and exp tanks), zetasizer --> size and surface potential
-
-include figure of exp setup?
-
-depuration period: check article
-
-storage from depuration to sampling: mussels were not kept on ice, but were washed and taken directly upstairs for measuring weight, length, height and width for condition index, and were given to us for \acrshort{fcm} sampling afterwards. If we were delayed, they were kept in the fridge until hemolymph sampling 
-
-\subsection{Hybrid Micronucleus Assay}
-Sampling
-Flow Cytometer used and Flow Cytometry acquisition software
-External software used for graphing and analysis of exported FCS files.
-Replicate/triplicate measurements?
-Number of events recorded for each mussel?
-Briefly describe FCS and \acrshort{ssc}.
-Mention if data were collected in linear or logarithmic scale, 
-FSC treshold (80.000 FSC-H). 
-Fluorescent compensation (matrix)
-Describe gating strategy herein? Debris exclusion (size); doublet exclusion --> haemocytes. (Gating of basophils and eosinophils, the use of \acrshort{fmo} controls with TO-PRO-3 and/or the apoptosis stain) to create gates.
 
 \begin{table}[H]
 	\centering
@@ -501,23 +470,4 @@ Describe gating strategy herein? Debris exclusion (size); doublet exclusion --> 
 	}
 \end{table}
 
-\subsubsection{Scoring of necrotic haemocytes}
-
-\subsubsection{Scoring of apoptotic haemocytes}
-
-\subsubsection{Differential haemocyte count}
-
-\subsubsection{Determination of haemocyte concentration}
-
-\subsubsection{Slide preparation}
-Refer to the MN cytome assay by Bolognesi, and mention that we fixed and stained haemocytes in suspension to produce slides without aggregated haemocytes. Since the cells were dead, they did not spread or produce pseudopodia, which allowed us to observe the actual size and form which they would posses ass they flowed through the laser of the flow cytometer.
-
-\subsubsection{Scoring of MN and nuclear anomalies}
-
-\subsubsection{Reference toxicity}
-Baseline group.
-
-\subsubsection{Measurements and calculations}
-(\cite{R-project})
-
-\subsubsection{Statistical analysis}
+Concider including a simple table with Fluorescent marker (ToPro3, Calcein, Apo15), "measured parameter", exitation laser and Fluorescent filter. Maybe combine with info from the table above?
