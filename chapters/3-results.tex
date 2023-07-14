@@ -2,7 +2,7 @@
 \label{chap:results_method_development}
 
 \section{Haemocyte medium}
-The following section presents results from two experiments that were conducted to explore the suitability of three haemocyte media for applications in flow cytometric assays. They are compared with regard to their ability to inhibit haemocyte aggregation, without affecting the viability of haemocytes.
+The following section presents results from three experiments that were conducted to explore the suitability of three anticoagulant haemocyte media for flow cytometric applications. They are evaluated with regard to their ability to inhibit haemocyte aggregation - without affecting the viability of haemocytes.
 
 \subsection{Inhibition of haemocyte aggregation}
 The proportions of aggregated haemocytes in \acrshort{mpss}, \acrshort{acb} and \acrshort{mas} are plotted against time post-withdrawal in Figure \ref{fig:aggregation}, together with their predicted mean proportions, or more accurately: the predicted proportion of aggregated haemocytes in mussels with random effects $\gamma_{0i}$ and $\gamma_{1i}$ = 0. Predictions were made from the estimated fixed effects in order to address the marginal effect of "Buffer" on the population-averaged proportions. The estimated regression coefficients of the generalized linear mixed effect model is presented in Table \ref{tb:regression_table}, while the fixed effect sub-models are shown in (\ref{eq:mixed_submodels}).
@@ -113,7 +113,7 @@ The mean percentage of early and late apoptotic haemocytes after 15 minutes incu
 Haemocytes that were incubated in the acidic MAS buffer showed a significant induction of apoptosis relative to samples kept in ACB. The mean percentage of early apoptotic haemocytes in naMAS were 53 times higher than in ACB (t(17) = 6.04, p<.001), while that of late apoptotic haemocytes were 31 times higher (t(17) = 3.57, p=.00117). The percentages of early and late apoptotic haemocytes in ACB were consistently low, with mean percentages of 0.165$\pm{0.2}$\% and 0.144$\pm{0.09}$\%, respectively.
 
 \section{Development of a flow cytometric differential count}
-This section presents the results of several experiments that were conducted in order to develop and validate a flow cytometric differential count of the cell types present in the haemolymph of \emph{M. edulis}. Section \ref{subsection:CytCar} presents a cytological characterization of the haemocytes according to i.a., cell size, granularity and staining affinities in accordance with the current scientific practice in invertebrate immunology. The flow cytometric characterization in section \ref{subsection:Results_FlowChar} presents the subpopulations of haemocytes that were separated according to FSC (relative size) and side scatter (internal complexity), and set these results in context of the cytologically defined cell types. The next section (\ref{subsection:evidence}) presents results from two experiments that were aimed to uncover the relationship between the cytologically defined cell types and the subpopulations discernible by light scatter measurements. Lastly, the gating strategy for the differential count is presented with proof of concept. The results are presented and discussed consecutively since each subsequent section builds on the preceding.
+This section presents the results of several experiments that were conducted in order to develop and validate a flow cytometric differential count of the cell types present in the haemolymph of \emph{M. edulis}. Section \ref{subsection:CytCar} presents a cytological characterization of the haemocytes according to i.a., cell size, granularity and staining affinities in accordance with the current scientific practice in invertebrate immunology. The flow cytometric characterization in section \ref{subsection:Results_FlowChar} presents the subpopulations of haemocytes that were separated according to FSC (relative size) and side scatter (internal complexity), and put these results in context of the cytologically defined cell types. The next section (\ref{subsection:evidence}) presents results from two experiments that were aimed to uncover the relationship between the cytologically defined cell types and the subpopulations discernible by light scatter measurements. Lastly, the gating strategy for the differential haemocyte count is presented with proof of concept.
 
 \subsection{Cytologic characterization of \emph{M. edulis} hemocyte subpopulations}
 \label{subsection:Results_cytchar}
@@ -149,8 +149,8 @@ Since \acrshort{fsc} and \acrshort{ssc} can be interpreted as relative measures 
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/Gating strategy/30k scatter profiles musc.pdf}
-    \caption{\textbf{Haemocyte subpopulations distinguishable according to \acrshort{fsc} and \acrshort{ssc} measurements with the BD Accuri C6 Plus Benchtop Flow Cytometer.} The light-scatter profiles of three representative adult mussels are displayed with \acrshort{ssc} on logarithmic \textbf{(A-C)} and linear \textbf{(D-F)} scales to illustrate the observed variation in the degree of separation between cluster 2 and 3. Adjunct histograms were included to underline the degree of separation from the individual parameters.}
+    \includegraphics[width=1.0\textwidth]{figures/Gating strategy/The three musceteers.pdf}
+    \caption{\textbf{Haemocyte subpopulations distinguishable according to \acrshort{fsc} and \acrshort{ssc} measurements with the BD Accuri C6 Plus Benchtop Flow Cytometer.} The light-scatter profiles of three representative adult mussels are displayed with \acrshort{ssc} on logarithmic \textbf{(A-C)} and linear \textbf{(D-F)} scales to illustrate the observed variation in the degree of separation between cluster 2 and 3. Adjunct histograms were included to illustrate the degree of separation contributed from each parameter individually.}
     \label{fig:fsc_vs_ssc}
 \end{figure}
 
@@ -162,11 +162,11 @@ Formaldehyde-fixed haemocytes separated into three distinct cell-bands on the 15
 \begin{figure}[H]
     \centering
     \includegraphics[width=.75\textwidth]{figures/Method development/Percoll tubes.pdf}
-    \caption{\textbf{Formaldehyde-fixed haemocytes pre-stained with Giemsa were separated by isopycnic centrifugation on discontinuous Percoll gradients.} Haemocytes settled into three distinct cell bands on the 15/33\%, 38/43\% and 43/90\% gradient interfaces.}
+    \caption{\textbf{Formaldehyde-fixed haemocytes pre-stained with Giemsa were separated by isopycnic centrifugation on discontinuous Percoll gradients.} The haemocytes settled into three distinct cell bands on the 15/33\%, 38/43\% and 43/90\% gradient interfaces.}
     \label{fig:Percoll-tubes}
 \end{figure}
 
-The light scatter profiles of the three isolated cell fractions are depicted in Figure \ref{fig:Percoll-dotplots}, together with that of the unseparated haemocytes. As shown in Figure \ref{fig:Percoll-dotplots}A, the pooled haemocyte were not readily distinguishable as three separate subpopulations prior to centrifugation. Since the relative size and complexity of the three cell types vary slightly between individual mussel, this is a common phenomenon when haemolymph from two or more mussels are pooled together. A more distinct clustering was however seen among haemocytes isolated from the middle cell-band (\ref{fig:Percoll-dotplots}C), where the relative proportions of eosinophilic granulocytes (18.4\%) and blast-like basophils (7.8\%) were lower.
+The light scatter profiles of the three isolated cell fractions are depicted in Figure \ref{fig:Percoll-dotplots}, together with that of the unseparated haemocytes. As shown in Figure \ref{fig:Percoll-dotplots}A, the pooled haemocyte were not readily distinguishable as three separate subpopulations prior to centrifugation. Since the relative size and complexity of the three cell types vary slightly between individual mussel, this is a common phenomenon when haemolymph from two or more mussels are pooled together. However, a more distinct clustering was seen among the haemocytes isolated from the middle cell-band (see Figure \ref{fig:Percoll-dotplots}C), where the relative proportions of eosinophilic granulocytes (18.4\%) and blast-like basophils (7.8\%) were lower.
 
 \begin{figure}[H]
     \centering
@@ -175,10 +175,10 @@ The light scatter profiles of the three isolated cell fractions are depicted in 
     \label{fig:Percoll-dotplots}
 \end{figure}
 
-The eosinophilic granulocytes formed a dense cluster of events exhibiting high FSC- and SSC-values (Figure \ref{fig:Percoll-dotplots}B). This is consistent with the expected light scatter profile of this cell type, since they represent highly granulated cells with large cell diameters. The two basophilic cell types from the upper cell band were unambiguously separated from the eosinophilic granulocytes according to SSC, where only a small number of cells exceeded values > 1$\times 10^{6}$ (Figure \ref{fig:Percoll-dotplots}D). This relationship is clearly demonstrated by the overlayed dotplot in Figure \ref{fig:Percoll-dotplots}E, where the eosinophilic granulocytes are shown in pink.
+The eosinophilic granulocytes formed from the bottom layer a dense cluster of events exhibiting high FSC- and SSC-values (Figure \ref{fig:Percoll-dotplots}B). This is consistent with the expected light scatter profile of this cell type, since they represent highly granulated cells with large cell diameters. The two basophilic cell types from the upper cell band were unambiguously separated from the eosinophilic granulocytes according to SSC, where only a small number of cells exceeded values > 1$\times 10^{6}$ (Figure \ref{fig:Percoll-dotplots}D). This relationship is clearly demonstrated by the overlayed dotplot in Figure \ref{fig:Percoll-dotplots}E, where the eosinophilic granulocytes are shown in pink.
 
 \subsubsection{Identification of eosinophilic granulocytes by eosin fluorescence}
-Formaldehyde-fixed haemocytes stained with 0.5\% eosin were separated into distinct eosin$^{bright}$ and eosin$^{dim}$ populations by flow cytometric measurements of eosin fluorescence (Figure \ref{fig:eosin_exp2}B and C). The degree of separation varied to a large extent between individual mussels, but the \acrshort{mfi} of eosin$^{bright}$ events were 11$\pm{9}$ times higher than that of eosin$^{dim}$ events on average. The difference in fluorescent intensity between eosinophilic and basophilic granulocytes is illustrated in Figure \ref{fig:Eosin_fluorescence_B2A}, where Giemsa-stained haemocytes have been imaged by epifluorescence microscopy with a B-2A filtercube (Em: $\geq$ 515 nm; exposure: 250 msec; gain: 3.4).
+Formaldehyde-fixed haemocytes stained with 0.5\% eosin were separated into distinct eosin$^{bright}$ and eosin$^{dim}$ populations by flow cytometric measurements of eosin fluorescence (Figure \ref{fig:eosin_exp2}B and C). The degree of separation varied to a large extent between individual mussels, but the \acrshort{mfi} of eosin$^{bright}$ events were 11$\pm{9}$ times higher than that of eosin$^{dim}$ events, on average. The difference in fluorescent intensity between eosinophilic and basophilic granulocytes is illustrated in Figure \ref{fig:Eosin_fluorescence_B2A}, where Giemsa-stained haemocytes have been imaged by epifluorescence microscopy with a B-2A filtercube (Em: $\geq$ 515 nm; exposure: 250 msec; gain: 3.4).
 
 \begin{figure}[H]
     \centering
@@ -199,41 +199,55 @@ Formaldehyde-fixed haemocytes stained with 0.5\% eosin were separated into disti
     \label{fig:Eosin_fluorescence_B2A}
 \end{figure}
 
-The pooled sample depicted in Figure \ref{fig:eosin_exp2}A were unambiguously separated into three distinct haemocyte subpopulations according to FSC and SSC. These subpopulations are equivalent to cluster 1-3 in samples of living haemocytes (see Figure \ref{fig:fsc_vs_ssc}). When the eosin$^{bright}$ events were back-gated to bivariate plots of FSC vs. SSC, they invariably corresponded to the subpopulation with high FSC- and SSC-values, i.e., cluster 3. (see Figure \ref{fig:eosin_exp2}D). This is clearly demonstrated by comparing Figure \ref{fig:eosin_exp2}A and D, where the eosin$^{bright}$ events are shown in pink.
+The pooled sample depicted in Figure \ref{fig:eosin_exp2}A were unambiguously separated into three distinct haemocyte subpopulations according to FSC and SSC. These subpopulations were equivalent to cluster 1-3 in samples of living haemocytes (see Figure \ref{fig:fsc_vs_ssc}). When the eosin$^{bright}$ events were back-gated to bivariate plots of FSC vs. log SSC, they invariably corresponded to the subpopulation with high FSC- and SSC-values, i.e., cluster 3. (see Figure \ref{fig:eosin_exp2}D). This is clearly demonstrated by comparing Figure \ref{fig:eosin_exp2}A and D, where the eosin$^{bright}$ events are shown in pink.
 
-The correlation between eosin$^{bright}$ events (\%) and the percentage of eosinophilic granulocytes were analyzed by simple linear regression on order to verify the linearity of response. The analysis showed that eosin$^{bright}$ events (\%) recorded by flow cytometry significantly predicted the percentage of eosinophilic granulocytes($\beta$ = 1.06656, 95\% CI [0.96, 1.17], t(8) = 23.3, p<.001), with a mean absolute error of 1.71$\pm{1.6}$\%. The data is presented in Figure \ref{fig:eosin_exp2}E, together with the fitted linear regression model (R$^{2}$ = 0.99, F(1, 8) = 541, p<.001).
+The correlation between eosin$^{bright}$ events (\%) and the percentage of eosinophilic granulocytes were analyzed by simple linear regression on order to verify the linearity of response. The analysis showed that eosin$^{bright}$ events (\%) recorded by flow cytometry significantly predicted the percentage of eosinophilic granulocytes($\beta$ = 1.06656, t(8) = 23.3, p<.001), with a mean absolute error of 1.71$\pm{1.6}$\%. The data is presented in Figure \ref{fig:eosin_exp2}E, together with the fitted linear regression model (R$^{2}$ = 0.99, F(1, 8) = 541, p<.001).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/Method development/Eosin with method validation.pdf}
+    \includegraphics[width=1.0\textwidth]{figures/Gating strategy/Eosin exp big font.pdf}
     \caption{\textbf{Identification eosinophilic granulocytes on FSC vs. SSC dotplots according to log eosin fluorescence (518-548 nm).} Ten formaldehyde-fixed haemolymph samples were stained with 0.5\% eosin and recorded on the flow cytometer right thereafter \textbf{(A)}. Haemocyte events were gated according to log eosin fluorescence vs. SSC-A \textbf{(B)} and the eosin$^{bright}$ events were gated univariately \textbf{(C)}. The eosin$^{bright}$ events were back-gated to show their light scatter profile relative to eosin$^{dim}$ events \textbf{(D)}. The simple regression of eosin$^{bright}$ events (\%) vs. eosinophilic granulocytes (\%) determined from 1000-cell differential counts are shown in \textbf{(E)}, regression line: y$_{i}$ = -3.20042 + 1.06656x$_{i}$.}
     \label{fig:eosin_exp2}
 \end{figure}
 
 \subsection{Flow cytometric differential haemocyte count}
+\subsubsection{Characterization of haemocytes according calcein efflux and SSC}
+\label{subsection:calcein_SSC_char}
+After staining with 50 nM \acrshort{calceinam} prior to flow cytometric analyses, suspensions of living haemocytes were separated into three distinct clusters of events according to log calcein fluorescence (518-548 nm) vs. log SSC in 90\% of the untreated adult mussels. As shown in Figure \ref{fig:DHC_gatestrat}C, these clusters corresponded to one subpopulation of calcein dim events with high SSC (calcein$^{-}$/SSC high), one subpopulation of calcein bright events with intermediate SSC (calcein$^{+}$/SSC mid) and one subpopulation of calcein dim events with low SSC-values (calcein$^{-}$/SSC low). The two calcein$^{-}$ clusters were gated according to the regions presented in Figure \ref{fig:DHC_gatestrat}C, and were shown to correspond to cluster 1 and 3 on bivariate plots of FSC vs. log SSC (see Figure \ref{fig:DHC_gatestrat}B and D). Calcein bright events with intermediate SSC-values were gated as events not present in the two aforementioned regions, and were invariably corresponding to cluster 2 when back-gated to bivariate plots of FSC vs. SSC.
 
+The degree of separation between clusters 1-3 were subject to individual variation with regard to log SSC. Since cluster 2 and 3 are distinguished solely on the basis of SSC in light scatter measurements, the events populating these regions could not be completely resolved in mussels where these clusters were partly overlapping with regard to SSC. However, by employing calcein fluorescence as a second discriminator instead of FSC, the haemocytes of cluster 3 could be gated indirectly on the basis of their lower accumulation of hydrolyzed calcein. As the events of cluster 1 also exhibited a lower fluorescent intensity of calcein, the substitution of FSC for calcein fluorescence did not present a compromise for the resolution of cluster 1.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/Gating strategy/GatestratGY SSC Calcein PNG.pdf}
-    \caption{ \textbf{Differential haemocyte count gating strategy}.}
+    \includegraphics[width=1.0\textwidth]{figures/Gating strategy/SSC Calcein gatestrat full PNG.pdf}
+    \caption{ \textbf{Differential haemocyte count gating strategy}. Twenty haemolymph samples withdrawn into ACB (1:1) were stained with 50 nM \acrshort{calceinam} for 15 minutes prior to flow cytometric analysis. \textbf{(A)} Events were gated according to FSC-A vs. FSC-H to eliminate doublet haemocyte events and debris from the analysis. \textbf{(B)} The singlet events populated three distinct clusters according to FSC-A vs. log SSC-A (cluster 1-3). \textbf{(C)} By exchanging FSC-A for log calcein fluorescence on the x-axis, cluster 1 and 3 could be gated without considerable overlap with cluster 2 - due to their lower fluorescent intensity of hydrolyzed \acrshort{calceinam}. \textbf{(D)} The events in the calcein$^{-}$/SSC low and calcein$^{-}$/SSC high gates are shown to correspond to cluster 1 and 3, respectively.}
     \label{fig:DHC_gatestrat}
 \end{figure}
 
+\subsubsection{Method validation}
+The estimated percentages of small blast-like basophils (events in cluster 1), basophilic granulocytes (events in cluster 2) and eosinophilic granulocytes (events in cluster 3) were highly correlated with the results obtained by traditional microscopic differential haemocyte counts (Figure \ref{fig:DHC_lin}). The percentage of eosinophilic granulocytes counted in Giemsa-smears were significantly predicted by the percentage of calcein$^{-}$/SSC$^{high}$ events of cluster 3 ($\beta$ = 1.06, t(8) = 23.3, p<.001)
 
+(R$^{2}$ = 0.99, F(1, 8) = 541, p<.001)
 
 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/Gating strategy/SSC Calcein validation.pdf}
-    \caption{Correlation between the percentages of eosinophilic granulocytes \textbf{(A)}, basophilic granulocytes \textbf{(B)} and small blast-like basophils \textbf{(C)} from differential haemocyte counts performed by microscopy and flow cytometry (n=20). The three cell types were were differentiated according log SSC-A vs. log Calcein fluorescence (518-538 nm), as shown in the gating strategy in Figure 3.12. }
+    \caption{Correlations between the percentages of eosinophilic granulocytes \textbf{(A)}, basophilic granulocytes \textbf{(B)} and small blast-like basophils \textbf{(C)} from differential haemocyte counts performed by microscopy and flow cytometry (n=20). The three cell types were differentiated as clusters 1-3 (1: small blast-like basophils; 2: basophilic granulocytes; 3: eosinophilic granulocytes), which were gated indirectly according log calcein fluorescence (518-538 nm) vs. log SSC-A as shown in the gating strategy in Figure \ref{fig:DHC_gatestrat}.}
     \label{fig:DHC_lin}
 \end{figure}
 
-%  A: f(x) = -0.22708 + 0.98789x, 95\% CI [0.89148, 1.0842], MAE = 0.5755
-% BG: f(x) = -3.13182 + 1.03003x, 95\% CI [0.96733, 1.0927], MEA = 2.263
-% Eo: f(x) =  0.66011 + 1.02894x, 95\% CI [0.97425, 1.0836], MEA = 2.457
+
+
+%  A: f(x) = -0.57877 + 1.05005x, 95\% CI [0.89339, 1.2067], MAE = 0.8645 SD = 0.6962
+% BG: f(x) = -5.21203 + 1.05404x, 95\% CI [0.95316, 1.1549], MEA = 3.175 SD = 2.829
+% Eo: f(x) =  0.24607 + 1.05761x, 95\% CI [0.96423, 1.1509], MEA = 3.367 SD = 2.925
+
+
+
+
+
 
 
 \newpage
