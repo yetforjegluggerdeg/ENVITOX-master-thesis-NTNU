@@ -232,7 +232,8 @@
     mincitenames=1,
     citestyle=authoryear,      % try authoryear, but define comma and/or parentheses/brackets
     sorting=nty,
-    dashed=false
+    dashed=false,
+    uniquename=false
 ]{biblatex}    
 
 \renewcommand*{\nameyeardelim}{\addcomma\space}
