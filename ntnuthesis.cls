@@ -228,12 +228,13 @@
     style=authoryear,            % style=ieee orginalt
     maxbibnames=3,
     minbibnames=3,
-    maxcitenames=3,
+    maxcitenames=2,
     mincitenames=1,
     citestyle=authoryear,      % try authoryear, but define comma and/or parentheses/brackets
     sorting=nty,
     dashed=false,
-    uniquename=false
+    uniquename=false,
+    uniquelist=false
 ]{biblatex}    
 
 \renewcommand*{\nameyeardelim}{\addcomma\space}
